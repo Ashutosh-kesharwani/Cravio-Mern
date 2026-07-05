@@ -23,7 +23,3 @@ dist-ssr
 *.sln
 *.sw?
 
-
-# Hide assets
-# src/assets/*
-README.md
