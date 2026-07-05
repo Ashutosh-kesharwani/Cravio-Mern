@@ -25,5 +25,5 @@ dist-ssr
 
 
 # Hide assets
-src/assets/*
+# src/assets/*
 README.md
