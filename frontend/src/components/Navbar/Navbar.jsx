@@ -1,50 +1,60 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { assets } from "../../assets/frontend_assets/assets.js";
 import "./Navbar.css";
-const Navbar = () => {
+const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
   return (
     <div className="navbar">
-      <img src={assets.logo} alt="logo" />
+      <Link to="/">
+        <img src={assets.logo} alt="logo" className="logo" />
+      </Link>
 
       {/* Underline Effect on Menu
       > We are going to add conditional underline style , when we click on any menu
       > if curr menu is active then apply active style
       */}
       <ul className="navbar-menu">
-        <li
+        <Link
+          to="/"
           onClick={() => setMenu("home")}
           className={menu === "home" ? "active" : ""}
         >
           Home
-        </li>
-        <li
+        </Link>
+        <a
+          href="#explore-menu"
           onClick={() => setMenu("menu")}
           className={menu === "menu" ? "active" : ""}
         >
           menu
-        </li>
-        <li
+        </a>
+        <a
+          href="#app-download"
           onClick={() => setMenu("mobile-app")}
           className={menu === "mobile-app" ? "active" : ""}
         >
           mobile-app
-        </li>
-        <li
+        </a>
+        <a
+          href="#footer"
           onClick={() => setMenu("contact-us")}
           className={menu === "contact-us" ? "active" : ""}
         >
           contact us
-        </li>
+        </a>
       </ul>
 
       <div className="navbar-right">
         <img src={assets.search_icon} alt="search-icon" />
         <div className="navbar-search-icon">
-          <img src={assets.basket_icon} alt="basket-icon" />
+          <Link to="/cart">
+            <img src={assets.basket_icon} alt="basket-icon" />
+          </Link>
           <div className="dot"></div>
         </div>
-        <button>Sign In</button>
+        {/* i.e after click signin for first time from next time user will always be login so show login pop cpmponent */}
+        <button onClick={() => setShowLogin(true)}>Sign In</button>
       </div>
     </div>
   );
