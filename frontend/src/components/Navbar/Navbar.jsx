@@ -1,11 +1,30 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { assets } from "../../assets/frontend_assets/assets.js";
 import { useFoodList } from "../../context/storeContext.js";
 import "./Navbar.css";
 const Navbar = ({ setShowLogin }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [menu, setMenu] = useState("home");
   const { getTotalCartAmount } = useFoodList();
+
+  /* 
+  >Whenever we click the menu , this func no matter what route is it , like whether on Home , cart or other
+  > This will going to first check curr url location if its '/' , Homepage then just scroll till that section
+  > else first navigate to homepage and then scroll to that section
+  */
+  const handleNavigation = (sectionId, menuName) => {
+    setMenu(menuName);
+
+    if (location.pathname === "/") {
+      document
+        .getElementById(sectionId)
+        ?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/", { state: { scrollTo: sectionId } });
+    }
+  };
   return (
     <div className="navbar">
       <Link to="/">
@@ -24,26 +43,26 @@ const Navbar = ({ setShowLogin }) => {
         >
           Home
         </Link>
+        {/* on click for navigation use handleNavigation helper func  */}
         <a
-          href="#explore-menu"
-          onClick={() => setMenu("menu")}
+          onClick={() => handleNavigation("explore-menu", "menu")}
           className={menu === "menu" ? "active" : ""}
         >
-          menu
+          Menu
         </a>
+
         <a
-          href="#app-download"
-          onClick={() => setMenu("mobile-app")}
+          onClick={() => handleNavigation("app-download", "mobile-app")}
           className={menu === "mobile-app" ? "active" : ""}
         >
-          mobile-app
+          Mobile App
         </a>
+
         <a
-          href="#footer"
-          onClick={() => setMenu("contact-us")}
+          onClick={() => handleNavigation("footer", "contact-us")}
           className={menu === "contact-us" ? "active" : ""}
         >
-          contact us
+          Contact Us
         </a>
       </ul>
 
