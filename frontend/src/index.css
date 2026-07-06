@@ -7,11 +7,12 @@ Basic CSS Template
   margin: 0;
   box-sizing: border-box;
   font-family: Outfit, sans-serif;
+  scroll-behavior: smooth; /* For smooth scroll behaviour */
 }
 
 body {
   min-height: 100vh;
-  background-color: #d2cdcd;
+  /* background-color: #d2cdcd; */
 }
 
 a {
@@ -22,4 +23,13 @@ a {
 .app {
   width: 80%;
   margin: auto;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
