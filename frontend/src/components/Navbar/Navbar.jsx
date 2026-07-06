@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { assets } from "../../assets/frontend_assets/assets.js";
+import { useFoodList } from "../../context/storeContext.js";
 import "./Navbar.css";
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
+  const { getTotalCartAmount } = useFoodList();
   return (
     <div className="navbar">
       <Link to="/">
@@ -51,7 +53,7 @@ const Navbar = ({ setShowLogin }) => {
           <Link to="/cart">
             <img src={assets.basket_icon} alt="basket-icon" />
           </Link>
-          <div className="dot"></div>
+          {getTotalCartAmount() !== 0 && <div className="dot"></div>}
         </div>
         {/* i.e after click signin for first time from next time user will always be login so show login pop cpmponent */}
         <button onClick={() => setShowLogin(true)}>Sign In</button>

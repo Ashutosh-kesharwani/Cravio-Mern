@@ -23,6 +23,23 @@ const StoreContextProvider = ({ children }) => {
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
   };
+
+  // This func we used in cart file to show the subtotal of amount of all food item with quantity selected
+  // This also be used to show dot in cart item icon in nav bar as if its zero means no cartItem , else show dot
+  const getTotalCartAmount = () => {
+    let totalAmount = 0;
+    // here item is id of cartItem that we have select in menu
+    for (const item in cartItems) {
+      // First check if curr item is selected in cart or not
+      if (cartItems[item] > 0) {
+        // find curr cart item object from foodlist and use to extract the price of that food item
+        let itemInfo = food_list.find((product) => product._id === item);
+        totalAmount += itemInfo.price * cartItems[item];
+      }
+    }
+    return totalAmount;
+  };
+
   // We have stored our food list data which we have store in our assets , in our context store to use it in any component written in context provider
   const contextValue = {
     food_list,
@@ -30,6 +47,7 @@ const StoreContextProvider = ({ children }) => {
     setCartItems,
     addToCart,
     removeFromCart,
+    getTotalCartAmount,
   };
 
   return (
