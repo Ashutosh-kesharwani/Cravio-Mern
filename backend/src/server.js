@@ -32,7 +32,7 @@ connectDB()
   .then(() => {
     // Express App Errors
     app.on("error", (error) => {
-      console.log("Express :: Error :: ${error}");
+      console.log(`Express :: Error :: ${error}`);
       process.exit(1);
     });
 
