@@ -1,8 +1,15 @@
+import { Outlet } from "react-router-dom";
+import { Navbar, Sidebar } from "./components/index.js";
 function App() {
   return (
-    <>
-      <h1>Jai maa vindhyavasini</h1>
-    </>
+    <div>
+      <Navbar />
+      <hr />
+      <div className="app-content">
+        <Sidebar />
+        <Outlet />
+      </div>
+    </div>
   );
 }
 
