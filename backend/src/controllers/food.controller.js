@@ -87,7 +87,6 @@ const getAllFoods = asyncHandler(async (req, res) => {
   // Lean :  [So it return fastly plain json object , instead of mongoose document and makeit slightly fater ad use less memory also]
   // recommend: Use lean when only send reading data
   const foodItems = await Food.find().lean();
-
   return res
     .status(200)
     .json(
