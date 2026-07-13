@@ -1,7 +1,7 @@
-import { useFoodList } from "../../context/storeContext";
+import { useStore } from "../../context/storeContext";
 import "./PlaceOrder.css";
 const PlaceOrder = () => {
-  const { getTotalCartAmount } = useFoodList();
+  const { getTotalCartAmount } = useStore();
 
   return (
     <form className="place-order">

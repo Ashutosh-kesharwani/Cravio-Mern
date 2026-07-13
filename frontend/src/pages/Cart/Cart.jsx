@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { useFoodList } from "../../context/storeContext";
+import { useStore } from "../../context/storeContext";
 import "./Cart.css";
 
 const Cart = () => {
   const { food_list, cartItems, removeFromCart, getTotalCartAmount } =
-    useFoodList();
+    useStore();
   const navigate = useNavigate();
   return (
     <div className="cart">
@@ -29,7 +29,7 @@ const Cart = () => {
                 {/* Using the same class so that data aligns exactly
                     under the column headings */}
                 <div className="cart-items-title cart-items-item">
-                  <img src={item.image} alt={item.name} />
+                  <img src={item.image?.url} alt={item.name} />
                   <p className="cart-items-item-name">{item.name}</p>
                   <p>&#x24;{item.price}</p>
                   <p>{cartItems[item._id]}</p>

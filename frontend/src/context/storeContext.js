@@ -3,11 +3,6 @@ import { createContext, useContext } from "react";
 // Store Context Space
 export const StoreContext = createContext();
 
-// useStore -> customHook
-export const useFoodList = () => {
-  return useContext(StoreContext);
-};
-
-export const useCartItem = () => {
+export const useStore = () => {
   return useContext(StoreContext);
 };
