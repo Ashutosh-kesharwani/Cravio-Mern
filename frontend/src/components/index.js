@@ -5,7 +5,6 @@ import Footer from "./Footer/Footer.jsx";
 import Header from "./Header/Header.jsx";
 import LoginPopup from "./LoginPopup/LoginPopup.jsx";
 import Navbar from "./Navbar/Navbar";
-import SignUp from "./SignUp/SignUp.jsx";
 export {
   AppDownload,
   ExploreMenu,
@@ -14,5 +13,4 @@ export {
   Header,
   LoginPopup,
   Navbar,
-  SignUp,
 };

@@ -1,5 +1,5 @@
 import { assets } from "../../assets/frontend_assets/assets.js";
-import { useCartItem } from "../../context/storeContext.js";
+import { useStore } from "../../context/storeContext.js";
 import "./FoodItem.css";
 
 /* 
@@ -9,20 +9,21 @@ FoodItem Components
 > Like id,name,price,desc,image
 */
 const FoodItem = ({ id, name, description, price, image }) => {
-  const { cartItems, addToCart, removeFromCart } = useCartItem();
+  const { cartItems, addToCart, removeFromCart } = useStore();
 
   return (
     <div className="food-item">
       <div id={id} className="food-item-image-container">
-        <img src={image} alt={name} className="food-item-image" />
+        <img src={image?.url} alt={name} className="food-item-image" />
         {/* 
          Conditional Add Btn render
          if count of item is 0
          > then show white btn , of add only
          > if >1 then show remove . count . add green btn
+         > !cartItems?.[id] this is used to prevent the crash until data gets loaded
         */}
 
-        {!cartItems[id] ? (
+        {!cartItems?.[id] ? (
           <img
             src={assets.add_icon_white}
             onClick={() => addToCart(id)}

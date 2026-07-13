@@ -1,8 +1,9 @@
-import { useFoodList } from "../../context/storeContext.js";
+import { useStore } from "../../context/storeContext.js";
 import FoodItem from "../FoodItem/FoodItem.jsx";
 import "./FoodDisplay.css";
 const FoodDisplay = ({ category }) => {
-  const { food_list } = useFoodList();
+  const { food_list } = useStore();
+
   return (
     <div>
       <div className="food-display" id="food-display">
@@ -13,7 +14,7 @@ const FoodDisplay = ({ category }) => {
             if (category === "All" || category === item.category) {
               return (
                 <FoodItem
-                  key={item.name}
+                  key={item._id}
                   id={item._id}
                   name={item.name}
                   description={item.description}

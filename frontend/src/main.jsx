@@ -5,6 +5,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import App from "./App.jsx";
 import StoreContextProvider from "./context/StoreContext.jsx";
 import "./index.css";
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
 );
 createRoot(document.getElementById("root")).render(
   <StoreContextProvider>
+    <ToastContainer />
     <RouterProvider router={router} />
   </StoreContextProvider>
 );
