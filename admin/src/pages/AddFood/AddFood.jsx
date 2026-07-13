@@ -13,7 +13,7 @@ const AddFood = () => {
   const [data, setData] = useState({
     name: "",
     description: "",
-    category: "Salad", // this is default category for select option
+    category: "", // this is default category for select option
     price: "",
   });
 
@@ -53,7 +53,7 @@ const AddFood = () => {
     // 1. Response we get from axios , it already convert into json , unlike fetch
     // 2. For accessing the data which we have send in response , hame uss response.data.field here field can be success , data or other value which we have send in reponse
     // In backend the response we create using ApiResponse class we use it here , so there we also add success flag so use it here to check if res we get is success or not
-    const response = await axios.post(`${API_BASE_URL}/food/foods`, formData);
+    const response = await axios.post(`${API_BASE_URL}/foods`, formData);
 
     // console.log(response.data.data);
     // console.log(response.data.success);
