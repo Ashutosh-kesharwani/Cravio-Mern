@@ -49,11 +49,9 @@ Task :
 */
 const verifyJWT = asyncHandler(async (req, _, next) => {
   try {
-    // 1. Fetch token from req
     const token =
       req.cookies?.accessToken ||
       req.header("Authorization")?.replace("Bearer ", "");
-
     // 2. Check if token present or not
     if (!token) {
       throw new ApiError(401, "Unauthorized Request");
@@ -67,8 +65,8 @@ const verifyJWT = asyncHandler(async (req, _, next) => {
     // it going to generate new token and match there signature if
     // valid : return user payload which we have upload while create token
     // else error , for expiry : TokenExpireError , for invalid signature : JsonWebTokenError
-    const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET_KEY);
 
+    const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET_KEY);
     //4. Find user , same time remove sensitive info
     // After get decoded info we have also _id  , so now with this id retrieve user doc from db
     const user = await User.findById(decodedToken._id).select(

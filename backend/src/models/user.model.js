@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
+import validator from "validator";
 const userSchema = new mongoose.Schema(
   {
     name: {
@@ -14,12 +15,17 @@ const userSchema = new mongoose.Schema(
       required: [true, "email is required"],
       trim: true,
       lowercase: true,
-      // match:
+      unique: true,
+      validate: [validator.isEmail, "Please enter a valid email address"],
     },
     password: {
       type: String,
       required: [true, "password is required"],
       trim: true,
+    },
+    cartData: {
+      type: Object,
+      default: {}, // as here we pass empty object , so if dont use minimize  : false , then cartData will not get created
     },
     refreshToken: {
       type: String,
@@ -27,9 +33,9 @@ const userSchema = new mongoose.Schema(
     },
   },
   {
+    minimize: false,
     timestamps: true,
     id: false,
-    strictModeQuery: "throw",
     toJSON: {
       virtuals: true,
     },
@@ -42,17 +48,10 @@ const userSchema = new mongoose.Schema(
 // bcrypt function
 
 // Hash Password
-userSchema.pre("save", async function (next) {
-  try {
-    // check  is password  field is modified or not
-    if (!this.isModified("password")) return next();
-    // if modified , update password
-    this.password = await bcrypt.hash(this.password, 10);
+userSchema.pre("save", async function () {
+  if (!this.isModified("password")) return;
 
-    next();
-  } catch (error) {
-    next(error);
-  }
+  this.password = await bcrypt.hash(this.password, 10);
 });
 
 //Compare password func
@@ -65,7 +64,7 @@ userSchema.methods.generateAccessToken = function () {
   return jwt.sign(
     {
       _id: this._id,
-      name: this._name,
+      name: this.name,
       email: this.email,
     },
     process.env.ACCESS_TOKEN_SECRET_KEY,
@@ -88,5 +87,5 @@ userSchema.methods.generateRefreshToken = function () {
   );
 };
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.models.User || mongoose.model("User", userSchema);
 export default User;
