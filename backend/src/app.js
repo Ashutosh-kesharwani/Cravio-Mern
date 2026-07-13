@@ -7,9 +7,25 @@ const app = express();
 
 // Global middleware
 // 1) Cors middleware
+// app.use(
+//   cors({
+//     origin: process.env.CORS_ORIGIN,
+//     credentials: true,
+//   })
+// );
+const allowedOrigins = process.env.CORS_ORIGINS.split(",");
+
+// For IP whitelist at time of development
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: (origin, callback) => {
+      // Allow requests with no origin (Postman, mobile apps, etc.)
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
     credentials: true,
   })
 );
@@ -41,11 +57,26 @@ app.use(cookieParser());
 
 // Custom route
 // Route import
-import foodRouter from "./routes/food.router.js";
+import cartRouter from "./routes/cart.routes.js";
+import foodRouter from "./routes/food.routes.js";
+import userRouter from "./routes/user.routes.js";
+
+//  Global Error Middleware
+import errorHandler from "./middlewares/error.middleware.js";
 
 // Route Setup
 
+// user route
+app.use("/api/v1/users", userRouter);
+
 // food route
-app.use("/api/v1/food", foodRouter);
+app.use("/api/v1/foods", foodRouter);
+
+// cart route
+app.use("/api/v1/carts", cartRouter);
+
+// Global Error Handler (Always the LAST middleware)
+
+app.use(errorHandler);
 
 export { app };
