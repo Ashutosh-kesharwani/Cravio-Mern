@@ -30,7 +30,10 @@ app.use(
   })
 );
 
-// 2) Req Data Configuration
+//  Payment middleware [webhook]
+app.use("/api/v1/orders/webhook", express.raw({ type: "application/json" }));
+
+//  Req Data Configuration
 // Use to set in Advance
 // req data -> must be sent always in json form , with limit of 16kb
 app.use(
@@ -39,7 +42,7 @@ app.use(
   })
 );
 
-// 3) Url encoded data Configuration
+//  Url encoded data Configuration
 app.use(
   express.urlencoded({
     extended: true,
@@ -47,18 +50,19 @@ app.use(
   })
 );
 
-// 4) Middleware For setting static folder
+//  Middleware For setting static folder
 // Public -> temp local storage
 // we have to specify it , that if any request comes for static file then go to public folder and find it
 app.use(express.static("public"));
 
-// 5) Cookie-Parser : For reading cookie from req which sent by browser
+//  Cookie-Parser : For reading cookie from req which sent by browser
 app.use(cookieParser());
 
 // Custom route
 // Route import
 import cartRouter from "./routes/cart.routes.js";
 import foodRouter from "./routes/food.routes.js";
+import orderRouter from "./routes/order.routes.js";
 import userRouter from "./routes/user.routes.js";
 
 //  Global Error Middleware
@@ -75,8 +79,10 @@ app.use("/api/v1/foods", foodRouter);
 // cart route
 app.use("/api/v1/carts", cartRouter);
 
-// Global Error Handler (Always the LAST middleware)
+// Order route
+app.use("/api/v1/orders", orderRouter);
 
+// Global Error Handler (Always the LAST middleware)
 app.use(errorHandler);
 
 export { app };
