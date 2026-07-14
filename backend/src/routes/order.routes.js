@@ -7,7 +7,6 @@ import {
   updateOrderStatus,
   verifyOrder,
 } from "../controllers/order.controller.js";
-import isAdmin from "../middlewares/admin.middleware.js";
 import verifyJWT from "../middlewares/auth.middleware.js";
 
 const orderRouter = Router();
@@ -22,11 +21,10 @@ orderRouter.route("/verify").get(verifyJWT, verifyOrder);
 orderRouter.route("/my-orders").get(verifyJWT, getMyOrders);
 
 // Admin Only Route
-orderRouter.route("/").get(verifyJWT, isAdmin, getAllOrders);
-//.populate("userId", "name email") use here
+//  isAdmin , verifyJWT use afterward
+// /api/v1/orders
+orderRouter.route("/admin/all-orders").get(getAllOrders);
 
-orderRouter
-  .route("/:orderId/status")
-  .patch(verifyJWT, isAdmin, updateOrderStatus);
+orderRouter.route("/admin/:orderId/status").patch(updateOrderStatus);
 
 export default orderRouter;

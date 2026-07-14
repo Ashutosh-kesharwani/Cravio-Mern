@@ -317,11 +317,14 @@ const getMyOrders = asyncHandler(async (req, res) => {
 
 // Admin Controller
 
+// List all orders of user for [Admin Panel]
 const getAllOrders = asyncHandler(async (req, res) => {
+  // get all orders data
   const orders = await Order.find()
     .populate("userId", "name email")
     .sort({ createdAt: -1 });
 
+  // Send all order info
   return res.status(200).json(
     new ApiResponse(
       200,
@@ -361,7 +364,7 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
   }
 
   order.orderStatus = orderStatus;
-  await order.save();
+  await order.save(); // return updated document
 
   return res.status(200).json(
     new ApiResponse(
