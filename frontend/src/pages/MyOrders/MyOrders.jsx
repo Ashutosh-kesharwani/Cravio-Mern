@@ -13,7 +13,6 @@ const MyOrder = () => {
     try {
       const response = await api.get("/orders/my-orders");
       setData(response.data.data.orders);
-      console.log(response.data.data.orders);
     } catch (error) {
       const message =
         error.response?.data?.message ||
@@ -59,7 +58,8 @@ const MyOrder = () => {
                 <span>&#x25cf;</span> <b>{order.orderStatus}</b>{" "}
                 {/* orders status */}
               </p>
-              <button>Track Order</button>
+              {/* We are again use fetch Order func so we dont have to to refresh the page to see the change order status */}
+              <button onClick={fetchOrders}>Track Order</button>
             </div>
           );
         })}
