@@ -1,5 +1,6 @@
 import cors from "cors";
 import express from "express";
+import errorHandler from "./middlewares/error.middleware.js";
 const app = express();
 
 // GLOBAL MIDDLEWARE
@@ -37,5 +38,8 @@ app.use(
 
 //4. Local Storage [Static file setup]
 app.use(express.static("public"));
+
+// Global Error Middleware
+app.use(errorHandler);
 
 export { app };
