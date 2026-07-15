@@ -18,6 +18,7 @@ const errorHandler = (err, req, res, next) => {
     data: null,
     errors: err.errors || [],
 
+    // Show stack only in Development
     stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
   });
 };

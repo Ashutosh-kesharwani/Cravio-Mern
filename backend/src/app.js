@@ -39,7 +39,7 @@ app.use(
 //4. Local Storage [Static file setup]
 app.use(express.static("public"));
 
-// Global Error Middleware
+// Global-Error Middleware
 app.use(errorHandler);
 
 export { app };
