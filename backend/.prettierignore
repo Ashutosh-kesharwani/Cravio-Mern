@@ -1,0 +1,15 @@
+node_modules
+package-lock.json
+dist
+build
+coverage
+
+.env
+.env.*
+
+uploads
+tmp
+
+*.log
+
+.vscode/*
