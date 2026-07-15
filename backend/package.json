@@ -15,7 +15,8 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "dotenv": "^17.4.2"
+    "dotenv": "^17.4.2",
+    "mongoose": "^9.7.4"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
