@@ -35,4 +35,7 @@ app.use(
   })
 );
 
+//4. Local Storage [Static file setup]
+app.use(express.static("public"));
+
 export { app };

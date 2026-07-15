@@ -15,9 +15,11 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "cloudinary": "^2.10.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
-    "mongoose": "^9.7.4"
+    "mongoose": "^9.7.4",
+    "multer": "^2.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
