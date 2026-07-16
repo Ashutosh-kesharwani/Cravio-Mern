@@ -1,3 +1,4 @@
+import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
 import errorHandler from "./middlewares/error.middleware.js";
@@ -38,6 +39,17 @@ app.use(
 
 //4. Local Storage [Static file setup]
 app.use(express.static("public"));
+
+//5. Cookie Parser
+app.use(cookieParser());
+
+// Custom Route
+
+// Route import
+import userRouter from "./routes/user.routes.js";
+
+// Route Setup
+app.use("/api/v1/users", userRouter);
 
 // Global-Error Middleware
 app.use(errorHandler);

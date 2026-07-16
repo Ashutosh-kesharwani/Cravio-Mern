@@ -171,7 +171,7 @@ userSchema.methods.generateRefreshToken = function () {
 };
 
 // Virtuals
-userSchema.virtuals("fullName").get(function () {
+userSchema.virtual("fullName").get(function () {
   return `${this.firstName} ${this.lastName}`;
 });
 
