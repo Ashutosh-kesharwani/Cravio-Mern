@@ -46,10 +46,12 @@ app.use(cookieParser());
 // Custom Route
 
 // Route import
+import otpRouter from "./routes/otp.routes.js";
 import userRouter from "./routes/user.routes.js";
 
 // Route Setup
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/otp", otpRouter);
 
 // Global-Error Middleware
 app.use(errorHandler);
