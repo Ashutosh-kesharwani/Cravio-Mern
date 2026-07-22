@@ -79,6 +79,13 @@ export const ADMIN_MESSAGES = {
   USERS_FETCHED_SUCCESSFULLY: "Users fetched successfully",
 };
 
+export const FOOD_MESSAGES = {
+  FOOD_ADDED: "Food added successfully",
+  FOOD_NOT_FOUND: "Food not found",
+  FOOD_DELETED: "Food deleted successfully",
+  FOODS_FETCHED_SUCCESSFULLY: "Foods fetched successfully",
+};
+
 export const ADDRESS_MESSAGES = {
   ADDRESS_ADDED: "Address added successfully.",
   ADDRESS_UPDATED: "Address updated successfully.",
