@@ -6,6 +6,7 @@ export const AUTH_MESSAGES = {
   // Login
   LOGIN_SUCCESS: "Logged in successfully.",
   INVALID_CREDENTIALS: "Invalid email, username, mobile number, or password.",
+  ADMIN_INVALID_CREDENTIALS: "Invalid email, username or password.",
 
   // Logout
   LOGOUT_SUCCESS: "Logged out successfully.",
@@ -24,6 +25,12 @@ export const AUTH_MESSAGES = {
   TOKEN_REFRESHED: "Session refreshed successfully.",
   INVALID_REFRESH_TOKEN: "Your session is invalid. Please log in again.",
   REFRESH_TOKEN_EXPIRED: "Your session has expired. Please log in again.",
+
+  INVALID_ACCESS_TOKEN: "Your login session is invalid. Please log in again.",
+
+  ACCESS_TOKEN_EXPIRED: "Your login session has expired. Please log in again.",
+  TOKEN_SERVER_ERROR:
+    "Something went wrong while generating authentication tokens",
 
   // Verification
   VERIFICATION_TOKEN_MISSING:
@@ -56,11 +63,20 @@ export const USER_MESSAGES = {
   MOBILE_SAME_AS_OLD:
     "New mobile number cannot be the same as your current mobile number.",
   INVALID_MOBILE_NUMBER: "Please enter valid Indian Mobile Number",
+
   MOBILE_VERIFICATION_FAILED:
     "Mobile number verification failed , User not registered with this mobile number",
+  USER_NOT_REGISTERED_WITH_MOBILE:
+    "No account is registered with this mobile number.",
+
+  MOBILE_NOT_VERIFIED: "This mobile number has not been verified yet.",
 
   CURRENT_USER_FETCHED: "User profile fetched successfully.",
   DOB_REQUIRED: "Date of birth is required.",
+};
+
+export const ADMIN_MESSAGES = {
+  USERS_FETCHED_SUCCESSFULLY: "Users fetched successfully",
 };
 
 export const AVATAR_MESSAGES = {
@@ -109,12 +125,20 @@ export const FILE_MESSAGES = {
 
   IMAGE_REQUIRED: "Please upload an image.",
 
+  INVALID_IMAGE_TYPE: "Only image files are allowed.",
+
   FILE_UPLOAD_FAILED: "File upload failed. Please try again.",
 
   IMAGE_UPLOAD_FAILED: "Image upload failed. Please try again.",
-  IMAGE_DELETE_FAILED: "Image delete failed. Please try again.",
-};
 
+  IMAGE_DELETE_FAILED: "Image delete failed. Please try again.",
+
+  IMAGE_SIZE_EXCEEDED: "Image size must not exceed the allowed limit.",
+
+  TOO_MANY_FILES: "Too many files uploaded.",
+
+  UNEXPECTED_FILE_FIELD: "Unexpected file field.",
+};
 export const GENERAL_MESSAGES = {
   SUCCESS: "Request completed successfully.",
 
