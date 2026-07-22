@@ -2,19 +2,56 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
 import validator from "validator";
+import { DEFAULT_COUNTRY } from "../constants/app.constants.js";
+import { USER_MESSAGES } from "../constants/messages.constants.js";
 
 // Address Schema
 const addressSchema = new mongoose.Schema({
   label: {
     type: String,
     enum: ["Home", "Office", "Other"],
+    default: "Home",
   },
-  street: String,
-  city: String,
-  state: String,
-  zipcode: String,
-  country: String,
-  landmark: String,
+  receiverName: {
+    type: String,
+    default: "",
+    trim: true,
+  },
+
+  street: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  city: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  state: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  zipcode: {
+    type: String,
+    required: true,
+    trim: true,
+    validate: {
+      validator: (value) => validator.isPostalCode(value, "IN"),
+      message: "Please enter a valid postal code",
+    },
+  },
+  country: {
+    type: String,
+    default: "India",
+    trim: true,
+  },
+  landmark: {
+    type: String,
+    default: "",
+    trim: true,
+  },
   isDefault: {
     type: Boolean,
     default: false,
@@ -81,18 +118,27 @@ const userSchema = new mongoose.Schema(
 
     dob: {
       type: Date,
+      default: null,
     },
 
     addresses: [addressSchema],
 
-    contactNumber: {
+    mobile: {
       type: String,
+      required: [true, "Mobile Number is required"],
+      unique: true,
+      trim: true,
       validate: {
-        validator: validator.isMobilePhone,
-        message: "Please enter a valid mobile number",
+        validator: (value) =>
+          validator.isMobilePhone(value, DEFAULT_COUNTRY || "en-IN"),
+        message: USER_MESSAGES.INVALID_MOBILE_NUMBER,
       },
     },
 
+    isMobileVerified: {
+      type: Boolean,
+      default: false,
+    },
     role: {
       type: String,
       enum: ["customer", "admin"],
