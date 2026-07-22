@@ -1,10 +1,11 @@
+import { GENERAL_MESSAGES } from "../constants/messages.constants.js";
 import ApiError from "../utils/ApiError.js";
 
 const errorHandler = (err, req, res, next) => {
   if (!(err instanceof ApiError)) {
     err = new ApiError(
       err.statusCode || 500,
-      err.message || "Internal Server Error"
+      err.message || GENERAL_MESSAGES.INTERNAL_SERVER_ERROR
     );
   }
 
