@@ -1,7 +1,7 @@
 import {
   ADDRESS_MESSAGES,
   AUTH_MESSAGES,
-  AVATAR_MESSAGES,
+  FILE_MESSAGES,
   GENERAL_MESSAGES,
   USER_MESSAGES,
 } from "../constants/messages.constants.js";
@@ -17,10 +17,10 @@ import {
   verifyRefreshToken,
 } from "../services/auth.service.js";
 import {
-  removeAvatar,
-  replaceAvatar,
-  uploadAvatar,
-} from "../services/avatar.service.js";
+  removeMedia,
+  replaceMedia,
+  uploadMedia,
+} from "../services/media.service.js";
 import {
   ensureUserDoesNotExist,
   getExistingUser,
@@ -366,10 +366,10 @@ const uploadUserAvatar = asyncHandler(async (req, res) => {
   const avatarLocalPath = req.file?.path;
 
   if (!avatarLocalPath) {
-    throw new ApiError(400, AVATAR_MESSAGES.AVATAR_REQUIRED);
+    throw new ApiError(400, FILE_MESSAGES.IMAGE_REQUIRED);
   }
 
-  const avatar = await uploadAvatar(avatarLocalPath);
+  const avatar = await uploadMedia(avatarLocalPath);
 
   const user = await getUserById(req.user?._id);
 
@@ -383,11 +383,7 @@ const uploadUserAvatar = asyncHandler(async (req, res) => {
   return res
     .status(200)
     .json(
-      new ApiResponse(
-        200,
-        { user: updatedUser },
-        AVATAR_MESSAGES.AVATAR_UPLOADED
-      )
+      new ApiResponse(200, { user: updatedUser }, FILE_MESSAGES.IMAGE_UPLOADED)
     );
 });
 
@@ -395,12 +391,12 @@ const changeUserAvatar = asyncHandler(async (req, res) => {
   const avatarLocalPath = req.file?.path;
 
   if (!avatarLocalPath) {
-    throw new ApiError(400, AVATAR_MESSAGES.AVATAR_REQUIRED);
+    throw new ApiError(400, FILE_MESSAGES.IMAGE_REQUIRED);
   }
 
   const user = await getUserById(req.user?._id);
 
-  const avatar = await replaceAvatar(user.avatar.publicId, avatarLocalPath);
+  const avatar = await replaceMedia(user.avatar.publicId, avatarLocalPath);
 
   user.avatar.url = avatar.url;
   user.avatar.publicId = avatar.public_id;
@@ -412,16 +408,12 @@ const changeUserAvatar = asyncHandler(async (req, res) => {
   return res
     .status(200)
     .json(
-      new ApiResponse(
-        200,
-        { user: updatedUser },
-        AVATAR_MESSAGES.AVATAR_UPDATED
-      )
+      new ApiResponse(200, { user: updatedUser }, FILE_MESSAGES.IMAGE_UPDATED)
     );
 });
 
 const deleteUserAvatar = asyncHandler(async (req, res) => {
-  await removeAvatar(req.user.avatar.publicId);
+  await removeMedia(req.user.avatar.publicId);
 
   await User.findByIdAndUpdate(req.user?._id, {
     $set: {
@@ -437,11 +429,7 @@ const deleteUserAvatar = asyncHandler(async (req, res) => {
   return res
     .status(200)
     .json(
-      new ApiResponse(
-        200,
-        { user: updatedUser },
-        AVATAR_MESSAGES.AVATAR_REMOVED
-      )
+      new ApiResponse(200, { user: updatedUser }, FILE_MESSAGES.IMAGE_DELETED)
     );
 });
 

@@ -79,16 +79,6 @@ export const ADMIN_MESSAGES = {
   USERS_FETCHED_SUCCESSFULLY: "Users fetched successfully",
 };
 
-export const AVATAR_MESSAGES = {
-  AVATAR_REQUIRED: "Please select an avatar image.",
-  AVATAR_UPLOADED: "Avatar uploaded successfully.",
-  AVATAR_UPDATED: "Avatar updated successfully.",
-  AVATAR_REMOVED: "Avatar removed successfully.",
-
-  AVATAR_UPLOAD_FAILED: "Failed to upload avatar. Please try again.",
-  AVATAR_REPLACE_FAILED: "Failed to change avatar. Please try again.",
-};
-
 export const ADDRESS_MESSAGES = {
   ADDRESS_ADDED: "Address added successfully.",
   ADDRESS_UPDATED: "Address updated successfully.",
@@ -124,6 +114,11 @@ export const FILE_MESSAGES = {
   FILE_REQUIRED: "Please upload a file.",
 
   IMAGE_REQUIRED: "Please upload an image.",
+  IMAGE_UPLOADED: " Image uploaded successfully.",
+  IMAGE_UPDATED: "Image updated successfully.",
+  IMAGE_DELETED: " Image deleted successfully.",
+
+  IMAGE_REPLACE_FAILED: "Failed to change IMAGE. Please try again.",
 
   INVALID_IMAGE_TYPE: "Only image files are allowed.",
 
