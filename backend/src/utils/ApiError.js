@@ -1,7 +1,9 @@
+import { GENERAL_MESSAGES } from "../constants/messages.constants.js";
+
 class ApiError extends Error {
   constructor(
     statusCode,
-    message = "Something went wrong",
+    message = GENERAL_MESSAGES.INTERNAL_SERVER_ERROR,
     errors = [],
     stack = ""
   ) {
