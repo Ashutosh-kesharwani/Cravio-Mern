@@ -10,7 +10,6 @@ const AppDownload = () => {
         <h2 className="app-download__title">
           Download the <span>Cravio App</span>
         </h2>
-
         <p className="app-download__description">
           Order your favourite meals in seconds, enjoy live delivery tracking,
           exclusive discounts, and a seamless food ordering experience wherever
