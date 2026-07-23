@@ -26,7 +26,6 @@ const HeroContent = ({ currentFood }) => {
       </h1>
 
       {/* Description */}
-
       <p
         key={currentFood.id + "-desc"}
         className="hero-content__description hero-content__description--animate"

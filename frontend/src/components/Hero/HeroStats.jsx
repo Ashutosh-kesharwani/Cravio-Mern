@@ -14,7 +14,6 @@ const stats = [
     label: "Restaurants",
   },
 ];
-
 const HeroStats = () => {
   return (
     <div className="hero-stats">

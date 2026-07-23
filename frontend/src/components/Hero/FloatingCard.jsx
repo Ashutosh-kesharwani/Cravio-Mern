@@ -7,7 +7,6 @@ const FloatingCard = ({ icon, title, value, className = "" }) => {
 
       <div className="floating-card__content">
         <span className="floating-card__value">{value}</span>
-
         <span className="floating-card__title">{title}</span>
       </div>
     </div>

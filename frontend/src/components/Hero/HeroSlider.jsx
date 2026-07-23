@@ -81,7 +81,6 @@ const HeroSlider = ({ sliderState }) => {
       />
 
       {/* Image */}
-
       <div className="hero-slider__image-wrapper">
         <img
           key={currentFood.id}

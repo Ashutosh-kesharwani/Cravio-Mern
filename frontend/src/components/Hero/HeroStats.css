@@ -18,7 +18,6 @@
 
   color: var(--text-secondary);
 }
-
 @media (max-width: 768px) {
   .hero-stats {
     justify-content: center;

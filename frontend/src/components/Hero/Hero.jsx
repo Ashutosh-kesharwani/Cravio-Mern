@@ -62,7 +62,6 @@ const Hero = () => {
     isPaused,
     setIsPaused,
   };
-
   return (
     <section className="hero" id="hero">
       <div className="hero__container app">
