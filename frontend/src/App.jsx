@@ -1,5 +1,14 @@
+import { Outlet } from "react-router-dom";
+import { Navbar } from "./components/index.js";
 const App = () => {
-  return <div>Cravio-Frontend</div>;
+  return (
+    <div>
+      <div className="app-container">
+        <Navbar />
+        <Outlet />
+      </div>
+    </div>
+  );
 };
 
 export default App;

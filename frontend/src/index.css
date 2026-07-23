@@ -1,15 +1,320 @@
-* {
-  padding: 0;
+/* ==========================================================
+   CRAVIO DESIGN SYSTEM
+   Global Styles
+========================================================== */
+
+/* ==========================================================
+   GOOGLE FONTS
+========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap");
+
+/* ==========================================================
+   LIGHT THEME (DEFAULT)
+========================================================== */
+
+:root {
+  /* ---------- Brand Colors ---------- */
+
+  --primary-color: #ff6b35;
+  --primary-hover: #f45a24;
+
+  --success-color: #22c55e;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
+
+  /* ---------- Background ---------- */
+
+  --background: #ffffff;
+
+  --surface: #ffffff;
+
+  --surface-secondary: #f8f9fb;
+
+  /* ---------- Text ---------- */
+
+  --text-primary: #1f2937;
+
+  --text-secondary: #6b7280;
+
+  --text-special: #f45a24;
+
+  /* ---------- Border ---------- */
+
+  --border-color: #ececec;
+
+  /* ---------- Typography ---------- */
+
+  --font-primary: "Plus Jakarta Sans", sans-serif;
+
+  --font-logo: "Space Grotesk", sans-serif;
+
+  /* ---------- Radius ---------- */
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-round: 999px;
+
+  /* ---------- Shadows ---------- */
+
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+  --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+  --shadow-lg: 0 18px 45px rgba(0, 0, 0, 0.12);
+
+  /* ---------- Spacing ---------- */
+
+  --space-xs: 6px;
+  --space-sm: 12px;
+  --space-md: 18px;
+  --space-lg: 28px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+
+  /* ---------- Layout ---------- */
+
+  --container-width: min(100%, 1440px);
+
+  --navbar-height: 82px;
+
+  /* ---------- Animation ---------- */
+
+  --transition-fast: 0.2s ease;
+
+  --transition-normal: 0.3s ease;
+
+  --transition-slow: 0.45s ease;
+}
+
+/* ==========================================================
+   DARK THEME
+========================================================== */
+
+[data-theme="dark"] {
+  --primary-color: #ff7a45;
+  --primary-hover: #ff8d5e;
+
+  --success-color: #4ade80;
+  --warning-color: #facc15;
+  --danger-color: #f87171;
+
+  --background: #101215;
+
+  --surface: #181b20;
+
+  --surface-secondary: #23272f;
+
+  --text-primary: #f8fafc;
+
+  --text-secondary: #aeb6c2;
+
+  --border-color: #2d323a;
+
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.25);
+
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+  --shadow-lg: 0 20px 45px rgba(0, 0, 0, 0.45);
+}
+
+/* ==========================================================
+   RESET
+========================================================== */
+
+*,
+*::before,
+*::after {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-html,
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   min-height: 100vh;
+
+  background: var(--background);
+
+  color: var(--text-primary);
+
+  font-family: var(--font-primary);
+
+  overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+
+  text-rendering: optimizeLegibility;
+
+  background: linear-gradient(
+    180deg,
+    #fffaf8 0%,
+
+    #fffdfb 30%,
+
+    #ffffff 60%,
+
+    #fff9f7 100%
+  );
+  transition:
+    background var(--transition-normal),
+    color var(--transition-normal);
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+/* ==========================================================
+   APP CONTAINER
+========================================================== */
+
+.app {
+  width: var(--container-width);
+  margin: auto;
+}
+
+/* ==========================================================
+   TYPOGRAPHY
+========================================================== */
+
+.logo-font {
+  font-family: var(--font-logo);
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+/* ==========================================================
+   REUSABLE UTILITIES
+========================================================== */
+
+.surface {
+  background: var(--surface);
+}
+
+.surface-secondary {
+  background: var(--surface-secondary);
+}
+
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow-md {
+  box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.rounded-sm {
+  border-radius: var(--radius-sm);
+}
+
+.rounded-md {
+  border-radius: var(--radius-md);
+}
+
+.rounded-lg {
+  border-radius: var(--radius-lg);
+}
+
+.rounded-xl {
+  border-radius: var(--radius-xl);
+}
+
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+/* ==========================================================
+   TEXT SELECTION
+========================================================== */
+
+::selection {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* ==========================================================
+   ACCESSIBILITY
+========================================================== */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+/* ==========================================================
+   ANIMATIONS
+========================================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

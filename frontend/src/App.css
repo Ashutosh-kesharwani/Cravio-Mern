@@ -1,0 +1,95 @@
+.app-container {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.app-container::before {
+  content: "";
+
+  position: fixed;
+
+  top: -250px;
+  left: -250px;
+
+  width: 700px;
+  height: 700px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 107, 53, 0.14) 0%,
+    rgba(255, 107, 53, 0.06) 45%,
+    transparent 75%
+  );
+
+  filter: blur(120px);
+
+  z-index: -2;
+
+  pointer-events: none;
+}
+
+.app-container::after {
+  content: "";
+
+  position: fixed;
+
+  bottom: -350px;
+  right: -250px;
+
+  width: 850px;
+  height: 850px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 160, 122, 0.1) 0%,
+    rgba(255, 107, 53, 0.04) 50%,
+    transparent 75%
+  );
+
+  filter: blur(140px);
+
+  z-index: -2;
+
+  pointer-events: none;
+}
+
+.app-container::before {
+  animation: gradientMove1 18s ease-in-out infinite;
+}
+
+.app-container::after {
+  animation: gradientMove2 22s ease-in-out infinite;
+}
+
+@keyframes gradientMove1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(40px, -25px) scale(1.08);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes gradientMove2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-50px, 35px) scale(1.05);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
