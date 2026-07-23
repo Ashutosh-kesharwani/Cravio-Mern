@@ -1,8 +1,3 @@
-test.js
-
-#seed
-scripts/createAdmin.js
-
 # Logs
 logs
 *.log
