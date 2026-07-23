@@ -47,6 +47,7 @@ app.use(cookieParser());
 
 // Route import
 import adminRouter from "./routes/admin.routes.js";
+import cartRouter from "./routes/cart.routes.js";
 import foodRouter from "./routes/food.routes.js";
 import otpRouter from "./routes/otp.routes.js";
 import userRouter from "./routes/user.routes.js";
@@ -60,6 +61,9 @@ app.use("/api/v1/admin", adminRouter);
 
 // Food
 app.use("/api/v1/foods", foodRouter);
+
+// Cart
+app.use("/api/v1/carts", cartRouter);
 
 // Global-Error Middleware
 app.use(errorHandler);
