@@ -1,0 +1,311 @@
+/* ===========================================
+    HERO SLIDER
+  =========================================== */
+
+.hero-slider {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  min-height: 650px;
+
+  isolation: isolate;
+}
+
+/* ===========================================
+    BACKGROUND BLOB
+  =========================================== */
+
+.hero-slider__blob {
+  position: absolute;
+
+  width: 560px;
+  height: 560px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 107, 53, 0.22) 0%,
+    rgba(255, 107, 53, 0.08) 45%,
+    transparent 75%
+  );
+
+  filter: blur(18px);
+
+  z-index: 0;
+}
+
+/* ===========================================
+    IMAGE
+  =========================================== */
+
+.hero-slider__image-wrapper {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 2;
+}
+
+.hero-slider__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  animation:
+    imageTransition 850ms cubic-bezier(0.16, 1, 0.3, 1),
+    floatImage 5s ease-in-out 850ms infinite;
+
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+@keyframes imageTransition {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.94);
+  }
+
+  40% {
+    opacity: 0.5;
+    transform: translateY(14px) scale(0.975);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* ===========================================
+    FLOATING CARDS POSITION
+  =========================================== */
+
+.hero-slider__rating {
+  top: 60px;
+  left: -20px;
+
+  animation-delay: 0s;
+}
+
+.hero-slider__delivery {
+  bottom: 145px;
+  left: 0;
+
+  animation-delay: 0.5s;
+}
+
+.hero-slider__price {
+  top: 90px;
+  right: -15px;
+
+  animation-delay: 1s;
+}
+
+.hero-slider__discount {
+  bottom: 120px;
+  right: -25px;
+
+  animation-delay: 1.5s;
+}
+
+/* ===========================================
+    NAVIGATION
+  =========================================== */
+
+.hero-slider__navigation {
+  position: absolute;
+
+  bottom: 10px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 22px;
+
+  z-index: 5;
+}
+
+.hero-slider__button {
+  width: 54px;
+  height: 54px;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--surface);
+
+  color: var(--text-primary);
+
+  box-shadow: var(--shadow-md);
+
+  transition: all 0.3s ease;
+}
+
+.hero-slider__button:hover {
+  background: var(--primary-color);
+
+  color: #fff;
+
+  transform: translateY(-4px);
+}
+
+/* ===========================================
+    PAGINATION
+  =========================================== */
+
+.hero-slider__pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-slider__dot {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 999px;
+
+  background: rgba(0, 0, 0, 0.15);
+
+  transition: all 0.35s ease;
+}
+
+.hero-slider__dot--active {
+  width: 34px;
+
+  background: var(--primary-color);
+}
+
+/* ===========================================
+    ANIMATION
+  =========================================== */
+
+@keyframes floatImage {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.hero-slider__blob {
+  animation: blobFloat 8s ease-in-out infinite;
+}
+@keyframes blobFloat {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.04);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ===========================================
+    RESPONSIVE
+  =========================================== */
+
+@media (max-width: 992px) {
+  .hero-slider {
+    min-height: 520px;
+  }
+
+  .hero-slider__image {
+    width: 420px;
+  }
+
+  .hero-slider__blob {
+    width: 450px;
+    height: 450px;
+  }
+
+  .hero-slider__rating,
+  .hero-slider__price,
+  .hero-slider__delivery,
+  .hero-slider__discount {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-slider {
+    min-height: 430px;
+  }
+
+  .hero-slider__image {
+    width: 320px;
+  }
+
+  .hero-slider__blob {
+    width: 320px;
+    height: 320px;
+  }
+
+  .hero-slider__rating {
+    top: 20px;
+    left: 0;
+  }
+
+  .hero-slider__price {
+    top: 30px;
+    right: 0;
+  }
+
+  .hero-slider__delivery {
+    bottom: 95px;
+    left: 0;
+  }
+
+  .hero-slider__discount {
+    bottom: 85px;
+    right: 0;
+  }
+
+  .hero-slider__navigation {
+    bottom: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-slider .floating-card {
+    display: none;
+  }
+
+  .hero-slider__image {
+    width: 450px;
+  }
+
+  .hero-slider__blob {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero-slider__button {
+    width: 40px;
+    height: 40px;
+  }
+}
