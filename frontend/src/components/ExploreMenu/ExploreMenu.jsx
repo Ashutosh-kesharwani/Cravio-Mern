@@ -8,7 +8,6 @@ const ExploreMenu = ({ category, setCategory }) => {
         <span className="section-badge">Explore</span>
 
         <h2 className="section-title">Explore Our Menu</h2>
-
         <p className="section-description">
           Discover freshly prepared dishes crafted with premium ingredients.
           From authentic pizzas to delicious desserts, there's something for

@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { Hero } from "../../components/index.js";
+import { ExploreMenu, Hero } from "../../components/index.js";
 import "./Home.css";
 const Home = () => {
+  const [category, setCategory] = useState("All");
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -23,6 +25,7 @@ const Home = () => {
   return (
     <div>
       <Hero />
+      <ExploreMenu category={category} setCategory={setCategory} />
     </div>
   );
 };
