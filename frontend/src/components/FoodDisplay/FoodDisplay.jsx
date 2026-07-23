@@ -14,7 +14,6 @@ const FoodDisplay = ({ category }) => {
 
         <h2 className="section-title">Crafted Just For You</h2>
       </div>
-
       <div className="food-display__grid">
         {filteredFoods.map((food) => (
           <FoodCard key={food._id} food={food} />

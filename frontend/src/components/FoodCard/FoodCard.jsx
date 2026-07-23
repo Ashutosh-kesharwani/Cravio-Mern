@@ -58,7 +58,6 @@ const FoodCard = ({ food }) => {
             </button>
 
             <span className="food-card__quantity-value">{quantity}</span>
-
             <button
               className="food-card__quantity-btn food-card__quantity-btn--plus"
               onClick={() => setQuantity((prev) => prev + 1)}

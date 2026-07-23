@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { ExploreMenu, Hero } from "../../components/index.js";
+import { ExploreMenu, FoodDisplay, Hero } from "../../components/index.js";
 import "./Home.css";
 const Home = () => {
   const [category, setCategory] = useState("All");
@@ -26,6 +26,7 @@ const Home = () => {
     <div>
       <Hero />
       <ExploreMenu category={category} setCategory={setCategory} />
+      <FoodDisplay category={category} />
     </div>
   );
 };
