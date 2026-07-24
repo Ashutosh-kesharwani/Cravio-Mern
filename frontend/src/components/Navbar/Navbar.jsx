@@ -3,6 +3,7 @@ import "./Navbar.css";
 import { Search, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import AuthModal from "../Auth/AuthModal/AuthModal";
 
 /* 
 Home : link
@@ -12,6 +13,8 @@ footer
 */
 const Navbar = () => {
   const [menu, setMenu] = useState("home");
+
+  const [showAuthModal, setShowAuthModal] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -31,68 +34,78 @@ const Navbar = () => {
   };
 
   return (
-    <header className="navbar">
-      <div className="navbar__container app">
-        {/* Logo */}
+    <>
+      <header className="navbar">
+        <div className="navbar__container app">
+          {/* Logo */}
 
-        <Link to="/" className="navbar__logo logo-font">
-          Cra<span>vio</span>
-        </Link>
-
-        {/* Navigation */}
-
-        <nav className="navbar__nav">
-          <Link
-            to="/"
-            onClick={() => setMenu("home")}
-            className={`${menu === "home" ? "navbar__link--active" : ""} navbar__link`}
-          >
-            Home
+          <Link to="/" className="navbar__logo logo-font">
+            Cra<span>vio</span>
           </Link>
 
-          <a
-            onClick={() => handleNavigation("explore-menu", "menu")}
-            className={`${menu === "menu" ? "navbar__link--active" : ""} navbar__link`}
-          >
-            Menu
-          </a>
+          {/* Navigation */}
 
-          <a
-            onClick={() => handleNavigation("app-download", "mobile-app")}
-            className={`${menu === "mobile-app" ? "navbar__link--active" : ""} navbar__link`}
-          >
-            Mobile App
-          </a>
+          <nav className="navbar__nav">
+            <Link
+              to="/"
+              onClick={() => setMenu("home")}
+              className={`${menu === "home" ? "navbar__link--active" : ""} navbar__link`}
+            >
+              Home
+            </Link>
 
-          <a
-            onClick={() => handleNavigation("footer", "contact-us")}
-            className={`${menu === "contact-us" ? "navbar__link--active" : ""} navbar__link`}
-          >
-            Contact
-          </a>
-        </nav>
+            <a
+              onClick={() => handleNavigation("explore-menu", "menu")}
+              className={`${menu === "menu" ? "navbar__link--active" : ""} navbar__link`}
+            >
+              Menu
+            </a>
 
-        {/* Right Section */}
+            <a
+              onClick={() => handleNavigation("app-download", "mobile-app")}
+              className={`${menu === "mobile-app" ? "navbar__link--active" : ""} navbar__link`}
+            >
+              Mobile App
+            </a>
 
-        <div className="navbar__actions">
-          <button className="navbar__icon-btn" aria-label="Search">
-            <Search size={22} strokeWidth={2.2} />
-          </button>
+            <a
+              onClick={() => handleNavigation("footer", "contact-us")}
+              className={`${menu === "contact-us" ? "navbar__link--active" : ""} navbar__link`}
+            >
+              Contact
+            </a>
+          </nav>
 
-          <Link
-            to="/cart"
-            className="navbar__icon-btn navbar__cart"
-            aria-label="Cart"
-          >
-            <ShoppingCart size={22} strokeWidth={2.2} />
+          {/* Right Section */}
 
-            <span className="navbar__cart-badge"></span>
-          </Link>
+          <div className="navbar__actions">
+            <button className="navbar__icon-btn" aria-label="Search">
+              <Search size={22} strokeWidth={2.2} />
+            </button>
 
-          <button className="navbar__signin-btn">Sign In</button>
+            <Link
+              to="/cart"
+              className="navbar__icon-btn navbar__cart"
+              aria-label="Cart"
+            >
+              <ShoppingCart size={22} strokeWidth={2.2} />
+
+              <span className="navbar__cart-badge"></span>
+            </Link>
+
+            <button
+              className="navbar__signin-btn"
+              onClick={() => setShowAuthModal(true)}
+            >
+              Sign In
+            </button>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {/* Place Auth Modal */}
+      {showAuthModal && <AuthModal onClose={() => setShowAuthModal(false)} />}
+    </>
   );
 };
 
