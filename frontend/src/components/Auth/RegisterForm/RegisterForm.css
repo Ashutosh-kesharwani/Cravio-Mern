@@ -1,0 +1,234 @@
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.register-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* ================= Stepper ================= */
+
+.register-form__stepper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  margin-bottom: 0.5rem;
+}
+
+.register-form__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-width: 70px;
+
+  transition: 0.3s;
+}
+
+.register-form__circle {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #f3f4f6;
+
+  border: 2px solid #d1d5db;
+
+  font-weight: 700;
+  font-size: 0.9rem;
+
+  color: #6b7280;
+
+  transition: 0.3s;
+}
+
+.register-form__step span {
+  margin-top: 0.55rem;
+
+  font-size: 0.8rem;
+
+  font-weight: 600;
+
+  color: #9ca3af;
+
+  transition: 0.3s;
+}
+
+.register-form__step.active .register-form__circle {
+  background: var(--primary-color);
+
+  border-color: var(--primary-color);
+
+  color: #fff;
+}
+
+.register-form__step.active span {
+  color: #111827;
+}
+
+.register-form__line {
+  flex: 1;
+
+  height: 2px;
+
+  margin-top: 17px;
+
+  background: #e5e7eb;
+
+  transition: 0.3s;
+}
+
+.register-form__line.active {
+  background: var(--primary-color);
+}
+
+.register-form__section-header {
+  text-align: center;
+
+  margin-bottom: 0.5rem;
+}
+
+.register-form__section-header h4 {
+  font-size: 1.2rem;
+
+  font-weight: 700;
+
+  color: #111827;
+
+  margin-bottom: 0.35rem;
+}
+
+.register-form__section-header p {
+  color: #6b7280;
+
+  font-size: 0.9rem;
+
+  line-height: 1.5;
+}
+
+.register-form__btn,
+.register-form__otp-btn {
+  width: 100%;
+  height: 50px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: var(--primary-color);
+  color: #fff;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.register-form__btn:hover,
+.register-form__otp-btn:hover {
+  opacity: 0.95;
+}
+
+.register-form__back {
+  width: 100%;
+  height: 48px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+
+  background: #fff;
+
+  color: #374151;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.register-form__footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem;
+
+  font-size: 0.92rem;
+
+  color: #6b7280;
+}
+
+.register-form__footer button {
+  border: none;
+  background: transparent;
+
+  color: var(--primary-color);
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.register-form__actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.register-form__actions button {
+  flex: 1;
+}
+
+.register-form__verified {
+  height: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 14px;
+
+  background: #ecfdf5;
+
+  color: #16a34a;
+
+  font-weight: 600;
+}
+
+.register-form__resend {
+  align-self: center;
+
+  border: none;
+  background: transparent;
+
+  color: var(--primary-color);
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.register-form__resend:disabled {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .register-form__actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .register-form__grid {
+    grid-template-columns: 1fr;
+  }
+}
