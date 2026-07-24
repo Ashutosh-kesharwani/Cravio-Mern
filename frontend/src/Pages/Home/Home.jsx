@@ -38,14 +38,3 @@ const Home = () => {
 };
 
 export default Home;
-/* 
-// Home.jsx
-
-<>
- 
-
-   <AppDownload />
-
-   <Testimonials />
-</>
-*/
