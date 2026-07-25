@@ -1,7 +1,7 @@
 import { app } from "./app.js";
 import connectDB from "./db/server.js";
 // PORT
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5100;
 
 // Process Level Error Handling [Global]
 

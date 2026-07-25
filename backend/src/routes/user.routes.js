@@ -34,15 +34,15 @@ userRouter.route("/refresh-token").post(refreshAccessToken);
 // Get Api EndPoint
 userRouter.route("/current-user").get(verifyJWT, getCurrentUser);
 
+// Reset Password
+userRouter.route("/reset-password").patch(verifyJWT, resetPassword);
+
 // Update Api EndPoint
 userRouter.route("/change-password").patch(verifyJWT, changeCurrentPassword);
 userRouter.route("/profile").patch(verifyJWT, updateProfile);
 userRouter.route("/contact-number").patch(verifyJWT, updateContactNumber);
 userRouter.route("/change-email").patch(verifyJWT, changeCurrentEmail);
 userRouter.route("/me").patch(verifyJWT, changeCurrentUsername);
-
-// Reset Password
-userRouter.route("/reset-password").patch(verifyJWT, resetPassword);
 
 // Avatar
 userRouter

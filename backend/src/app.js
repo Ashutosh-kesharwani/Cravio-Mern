@@ -7,7 +7,8 @@ const app = express();
 // GLOBAL MIDDLEWARE
 
 // 1. CORS
-const allowedOrigins = process.env.CORS_ORIGINS;
+const allowedOrigins = process.env.CORS_ORIGINS.split(",");
+
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -18,6 +19,7 @@ app.use(
 
       return callback(new Error("Not allowed by CORS"));
     },
+    credentials: true,
   })
 );
 
