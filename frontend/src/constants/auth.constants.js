@@ -26,3 +26,9 @@ export const AUTH_HEADER = {
     subtitle: "Choose a strong password for your account.",
   },
 };
+
+export const LOGIN_METHOD = {
+  EMAIL: "email",
+  USERNAME: "username",
+  MOBILE: "mobile",
+};

@@ -92,92 +92,6 @@
   background: var(--primary-color);
 }
 
-.register-form__section-header {
-  text-align: center;
-
-  margin-bottom: 0.5rem;
-}
-
-.register-form__section-header h4 {
-  font-size: 1.2rem;
-
-  font-weight: 700;
-
-  color: #111827;
-
-  margin-bottom: 0.35rem;
-}
-
-.register-form__section-header p {
-  color: #6b7280;
-
-  font-size: 0.9rem;
-
-  line-height: 1.5;
-}
-
-.register-form__btn,
-.register-form__otp-btn {
-  width: 100%;
-  height: 50px;
-
-  border: none;
-  border-radius: 14px;
-
-  background: var(--primary-color);
-  color: #fff;
-
-  font-size: 0.95rem;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: 0.25s;
-}
-
-.register-form__btn:hover,
-.register-form__otp-btn:hover {
-  opacity: 0.95;
-}
-
-.register-form__back {
-  width: 100%;
-  height: 48px;
-
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-
-  background: #fff;
-
-  color: #374151;
-
-  font-weight: 600;
-
-  cursor: pointer;
-}
-
-.register-form__footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.35rem;
-
-  font-size: 0.92rem;
-
-  color: #6b7280;
-}
-
-.register-form__footer button {
-  border: none;
-  background: transparent;
-
-  color: var(--primary-color);
-
-  font-weight: 600;
-
-  cursor: pointer;
-}
-
 .register-form__actions {
   display: flex;
   gap: 1rem;
@@ -187,47 +101,33 @@
   flex: 1;
 }
 
-.register-form__verified {
-  height: 48px;
-
+.register-form__terms {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  gap: 0.4rem;
 
-  border-radius: 14px;
-
-  background: #ecfdf5;
-
-  color: #16a34a;
-
-  font-weight: 600;
-}
-
-.register-form__resend {
-  align-self: center;
-
-  border: none;
-  background: transparent;
-
-  color: var(--primary-color);
-
-  font-weight: 600;
+  font-size: 0.88rem;
+  color: #6b7280;
 
   cursor: pointer;
+  user-select: none;
 }
 
-.register-form__resend:disabled {
-  color: #9ca3af;
-  cursor: not-allowed;
+.register-form__terms input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+
+  accent-color: var(--primary-color);
+
+  cursor: pointer;
 }
 
 @media (max-width: 600px) {
   .register-form__actions {
     flex-direction: column;
   }
-}
 
-@media (max-width: 600px) {
   .register-form__grid {
     grid-template-columns: 1fr;
   }

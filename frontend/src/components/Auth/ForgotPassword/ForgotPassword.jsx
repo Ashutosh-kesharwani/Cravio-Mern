@@ -1,151 +1,32 @@
 import "./ForgotPassword.css";
 
 import { Smartphone } from "lucide-react";
-import { useEffect, useState } from "react";
 
 import AuthInput from "../AuthInput/AuthInput";
 import OTPInput from "../OTPInput/OTPInput";
 
-const ForgotPassword = ({ onSuccess }) => {
-  const [mobile, setMobile] = useState("");
-  const [otp, setOtp] = useState("");
+import useForgotPassword from "../../../hooks/auth/useForgotPassword";
 
-  const [otpSent, setOtpSent] = useState(false);
-  const [otpVerified, setOtpVerified] = useState(false);
+const ForgotPassword = () => {
+  const {
+    formData,
 
-  const [timer, setTimer] = useState(30);
+    otpSent,
+    otpVerified,
+    otpTimer,
 
-  const [loading, setLoading] = useState({
-    sendOtp: false,
-    verifyOtp: false,
-  });
+    loading,
 
-  const [errors, setErrors] = useState({
-    mobile: "",
-    otp: "",
-  });
+    isMobileValid,
 
-  /* -------------------- OTP Timer -------------------- */
+    handleChange,
+    handleOTPChange,
 
-  useEffect(() => {
-    if (!otpSent || timer <= 0) return;
+    handleSendOTP,
+    handleResendOTP,
 
-    const interval = setInterval(() => {
-      setTimer((prev) => prev - 1);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [otpSent, timer]);
-
-  /* -------------------- Send OTP -------------------- */
-
-  const handleSendOTP = async () => {
-    if (!mobile.trim()) {
-      setErrors((prev) => ({
-        ...prev,
-        mobile: "Mobile number is required.",
-      }));
-      return;
-    }
-
-    setErrors({
-      mobile: "",
-      otp: "",
-    });
-
-    setLoading((prev) => ({
-      ...prev,
-      sendOtp: true,
-    }));
-
-    try {
-      // await forgotPasswordSendOTP(mobile);
-
-      setTimeout(() => {
-        setOtpSent(true);
-        setTimer(30);
-
-        setLoading((prev) => ({
-          ...prev,
-          sendOtp: false,
-        }));
-      }, 700);
-    } catch (error) {
-      console.error(error);
-
-      setLoading((prev) => ({
-        ...prev,
-        sendOtp: false,
-      }));
-    }
-  };
-
-  /* -------------------- OTP Change -------------------- */
-
-  const handleOTPChange = (value) => {
-    setOtp(value);
-
-    setErrors((prev) => ({
-      ...prev,
-      otp: "",
-    }));
-
-    if (value.length === 6 && !loading.verifyOtp && !otpVerified) {
-      handleVerifyOTP(value);
-    }
-  };
-
-  /* -------------------- Verify OTP -------------------- */
-
-  const handleVerifyOTP = async (enteredOtp) => {
-    setLoading((prev) => ({
-      ...prev,
-      verifyOtp: true,
-    }));
-
-    try {
-      // await verifyForgotPasswordOTP({
-      //   mobile,
-      //   otp: enteredOtp,
-      // });
-
-      setTimeout(() => {
-        setOtpVerified(true);
-
-        setLoading((prev) => ({
-          ...prev,
-          verifyOtp: false,
-        }));
-      }, 700);
-    } catch (error) {
-      console.error(error);
-
-      setLoading((prev) => ({
-        ...prev,
-        verifyOtp: false,
-      }));
-    }
-  };
-
-  /* -------------------- Resend OTP -------------------- */
-
-  const handleResendOTP = async () => {
-    if (timer > 0) return;
-
-    // await forgotPasswordSendOTP(mobile);
-
-    setOtp("");
-
-    setOtpVerified(false);
-
-    setTimer(30);
-  };
-
-  /* -------------------- Continue -------------------- */
-
-  const handleContinue = () => {
-    onSuccess?.();
-  };
+    handleContinue,
+  } = useForgotPassword();
 
   return (
     <form className="forgot-password-form">
@@ -153,35 +34,33 @@ const ForgotPassword = ({ onSuccess }) => {
         label="Mobile Number"
         name="mobile"
         type="tel"
-        value={mobile}
-        onChange={(e) => setMobile(e.target.value)}
+        value={formData.mobile}
+        onChange={handleChange}
         placeholder="Enter your registered mobile number"
         icon={Smartphone}
-        error={errors.mobile}
+        required
         disabled={otpSent}
       />
 
       {!otpSent ? (
         <button
           type="button"
-          className="forgot-password-form__btn"
+          className="auth-btn"
           onClick={handleSendOTP}
-          disabled={loading.sendOtp}
+          disabled={!isMobileValid || loading.sendOtp}
         >
           {loading.sendOtp ? "Sending OTP..." : "Send OTP"}
         </button>
       ) : (
         <>
-          <OTPInput value={otp} onChange={handleOTPChange} />
+          <OTPInput value={formData.otp} onChange={handleOTPChange} />
 
           {loading.verifyOtp && (
-            <div className="forgot-password-form__success">
-              Verifying OTP...
-            </div>
+            <div className="auth-verified">Verifying OTP...</div>
           )}
 
           {otpVerified && (
-            <div className="forgot-password-form__success">
+            <div className="auth-verified">
               ✓ Mobile number verified successfully.
             </div>
           )}
@@ -189,24 +68,24 @@ const ForgotPassword = ({ onSuccess }) => {
           {!otpVerified && (
             <button
               type="button"
-              className="forgot-password-form__resend"
-              disabled={timer > 0 || loading.verifyOtp}
+              className="auth-resend"
               onClick={handleResendOTP}
+              disabled={otpTimer > 0 || loading.verifyOtp || loading.resendOtp}
             >
-              {timer > 0 ? `Resend OTP in ${timer}s` : "Resend OTP"}
+              {loading.resendOtp
+                ? "Resending..."
+                : otpTimer > 0
+                  ? `Resend OTP in ${otpTimer}s`
+                  : "Resend OTP"}
+            </button>
+          )}
+
+          {otpVerified && (
+            <button type="button" className="auth-btn" onClick={handleContinue}>
+              Continue
             </button>
           )}
         </>
-      )}
-
-      {otpVerified && (
-        <button
-          type="button"
-          className="forgot-password-form__btn"
-          onClick={handleContinue}
-        >
-          Continue
-        </button>
       )}
     </form>
   );

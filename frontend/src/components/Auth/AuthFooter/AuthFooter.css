@@ -13,15 +13,3 @@
 
   color: #6b7280;
 }
-
-.auth-footer button {
-  border: none;
-
-  background: none;
-
-  color: var(--primary-color);
-
-  cursor: pointer;
-
-  font-weight: 600;
-}

@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Toaster } from "react-hot-toast";
 import {
@@ -8,6 +7,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import App from "./App.jsx";
+import { AuthContextProvider } from "./context/authContext.jsx";
 import "./index.css";
 import { Cart, Home, MyOrders } from "./Pages/index.js";
 
@@ -22,8 +22,8 @@ const router = createBrowserRouter(
 );
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+  <AuthContextProvider>
     <RouterProvider router={router} />
     <Toaster position="top-right" />
-  </StrictMode>
+  </AuthContextProvider>
 );

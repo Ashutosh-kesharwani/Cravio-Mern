@@ -1,106 +1,41 @@
 import "./RegisterForm.css";
 
 import { Mail, Smartphone, User } from "lucide-react";
-import { useEffect, useState } from "react";
 
-import AuthInput from "../AuthInput/AuthInput";
-import OTPInput from "../OTPInput/OTPInput";
-import PasswordInput from "../PasswordInput/PasswordInput";
+import { AuthInput, OTPInput, PasswordInput } from "../index.js";
+
+import useRegister from "../../../hooks/auth/useRegister.js";
 
 const RegisterForm = () => {
-  const [step, setStep] = useState(1);
-  const [otpSent, setOtpSent] = useState(false);
-  const [otpVerified, setOtpVerified] = useState(false);
-  const [otpTimer, setOtpTimer] = useState(30);
+  const {
+    step,
+    formData,
 
-  const [loading, setLoading] = useState({
-    sendOtp: false,
-    verifyOtp: false,
-  });
-  useEffect(() => {
-    if (!otpSent || otpTimer <= 0) return;
+    otpSent,
+    otpVerified,
+    otpTimer,
 
-    const timer = setInterval(() => {
-      setOtpTimer((prev) => prev - 1);
-    }, 1000);
+    loading,
+    isSubmitting,
 
-    return () => clearInterval(timer);
-  }, [otpSent, otpTimer]);
+    isStepOneValid,
+    isStepTwoValid,
+    isRegisterValid,
 
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    username: "",
-    email: "",
-    mobile: "",
-    otp: "",
-    password: "",
-    confirmPassword: "",
-  });
+    handleChange,
+    handleOTPChange,
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+    handleNext,
+    handlePrev,
 
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+    handleSendOTP,
+    handleResendOTP,
 
-  const handleOTPChange = async (otp) => {
-    setFormData((prev) => ({
-      ...prev,
-      otp,
-    }));
-
-    if (otp.length !== 6 || loading.verifyOtp || otpVerified) return;
-
-    setLoading((prev) => ({
-      ...prev,
-      verifyOtp: true,
-    }));
-
-    try {
-      // await verifyRegisterOTP(formData.mobile, otp);
-
-      setTimeout(() => {
-        setOtpVerified(true);
-
-        setLoading((prev) => ({
-          ...prev,
-          verifyOtp: false,
-        }));
-      }, 700);
-    } catch {
-      setLoading((prev) => ({
-        ...prev,
-        verifyOtp: false,
-      }));
-    }
-  };
-  const handleResendOTP = async () => {
-    if (otpTimer > 0) return;
-
-    // Later:
-    // await resendRegisterOTP(formData.mobile);
-
-    setFormData((prev) => ({
-      ...prev,
-      otp: "",
-    }));
-
-    setOtpVerified(false);
-    setOtpTimer(30);
-
-    // If you have sendOtp loading:
-    // setLoading((prev) => ({
-    //   ...prev,
-    //   sendOtp: false,
-    // }));
-  };
+    handleSubmit,
+  } = useRegister();
 
   return (
-    <form className="register-form">
+    <form className="register-form" onSubmit={handleSubmit} autoComplete="on">
       <div className="register-form__stepper">
         <div className={`register-form__step ${step >= 1 ? "active" : ""}`}>
           <div className="register-form__circle">{step > 1 ? "✓" : "1"}</div>
@@ -134,6 +69,7 @@ const RegisterForm = () => {
               value={formData.firstName}
               onChange={handleChange}
               placeholder="First Name"
+              required
               icon={User}
             />
 
@@ -152,6 +88,7 @@ const RegisterForm = () => {
             name="username"
             value={formData.username}
             onChange={handleChange}
+            required
             placeholder="Choose a username"
             icon={User}
           />
@@ -162,14 +99,17 @@ const RegisterForm = () => {
             type="email"
             value={formData.email}
             onChange={handleChange}
+            required
             placeholder="Enter your email"
+            autoComplete="username"
             icon={Mail}
           />
 
           <button
             type="button"
-            className="register-form__btn"
-            onClick={() => setStep(2)}
+            className="auth-btn"
+            onClick={handleNext}
+            disabled={!isStepOneValid}
           >
             Continue
           </button>
@@ -184,30 +124,30 @@ const RegisterForm = () => {
             type="tel"
             value={formData.mobile}
             onChange={handleChange}
+            required
             placeholder="Enter your mobile number"
             icon={Smartphone}
           />
+
           {!otpSent ? (
             <button
               type="button"
-              className="register-form__otp-btn"
-              onClick={() => {
-                setOtpSent(true);
-                setOtpTimer(30);
-              }}
+              className="auth-btn"
+              onClick={handleSendOTP}
+              disabled={loading.sendOtp}
             >
-              Send OTP
+              {loading.sendOtp ? "Sending OTP..." : "Send OTP"}
             </button>
           ) : (
             <>
               <OTPInput value={formData.otp} onChange={handleOTPChange} />
 
               {loading.verifyOtp && (
-                <div className="register-form__verified">Verifying OTP...</div>
+                <div className="auth-verified">Verifying OTP...</div>
               )}
 
               {otpVerified && (
-                <div className="register-form__verified">
+                <div className="auth-verified">
                   ✓ Mobile verified successfully
                 </div>
               )}
@@ -215,11 +155,17 @@ const RegisterForm = () => {
               {!otpVerified && (
                 <button
                   type="button"
-                  className="register-form__resend"
-                  disabled={otpTimer > 0 || loading.verifyOtp}
+                  className="auth-resend"
                   onClick={handleResendOTP}
+                  disabled={
+                    otpTimer > 0 || loading.verifyOtp || loading.resendOtp
+                  }
                 >
-                  {otpTimer > 0 ? `Resend OTP in ${otpTimer}s` : "Resend OTP"}
+                  {loading.resendOtp
+                    ? "Resending..."
+                    : otpTimer > 0
+                      ? `Resend OTP in ${otpTimer}s`
+                      : "Resend OTP"}
                 </button>
               )}
             </>
@@ -228,17 +174,17 @@ const RegisterForm = () => {
           <div className="register-form__actions">
             <button
               type="button"
-              className="register-form__back"
-              onClick={() => setStep(1)}
+              className="auth-btn auth-btn--outline"
+              onClick={handlePrev}
             >
               ← Back
             </button>
 
             <button
               type="button"
-              className="register-form__btn"
-              disabled={!otpVerified}
-              onClick={() => setStep(3)}
+              className="auth-btn"
+              onClick={handleNext}
+              disabled={!isStepTwoValid}
             >
               Continue →
             </button>
@@ -253,6 +199,7 @@ const RegisterForm = () => {
             name="password"
             value={formData.password}
             onChange={handleChange}
+            required
             placeholder="Create password"
           />
 
@@ -261,28 +208,41 @@ const RegisterForm = () => {
             name="confirmPassword"
             value={formData.confirmPassword}
             onChange={handleChange}
+            required
             placeholder="Confirm password"
           />
 
           <label className="register-form__terms">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              name="acceptedTerms"
+              checked={formData.acceptedTerms}
+              onChange={handleChange}
+            />
+
             <span>I agree to the Terms of Service and Privacy Policy</span>
           </label>
 
-          <button type="submit" className="register-form__btn">
-            Create Account
+          <button
+            type="submit"
+            className="auth-btn"
+            disabled={!isRegisterValid || isSubmitting}
+          >
+            {isSubmitting ? "Creating Account..." : "Create Account"}
           </button>
 
           <button
             type="button"
-            className="register-form__back"
-            onClick={() => setStep(2)}
+            className="auth-btn auth-btn--outline"
+            onClick={handlePrev}
+            disabled={isSubmitting}
           >
-            Back
+            ← Back
           </button>
         </>
       )}
     </form>
   );
 };
+
 export default RegisterForm;

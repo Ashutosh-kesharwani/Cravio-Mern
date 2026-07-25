@@ -1,39 +1,35 @@
 import "./AuthModal.css";
 
-import { useState } from "react";
-
-import AuthFooter from "../AuthFooter/AuthFooter";
-import AuthHeader from "../AuthHeader/AuthHeader";
-
-import ForgotPassword from "../ForgotPassword/ForgotPassword";
-import LoginForm from "../LoginForm/LoginForm";
-import RegisterForm from "../RegisterForm/RegisterForm";
-import ResetPassword from "../ResetPassword/ResetPassword";
+import {
+  AuthFooter,
+  AuthHeader,
+  ForgotPassword,
+  LoginForm,
+  RegisterForm,
+  ResetPassword,
+} from "../index.js";
 
 import { AUTH_MODE } from "../../../constants/auth.constants.js";
+import { useAuthStore } from "../../../context/authContext.js";
 
-const AuthModal = ({ onClose }) => {
-  const [mode, setMode] = useState(AUTH_MODE.LOGIN);
+const AuthModal = () => {
+  const { authMode, isAuthOpen, closeAuth } = useAuthStore();
+
+  if (!isAuthOpen) return null;
 
   const renderForm = () => {
-    switch (mode) {
+    switch (authMode) {
       case AUTH_MODE.LOGIN:
-        return (
-          <LoginForm
-            onForgotPassword={() => setMode(AUTH_MODE.FORGOT_PASSWORD)}
-          />
-        );
+        return <LoginForm />;
 
       case AUTH_MODE.REGISTER:
         return <RegisterForm />;
 
       case AUTH_MODE.FORGOT_PASSWORD:
-        return (
-          <ForgotPassword onSuccess={() => setMode(AUTH_MODE.RESET_PASSWORD)} />
-        );
+        return <ForgotPassword />;
 
       case AUTH_MODE.RESET_PASSWORD:
-        return <ResetPassword onSuccess={() => setMode(AUTH_MODE.LOGIN)} />;
+        return <ResetPassword />;
 
       default:
         return null;
@@ -41,17 +37,17 @@ const AuthModal = ({ onClose }) => {
   };
 
   return (
-    <div className="auth-modal__backdrop" onClick={onClose}>
+    <div className="auth-modal__backdrop" onClick={closeAuth}>
       <div className="auth-modal" onClick={(e) => e.stopPropagation()}>
-        <button className="auth-modal__close" onClick={onClose}>
+        <button className="auth-modal__close" onClick={closeAuth}>
           ✕
         </button>
 
-        <AuthHeader mode={mode} />
+        <AuthHeader />
 
         <div className="auth-modal__body">{renderForm()}</div>
 
-        <AuthFooter mode={mode} onChangeMode={setMode} />
+        <AuthFooter />
       </div>
     </div>
   );

@@ -1,15 +1,21 @@
 import "./AuthFooter.css";
 
 import { AUTH_MODE } from "../../../constants/auth.constants.js";
+import { useAuthStore } from "../../../context/authContext.js";
 
-const AuthFooter = ({ mode, onChangeMode }) => {
-  switch (mode) {
+const AuthFooter = () => {
+  const { authMode, setAuthMode } = useAuthStore();
+
+  switch (authMode) {
     case AUTH_MODE.LOGIN:
       return (
         <div className="auth-footer">
           <span>Don't have an account?</span>
 
-          <button onClick={() => onChangeMode(AUTH_MODE.REGISTER)}>
+          <button
+            onClick={() => setAuthMode(AUTH_MODE.REGISTER)}
+            className="auth-link"
+          >
             Create Account
           </button>
         </div>
@@ -20,7 +26,12 @@ const AuthFooter = ({ mode, onChangeMode }) => {
         <div className="auth-footer">
           <span>Already have an account?</span>
 
-          <button onClick={() => onChangeMode(AUTH_MODE.LOGIN)}>Sign In</button>
+          <button
+            onClick={() => setAuthMode(AUTH_MODE.LOGIN)}
+            className="auth-link"
+          >
+            Sign In
+          </button>
         </div>
       );
 
@@ -29,7 +40,10 @@ const AuthFooter = ({ mode, onChangeMode }) => {
         <div className="auth-footer">
           <span>Remember your password?</span>
 
-          <button onClick={() => onChangeMode(AUTH_MODE.LOGIN)}>
+          <button
+            onClick={() => setAuthMode(AUTH_MODE.LOGIN)}
+            className="auth-link"
+          >
             Back to Login
           </button>
         </div>
@@ -40,7 +54,12 @@ const AuthFooter = ({ mode, onChangeMode }) => {
         <div className="auth-footer">
           <span>Password reset successfully?</span>
 
-          <button onClick={() => onChangeMode(AUTH_MODE.LOGIN)}>Login</button>
+          <button
+            onClick={() => setAuthMode(AUTH_MODE.LOGIN)}
+            className="auth-link"
+          >
+            Login
+          </button>
         </div>
       );
 

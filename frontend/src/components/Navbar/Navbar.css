@@ -197,18 +197,126 @@
   box-shadow: var(--shadow-md);
 }
 
+/* ===============================
+   Profile
+================================== */
+
+.navbar__profile {
+  position: relative;
+}
+
+.navbar__profile-btn {
+  width: 42px;
+  height: 42px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Avatar Image */
+
+.navbar__avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e5e7eb;
+  transition: 0.2s ease;
+}
+
+.navbar__avatar:hover {
+  border-color: #2563eb;
+}
+
+/* Default Avatar */
+
+.navbar__avatar-fallback {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  border: 2px solid #e5e7eb;
+  color: #4b5563;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.2s ease;
+}
+
+.navbar__avatar-fallback:hover {
+  background: #e5e7eb;
+  border-color: #2563eb;
+}
+
+/* ===============================
+   Dropdown
+================================== */
+
+.navbar__dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+
+  min-width: 180px;
+
+  background: #fff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+
+  overflow: hidden;
+
+  z-index: 1000;
+}
+
+.navbar__dropdown-item {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px 16px;
+
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  font-size: 15px;
+  color: #374151;
+
+  transition: background 0.2s ease;
+}
+
+.navbar__dropdown-item:hover {
+  background: #f9fafb;
+}
+
+.navbar__dropdown-item:last-child {
+  color: #dc2626;
+}
+
+.navbar__dropdown-item:last-child:hover {
+  background: #fef2f2;
+}
+
 /* ==========================================================
    RESPONSIVE
 ========================================================== */
 
 @media (max-width: 992px) {
   .navbar__nav {
-    display: none;
-  }
-}
-
-@media (max-width: 576px) {
-  .navbar__signin-btn {
     display: none;
   }
 }

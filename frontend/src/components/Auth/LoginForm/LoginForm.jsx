@@ -1,243 +1,44 @@
 import "./LoginForm.css";
 
-import { useEffect, useState } from "react";
-
 import { AtSign, Mail, Smartphone } from "lucide-react";
+
+import { AUTH_MODE, LOGIN_METHOD } from "../../../constants/auth.constants.js";
+
+import { useAuthStore } from "../../../context/authContext.js";
+
+import useLogin from "../../../hooks/auth/useLogin";
 
 import { AuthInput, OTPInput, PasswordInput } from "../index.js";
 
-const LOGIN_METHOD = {
-  EMAIL: "email",
-  USERNAME: "username",
-  MOBILE: "mobile",
-};
+const LoginForm = () => {
+  const { setAuthMode } = useAuthStore();
 
-const INITIAL_FORM = {
-  email: "",
-  username: "",
-  mobile: "",
-  otp: "",
-  password: "",
-};
-/* 
+  const {
+    loginMethod,
+    formData,
 
-Bad me add
-const changeLoginMethod = (method) => {
-  if (method === loginMethod) return;
+    otpSent,
+    otpVerified,
+    otpTimer,
 
-  setLoginMethod(method);
+    loading,
+    isSubmitting,
 
-  setFormData(INITIAL_FORM);
+    isLoginValid,
 
-  setOtpSent(false);
+    handleChange,
+    handleOTPChange,
 
-  setOtpVerified(false);
+    changeLoginMethod,
 
-  setOtpTimer(30);
+    handleSendOTP,
+    handleResendOTP,
 
-  setLoading({
-    sendOtp: false,
-    verifyOtp: false,
-    login: false,
-  });
-
-  setErrors({});
-};
-*/
-
-const LoginForm = ({ onForgotPassword }) => {
-  const [loginMethod, setLoginMethod] = useState(LOGIN_METHOD.EMAIL);
-
-  const [formData, setFormData] = useState(INITIAL_FORM);
-
-  const [otpSent, setOtpSent] = useState(false);
-
-  const [otpVerified, setOtpVerified] = useState(false);
-
-  const [otpTimer, setOtpTimer] = useState(30);
-
-  const [loading, setLoading] = useState({
-    sendOtp: false,
-    verifyOtp: false,
-    login: false,
-  });
-
-  const [errors, setErrors] = useState({});
-
-  /* -------------------- Form Change -------------------- */
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-
-    setErrors((prev) => ({
-      ...prev,
-      [name]: "",
-    }));
-  };
-
-  /* -------------------- OTP Change -------------------- */
-
-  const handleOTPChange = (otp) => {
-    setFormData((prev) => ({
-      ...prev,
-      otp,
-    }));
-
-    setErrors((prev) => ({
-      ...prev,
-      otp: "",
-    }));
-
-    if (otp.length === 6 && !loading.verifyOtp && !otpVerified) {
-      handleVerifyOTP();
-    }
-  };
-
-  /* -------------------- Login Method Change -------------------- */
-
-  const changeLoginMethod = (method) => {
-    setLoginMethod(method);
-
-    setFormData(INITIAL_FORM);
-
-    setOtpSent(false);
-
-    setOtpVerified(false);
-
-    setOtpTimer(30);
-
-    setErrors({});
-  };
-
-  /* -------------------- Send OTP -------------------- */
-
-  const handleSendOTP = async () => {
-    if (!formData.mobile.trim()) {
-      setErrors((prev) => ({
-        ...prev,
-        mobile: "Please enter your mobile number.",
-      }));
-      return;
-    }
-
-    setLoading((prev) => ({
-      ...prev,
-      sendOtp: true,
-    }));
-
-    try {
-      // await sendOTP(formData.mobile);
-
-      setTimeout(() => {
-        setOtpSent(true);
-
-        setOtpTimer(30);
-
-        setLoading((prev) => ({
-          ...prev,
-          sendOtp: false,
-        }));
-      }, 800);
-    } catch (error) {
-      console.log(error);
-
-      setLoading((prev) => ({
-        ...prev,
-        sendOtp: false,
-      }));
-    }
-  };
-
-  useEffect(() => {
-    console.log("otpSent changed =>", otpSent);
-  }, [otpSent]);
-
-  /* -------------------- Verify OTP -------------------- */
-  const handleVerifyOTP = async () => {
-    setLoading((prev) => ({
-      ...prev,
-      verifyOtp: true,
-    }));
-
-    try {
-      // await verifyLoginOTP(formData.mobile, formData.otp);
-
-      setTimeout(() => {
-        setOtpVerified(true);
-
-        setLoading((prev) => ({
-          ...prev,
-          verifyOtp: false,
-        }));
-      }, 800);
-    } catch (error) {
-      console.error(error);
-
-      setLoading((prev) => ({
-        ...prev,
-        verifyOtp: false,
-      }));
-    }
-  };
-  /* -------------------- Login -------------------- */
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Validation + API Later
-
-    setLoading((prev) => ({
-      ...prev,
-      login: true,
-    }));
-
-    setTimeout(() => {
-      setLoading((prev) => ({
-        ...prev,
-        login: false,
-      }));
-    }, 1200);
-  };
-
-  /* -------------------- OTP Timer -------------------- */
-
-  useEffect(() => {
-    if (!otpSent) return;
-
-    if (otpTimer <= 0) return;
-
-    const timer = setInterval(() => {
-      setOtpTimer((prev) => prev - 1);
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [otpSent, otpTimer]);
-
-  /* -------------------- Resend OTP -------------------- */
-
-  const handleResendOTP = async () => {
-    if (otpTimer > 0) return;
-
-    // await resendLoginOTP(formData.mobile);
-
-    setFormData((prev) => ({
-      ...prev,
-      otp: "",
-    }));
-
-    setOtpVerified(false);
-    setOtpTimer(30);
-  };
-
-  /* ==================== JSX BELOW ==================== */
+    handleSubmit,
+  } = useLogin();
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
+    <form className="login-form" onSubmit={handleSubmit} autoComplete="on">
       <div className="login-form__tabs">
         <button
           type="button"
@@ -266,8 +67,7 @@ const LoginForm = ({ onForgotPassword }) => {
           <span>Mobile</span>
         </button>
       </div>
-
-      {/* EMAIL */}
+      {/* ---------------- Email ---------------- */}
 
       {loginMethod === LOGIN_METHOD.EMAIL && (
         <>
@@ -279,7 +79,8 @@ const LoginForm = ({ onForgotPassword }) => {
             value={formData.email}
             onChange={handleChange}
             placeholder="Enter your email"
-            error={errors.email}
+            autoComplete="username"
+            required
           />
 
           <PasswordInput
@@ -288,12 +89,13 @@ const LoginForm = ({ onForgotPassword }) => {
             value={formData.password}
             onChange={handleChange}
             placeholder="Enter your password"
-            error={errors.password}
+            autoComplete="current-password"
+            required
           />
         </>
       )}
 
-      {/* USERNAME */}
+      {/* ---------------- Username ---------------- */}
 
       {loginMethod === LOGIN_METHOD.USERNAME && (
         <>
@@ -304,7 +106,7 @@ const LoginForm = ({ onForgotPassword }) => {
             value={formData.username}
             onChange={handleChange}
             placeholder="Enter your username"
-            error={errors.username}
+            required
           />
 
           <PasswordInput
@@ -313,12 +115,12 @@ const LoginForm = ({ onForgotPassword }) => {
             value={formData.password}
             onChange={handleChange}
             placeholder="Enter your password"
-            error={errors.password}
+            autoComplete="current-password"
+            required
           />
         </>
       )}
-
-      {/* MOBILE */}
+      {/* ---------------- Mobile ---------------- */}
 
       {loginMethod === LOGIN_METHOD.MOBILE && (
         <>
@@ -329,41 +131,47 @@ const LoginForm = ({ onForgotPassword }) => {
             icon={Smartphone}
             value={formData.mobile}
             onChange={handleChange}
-            placeholder="Enter mobile number"
-            error={errors.mobile}
+            placeholder="Enter your mobile number"
+            required
           />
 
           {!otpSent ? (
             <button
               type="button"
-              className="login-form__otp-btn"
+              className="auth-btn"
               onClick={handleSendOTP}
               disabled={loading.sendOtp}
             >
-              {loading.sendOtp ? "Sending..." : "Send OTP"}
+              {loading.sendOtp ? "Sending OTP..." : "Send OTP"}
             </button>
           ) : (
             <>
               <OTPInput value={formData.otp} onChange={handleOTPChange} />
 
               {loading.verifyOtp && (
-                <div className="login-form__verified">Verifying OTP...</div>
+                <div className="auth-verified">Verifying OTP...</div>
               )}
 
               {otpVerified && (
-                <div className="login-form__verified">
-                  ✓ Mobile Number Verified
+                <div className="auth-verified">
+                  ✓ Mobile number verified successfully
                 </div>
               )}
 
               {!otpVerified && (
                 <button
                   type="button"
-                  className="login-form__resend"
-                  disabled={otpTimer > 0 || loading.verifyOtp}
+                  className="auth-resend"
                   onClick={handleResendOTP}
+                  disabled={
+                    otpTimer > 0 || loading.verifyOtp || loading.resendOtp
+                  }
                 >
-                  {otpTimer > 0 ? `Resend OTP in ${otpTimer}s` : "Resend OTP"}
+                  {loading.resendOtp
+                    ? "Resending..."
+                    : otpTimer > 0
+                      ? `Resend OTP in ${otpTimer}s`
+                      : "Resend OTP"}
                 </button>
               )}
 
@@ -374,30 +182,29 @@ const LoginForm = ({ onForgotPassword }) => {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="Enter your password"
-                  error={errors.password}
+                  autoComplete="current-password"
+                  required
                 />
               )}
             </>
           )}
         </>
       )}
-
       <button
         type="button"
-        className="login-form__forgot"
-        onClick={onForgotPassword}
+        className="auth-link"
+        onClick={() => setAuthMode(AUTH_MODE.FORGOT_PASSWORD)}
+        disabled={isSubmitting}
       >
         Forgot Password?
       </button>
 
       <button
         type="submit"
-        className="login-form__submit"
-        disabled={
-          loading.login || (loginMethod === LOGIN_METHOD.MOBILE && !otpVerified)
-        }
+        className="auth-btn"
+        disabled={!isLoginValid || isSubmitting}
       >
-        {loading.login ? "Signing In..." : "Sign In"}
+        {isSubmitting ? "Signing In..." : "Sign In"}
       </button>
 
       <div className="login-form__divider">

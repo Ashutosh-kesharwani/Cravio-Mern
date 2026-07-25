@@ -1,3 +1,4 @@
+import { getPasswordStrength } from "../../../utils/passwordStrength.js";
 import "./PasswordInput.css";
 
 import { Eye, EyeOff, Lock } from "lucide-react";
@@ -16,6 +17,7 @@ const PasswordInput = ({
   error,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const strength = getPasswordStrength(value);
 
   return (
     <div className="password-input">
@@ -58,6 +60,26 @@ const PasswordInput = ({
       </div>
 
       {error && <p className="password-input__error">{error}</p>}
+      {value && (
+        <>
+          <div className="password-strength">
+            <div
+              className="password-strength__bar"
+              style={{
+                width: `${(strength.score / 5) * 100}%`,
+                background: strength.color,
+              }}
+            />
+          </div>
+
+          <p
+            className="password-strength__label"
+            style={{ color: strength.color }}
+          >
+            Password Strength: {strength.label}
+          </p>
+        </>
+      )}
     </div>
   );
 };

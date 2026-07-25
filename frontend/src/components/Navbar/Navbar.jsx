@@ -1,20 +1,17 @@
+import { LogOut, Package, Search, ShoppingCart, User } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AUTH_MODE } from "../../constants/auth.constants.js";
+import { useAuthStore } from "../../context/authContext.js";
+import AuthModal from "../Auth/AuthModal/AuthModal";
 import "./Navbar.css";
 
-import { Search, ShoppingCart } from "lucide-react";
-import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import AuthModal from "../Auth/AuthModal/AuthModal";
-
-/* 
-Home : link
-explore-menu
-app-download
-footer
-*/
 const Navbar = () => {
   const [menu, setMenu] = useState("home");
+  const { user, isAuthenticated, authLoading, openAuth, logout } =
+    useAuthStore();
 
-  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,6 +29,10 @@ const Navbar = () => {
       navigate("/", { state: { scrollTo: sectionId } });
     }
   };
+
+  useEffect(() => {
+    setIsProfileOpen(false);
+  }, [isAuthenticated]);
 
   return (
     <>
@@ -93,18 +94,58 @@ const Navbar = () => {
               <span className="navbar__cart-badge"></span>
             </Link>
 
-            <button
-              className="navbar__signin-btn"
-              onClick={() => setShowAuthModal(true)}
-            >
-              Sign In
-            </button>
+            {!authLoading &&
+              (!isAuthenticated ? (
+                <button
+                  className="navbar__signin-btn"
+                  onClick={() => openAuth(AUTH_MODE.LOGIN)}
+                >
+                  Sign In
+                </button>
+              ) : (
+                <div className="navbar__profile">
+                  <button
+                    className="navbar__profile-btn"
+                    onClick={() => setIsProfileOpen((prev) => !prev)}
+                  >
+                    {user?.avatar?.url ? (
+                      <img
+                        src={user.avatar.url}
+                        alt={user.firstName}
+                        className="navbar__avatar"
+                      />
+                    ) : (
+                      <div className="navbar__avatar-fallback">
+                        <User size={22} strokeWidth={2} />
+                      </div>
+                    )}
+                  </button>
+                  {isProfileOpen && (
+                    <div className="navbar__dropdown">
+                      <button className="navbar__dropdown-item">
+                        <Package size={18} />
+
+                        <span>Orders</span>
+                      </button>
+
+                      <button
+                        className="navbar__dropdown-item"
+                        onClick={logout}
+                      >
+                        <LogOut size={18} />
+
+                        <span>Logout</span>
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ))}
           </div>
         </div>
       </header>
 
       {/* Place Auth Modal */}
-      {showAuthModal && <AuthModal onClose={() => setShowAuthModal(false)} />}
+      <AuthModal />
     </>
   );
 };

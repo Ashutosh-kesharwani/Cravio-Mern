@@ -1,18 +1,22 @@
-import AuthFooter from "./AuthFooter/AuthFooter";
-import AuthHeader from "./AuthHeader/AuthHeader";
-import AuthInput from "./AuthInput/AuthInput";
-import AuthModal from "./AuthModal/AuthModal";
-import LoginForm from "./LoginForm/LoginForm";
-import OTPInput from "./OTPInput/OTPInput";
-import PasswordInput from "./PasswordInput/PasswordInput";
-import RegisterForm from "./RegisterForm/RegisterForm";
+import AuthFooter from "./AuthFooter/AuthFooter.jsx";
+import AuthHeader from "./AuthHeader/AuthHeader.jsx";
+import AuthInput from "./AuthInput/AuthInput.jsx";
+import AuthModal from "./AuthModal/AuthModal.jsx";
+import ForgotPassword from "./ForgotPassword/ForgotPassword.jsx";
+import LoginForm from "./LoginForm/LoginForm.jsx";
+import OTPInput from "./OTPInput/OTPInput.jsx";
+import PasswordInput from "./PasswordInput/PasswordInput.jsx";
+import RegisterForm from "./RegisterForm/RegisterForm.jsx";
+import ResetPassword from "./ResetPassword/ResetPassword.jsx";
 export {
   AuthFooter,
   AuthHeader,
   AuthInput,
   AuthModal,
+  ForgotPassword,
   LoginForm,
   OTPInput,
   PasswordInput,
   RegisterForm,
+  ResetPassword,
 };
