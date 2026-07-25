@@ -15,6 +15,14 @@ export default defineConfig([
     ],
     rules: {
       "react-hooks/set-state-in-effect": "off",
+      "no-unused-vars": [
+        "warn",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          destructuredArrayIgnorePattern: "^_",
+        },
+      ],
     },
     languageOptions: {
       globals: globals.browser,
