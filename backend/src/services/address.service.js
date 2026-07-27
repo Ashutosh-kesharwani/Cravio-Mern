@@ -74,8 +74,16 @@ export const updateAddress = async (user, addressId, data) => {
   }
 
   Object.keys(data).forEach((key) => {
-    if (data[key] !== undefined && data[key]?.trim() !== "") {
-      address[key] = data[key];
+    const value = data[key];
+
+    if (value === undefined || value === null) return;
+
+    if (typeof value === "string") {
+      if (value.trim() === "") return;
+
+      address[key] = value.trim();
+    } else {
+      address[key] = value;
     }
   });
 
@@ -87,7 +95,6 @@ export const updateAddress = async (user, addressId, data) => {
     address.isDefault = true;
   }
 
-  // save the doc
   await user.save();
 
   return address;

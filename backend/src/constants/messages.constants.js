@@ -141,6 +141,31 @@ export const FILE_MESSAGES = {
 
   UNEXPECTED_FILE_FIELD: "Unexpected file field.",
 };
+
+export const CART_MESSAGES = {
+  CART_FETCHED: "Cart fetched successfully.",
+
+  ITEM_ADDED: "Item added to cart.",
+
+  ITEM_UPDATED: "Cart updated successfully.",
+
+  ITEM_REMOVED: "Item removed from cart.",
+
+  CART_CLEARED: "Cart cleared successfully.",
+
+  CART_EMPTY: "Your cart is empty.",
+
+  FOOD_NOT_FOUND: "Food item not found.",
+
+  CART_NOT_FOUND: "Cart not found.",
+
+  INVALID_QUANTITY: "Quantity must be at least 1.",
+
+  ITEM_NOT_IN_CART: "Item does not exist in cart.",
+
+  OUT_OF_STOCK: "Requested quantity is not available.",
+};
+
 export const GENERAL_MESSAGES = {
   SUCCESS: "Request completed successfully.",
 

@@ -77,13 +77,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   return res
     .status(201)
-    .json(
-      new ApiResponse(
-        201,
-        { user: createdUser },
-        AUTH_MESSAGES.REGISTER_SUCCESS
-      )
-    );
+    .json(new ApiResponse(201, createdUser, AUTH_MESSAGES.REGISTER_SUCCESS));
 });
 
 // Login user
@@ -142,7 +136,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .json(new ApiResponse(200, { user }, AUTH_MESSAGES.LOGIN_SUCCESS));
+    .json(new ApiResponse(200, user, AUTH_MESSAGES.LOGIN_SUCCESS));
 });
 
 // Logout User
@@ -179,13 +173,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 
     return res
       .status(200)
-      .json(
-        new ApiResponse(
-          200,
-          { user: updatedUser },
-          AUTH_MESSAGES.TOKEN_REFRESHED
-        )
-      );
+      .json(new ApiResponse(200, updatedUser, AUTH_MESSAGES.TOKEN_REFRESHED));
   } catch (error) {
     if (error.name === "TokenExpiredError") {
       throw new ApiError(401, AUTH_MESSAGES.REFRESH_TOKEN_EXPIRED);
@@ -202,30 +190,26 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 const getCurrentUser = asyncHandler(async (req, res) => {
   return res
     .status(200)
-    .json(
-      new ApiResponse(
-        200,
-        { user: req.user },
-        USER_MESSAGES.CURRENT_USER_FETCHED
-      )
-    );
+    .json(new ApiResponse(200, req.user, USER_MESSAGES.CURRENT_USER_FETCHED));
 });
 
 // Update Controller
 
 // Change Current Password
 const changeCurrentPassword = asyncHandler(async (req, res) => {
-  const { oldPassword, newPassword, confirmPassword } = req.body;
+  const { currentPassword, newPassword, confirmPassword } = req.body;
 
   // Validate required fields
   if (
-    [oldPassword, newPassword, confirmPassword].some((field) => !field?.trim())
+    [currentPassword, newPassword, confirmPassword].some(
+      (field) => !field?.trim()
+    )
   ) {
     throw new ApiError(400, GENERAL_MESSAGES.VALIDATION_ERROR);
   }
 
   // New password should be different
-  if (oldPassword === newPassword) {
+  if (currentPassword === newPassword) {
     throw new ApiError(400, AUTH_MESSAGES.PASSWORD_SAME_AS_OLD);
   }
 
@@ -238,7 +222,7 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
   const user = await getUserById(req.user._id);
 
   // Verify current password
-  const isValidPassword = await user.comparePassword(oldPassword);
+  const isValidPassword = await user.comparePassword(currentPassword);
 
   if (!isValidPassword) {
     throw new ApiError(401, AUTH_MESSAGES.CURRENT_PASSWORD_INCORRECT);
@@ -323,9 +307,7 @@ const changeCurrentEmail = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .json(
-      new ApiResponse(200, { user: updatedUser }, USER_MESSAGES.EMAIL_UPDATED)
-    );
+    .json(new ApiResponse(200, updatedUser, USER_MESSAGES.EMAIL_UPDATED));
 });
 
 // Change Username
@@ -352,13 +334,7 @@ const changeCurrentUsername = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .json(
-      new ApiResponse(
-        200,
-        { user: updatedUser },
-        USER_MESSAGES.USERNAME_UPDATED
-      )
-    );
+    .json(new ApiResponse(200, updatedUser, USER_MESSAGES.USERNAME_UPDATED));
 });
 
 // Avatar post , patch , delete
@@ -382,9 +358,7 @@ const uploadUserAvatar = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .json(
-      new ApiResponse(200, { user: updatedUser }, FILE_MESSAGES.IMAGE_UPLOADED)
-    );
+    .json(new ApiResponse(200, updatedUser, FILE_MESSAGES.IMAGE_UPLOADED));
 });
 
 const changeUserAvatar = asyncHandler(async (req, res) => {
@@ -407,9 +381,7 @@ const changeUserAvatar = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .json(
-      new ApiResponse(200, { user: updatedUser }, FILE_MESSAGES.IMAGE_UPDATED)
-    );
+    .json(new ApiResponse(200, updatedUser, FILE_MESSAGES.IMAGE_UPDATED));
 });
 
 const deleteUserAvatar = asyncHandler(async (req, res) => {
@@ -428,9 +400,7 @@ const deleteUserAvatar = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .json(
-      new ApiResponse(200, { user: updatedUser }, FILE_MESSAGES.IMAGE_DELETED)
-    );
+    .json(new ApiResponse(200, updatedUser, FILE_MESSAGES.IMAGE_DELETED));
 });
 
 // Address
@@ -470,13 +440,7 @@ const addUserAddress = asyncHandler(async (req, res) => {
 
   return res
     .status(201)
-    .json(
-      new ApiResponse(
-        201,
-        { user: updatedUser },
-        ADDRESS_MESSAGES.ADDRESS_ADDED
-      )
-    );
+    .json(new ApiResponse(201, updatedUser, ADDRESS_MESSAGES.ADDRESS_ADDED));
 });
 
 /* 
@@ -512,13 +476,7 @@ const updateUserAddress = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .json(
-      new ApiResponse(
-        200,
-        { user: updatedUser },
-        ADDRESS_MESSAGES.ADDRESS_UPDATED
-      )
-    );
+    .json(new ApiResponse(200, updatedUser, ADDRESS_MESSAGES.ADDRESS_UPDATED));
 });
 
 /* 
@@ -547,13 +505,7 @@ const deleteUserAddress = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .json(
-      new ApiResponse(
-        200,
-        { user: updatedUser },
-        ADDRESS_MESSAGES.ADDRESS_DELETED
-      )
-    );
+    .json(new ApiResponse(200, updatedUser, ADDRESS_MESSAGES.ADDRESS_DELETED));
 });
 
 const updateContactNumber = asyncHandler(async (req, res) => {
@@ -573,9 +525,7 @@ const updateContactNumber = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .json(
-      new ApiResponse(200, { user: updatedUser }, USER_MESSAGES.MOBILE_UPDATED)
-    );
+    .json(new ApiResponse(200, updatedUser, USER_MESSAGES.MOBILE_UPDATED));
 });
 
 // Change rest field
@@ -597,11 +547,9 @@ const updateProfile = asyncHandler(async (req, res) => {
   // inner check as str ke form me milega , so usme "  " to nhi hai , if to error do
   // else update kardo
   if (dob !== undefined) {
-    if (typeof dob === "string" && !dob.trim()) {
-      throw new ApiError(400, USER_MESSAGES.DOB_REQUIRED);
+    if (typeof dob === "string" && dob.trim()) {
+      user.dob = dob;
     }
-
-    user.dob = dob;
   }
 
   await user.save();
@@ -610,9 +558,7 @@ const updateProfile = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .json(
-      new ApiResponse(200, { user: updatedUser }, USER_MESSAGES.PROFILE_UPDATED)
-    );
+    .json(new ApiResponse(200, updatedUser, USER_MESSAGES.PROFILE_UPDATED));
 });
 
 export {
