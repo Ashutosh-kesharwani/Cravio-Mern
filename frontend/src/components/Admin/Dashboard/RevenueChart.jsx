@@ -7,20 +7,7 @@ import {
   XAxis,
 } from "recharts";
 
-const MONTHS = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
+import { MONTHS } from "../../../constants/admin.constants.js";
 
 const RevenueChart = ({ revenueChart }) => {
   const chartData = revenueChart.map((item) => ({
