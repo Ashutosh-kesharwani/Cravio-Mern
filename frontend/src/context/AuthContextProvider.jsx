@@ -12,13 +12,9 @@ import { useNavigate } from "react-router-dom";
 export const AuthContextProvider = ({ children }) => {
   const navigate = useNavigate();
 
-  /* ---------------- Auth Modal ---------------- */
-
   const [authMode, setAuthMode] = useState(AUTH_MODE.LOGIN);
 
   const [isAuthOpen, setIsAuthOpen] = useState(false);
-
-  /* ---------------- Auth State ---------------- */
 
   const [user, setUser] = useState(null);
 
@@ -26,14 +22,11 @@ export const AuthContextProvider = ({ children }) => {
 
   const isAuthenticated = !!user;
 
-  // Admin
   const isAdmin = user?.role === "admin";
   const [adminLoading, setAdminLoading] = useState({
     login: false,
     logout: false,
   });
-
-  /* ---------------- Modal ---------------- */
 
   const openAuth = (mode = AUTH_MODE.LOGIN) => {
     setAuthMode(mode);
@@ -44,21 +37,15 @@ export const AuthContextProvider = ({ children }) => {
     setIsAuthOpen(false);
   };
 
-  /* ---------------- Login ---------------- */
-
   const login = (userData) => {
     updateUser(userData);
 
     closeAuth();
   };
 
-  /* ---------------- Update User ---------------- */
-
   const updateUser = (userData) => {
     setUser(userData);
   };
-
-  /* ---------------- Current User ---------------- */
 
   const checkCurrentUser = async () => {
     try {
@@ -72,7 +59,6 @@ export const AuthContextProvider = ({ children }) => {
       setAuthLoading(false);
     }
   };
-  /* ---------------- Logout ---------------- */
 
   const logout = async () => {
     try {
@@ -89,13 +75,9 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
-  /* ---------------- App Mount ---------------- */
-
   useEffect(() => {
     checkCurrentUser();
   }, []);
-
-  /* ---------------- Session Expired ---------------- */
 
   useEffect(() => {
     const handleLogout = () => {
@@ -114,8 +96,6 @@ export const AuthContextProvider = ({ children }) => {
       window.removeEventListener("auth:logout", handleLogout);
     };
   }, []);
-
-  /* ---------------- Context ---------------- */
 
   const contextValue = {
     user,
