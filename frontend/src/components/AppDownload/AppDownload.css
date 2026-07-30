@@ -1,12 +1,6 @@
-/* ==========================================
-   App Download
-========================================== */
-
 .app-download {
   padding-block: 7rem;
 }
-
-/* Container */
 
 .app-download__container {
   position: relative;
@@ -28,8 +22,6 @@
 
   box-shadow: var(--primary-shadow-light);
 }
-
-/* Decorative Blob */
 
 .app-download__container::before {
   content: "";
@@ -68,8 +60,6 @@
   filter: blur(20px);
 }
 
-/* Heading */
-
 .app-download__title {
   margin-top: 1rem;
 
@@ -94,8 +84,6 @@
   font-weight: 400;
 }
 
-/* Stores */
-
 .app-download__platforms {
   display: flex;
 
@@ -105,8 +93,6 @@
 
   flex-wrap: wrap;
 }
-
-/* Button */
 
 .app-download__store {
   display: flex;
@@ -136,7 +122,6 @@
   box-shadow: var(--primary-hover-shadow);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .app-download {
     padding-block: 5rem;
