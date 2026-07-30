@@ -12,7 +12,7 @@ import verifyJWT from "../middlewares/auth.middleware.js";
 
 const cartRouter = Router();
 
-cartRouter.use(verifyJWT); // if all root needed protection then use this way
+cartRouter.use(verifyJWT);
 
 cartRouter.route("/").get(getCart).post(addToCart).delete(clearUserCart);
 
