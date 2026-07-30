@@ -18,7 +18,6 @@ const INITIAL_DELIVERY_ADDRESS = {
 
 const PlaceOrder = () => {
   const { cart, subtotal, deliveryFee, grandTotal } = useCart();
-  console.log({ cart });
 
   const { placeOrder, loading } = useOrder();
 
@@ -37,8 +36,6 @@ const PlaceOrder = () => {
 
   const handlePlaceOrder = async (e) => {
     e.preventDefault();
-    console.log("Cart Items:", cart.items);
-
     const response = await placeOrder({
       items: cart.items,
       deliveryAddress,

@@ -1,6 +1,5 @@
 import { Edit2, MapPin, Plus, Trash2 } from "lucide-react";
 
-import { useEffect } from "react";
 import useAddress from "../../hooks/profile/useAddress.js";
 
 const AddressSection = () => {
@@ -28,9 +27,6 @@ const AddressSection = () => {
     handleDelete,
   } = useAddress();
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
   return (
     <section className="card">
       <div className="profile-address__header">
