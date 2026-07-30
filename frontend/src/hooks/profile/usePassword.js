@@ -16,8 +16,6 @@ const usePassword = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  /* ---------------- Change ---------------- */
-
   const handleChange = ({ target }) => {
     const { name, value } = target;
 
@@ -27,14 +25,10 @@ const usePassword = () => {
     }));
   };
 
-  /* ---------------- Button State ---------------- */
-
   const isPasswordValid =
     formData.currentPassword.trim() &&
     formData.newPassword.trim() &&
     formData.confirmPassword.trim();
-
-  /* ---------------- Submit ---------------- */
 
   const handleSubmit = async (event) => {
     event.preventDefault();

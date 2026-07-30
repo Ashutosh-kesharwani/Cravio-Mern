@@ -9,8 +9,6 @@ import { resetPassword } from "../../services/auth.service.js";
 
 import { validateResetPassword } from "../../validators/auth.validator.js";
 
-/* ---------------- Initial Form ---------------- */
-
 const INITIAL_FORM_DATA = {
   password: "",
   confirmPassword: "",
@@ -23,8 +21,6 @@ const useResetPassword = () => {
 
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
-  /* ---------------- Form Change ---------------- */
-
   const handleChange = ({ target }) => {
     const { name, value } = target;
 
@@ -34,12 +30,8 @@ const useResetPassword = () => {
     }));
   };
 
-  /* ---------------- Validation ---------------- */
-
   const isResetPasswordValid =
     formData.password.trim() && formData.confirmPassword.trim();
-
-  /* ---------------- Submit ---------------- */
 
   const handleSubmit = async (event) => {
     event.preventDefault();

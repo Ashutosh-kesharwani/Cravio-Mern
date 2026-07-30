@@ -16,13 +16,9 @@ const useAvatar = () => {
 
   const [isUploading, setIsUploading] = useState(false);
 
-  /* ---------------- Select Image ---------------- */
-
   const openFilePicker = () => {
     inputRef.current?.click();
   };
-
-  /* ---------------- Upload / Change ---------------- */
 
   const handleAvatarChange = async (event) => {
     const file = event.target.files?.[0];
@@ -55,8 +51,6 @@ const useAvatar = () => {
       event.target.value = "";
     }
   };
-
-  /* ---------------- Delete ---------------- */
 
   const handleDeleteAvatar = async () => {
     if (!user?.avatar?.url) return;

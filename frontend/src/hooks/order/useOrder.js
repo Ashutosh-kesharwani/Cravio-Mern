@@ -22,10 +22,6 @@ const useOrder = () => {
     INITIAL_ADMIN_ORDERS,
   } = useOrderStore();
 
-  /* -------------------------------------------------------------------------- */
-  /*                               Place Order                                  */
-  /* -------------------------------------------------------------------------- */
-
   const placeOrder = useCallback(
     async (orderData) => {
       try {
@@ -53,10 +49,6 @@ const useOrder = () => {
     [setLoading]
   );
 
-  /* -------------------------------------------------------------------------- */
-  /*                              Verify Order                                  */
-  /* -------------------------------------------------------------------------- */
-
   const verifyOrder = useCallback(
     async (orderId) => {
       try {
@@ -82,10 +74,6 @@ const useOrder = () => {
     [setLoading]
   );
 
-  /* -------------------------------------------------------------------------- */
-  /*                              My Orders                                     */
-  /* -------------------------------------------------------------------------- */
-
   const fetchMyOrders = useCallback(async () => {
     try {
       setLoading((prev) => ({
@@ -110,10 +98,6 @@ const useOrder = () => {
     }
   }, [setOrders, setLoading]);
 
-  /* -------------------------------------------------------------------------- */
-  /*                              Admin Orders                                  */
-  /* -------------------------------------------------------------------------- */
-
   const fetchAllOrders = useCallback(async () => {
     try {
       setLoading((prev) => ({
@@ -137,10 +121,6 @@ const useOrder = () => {
       }));
     }
   }, [setAdminOrders, setLoading]);
-
-  /* -------------------------------------------------------------------------- */
-  /*                          Update Order Status                               */
-  /* -------------------------------------------------------------------------- */
 
   const updateOrderStatus = useCallback(
     async (orderId, orderStatus) => {
@@ -176,10 +156,6 @@ const useOrder = () => {
     },
     [setAdminOrders, setLoading]
   );
-
-  /* -------------------------------------------------------------------------- */
-  /*                               Reset Orders                                */
-  /* -------------------------------------------------------------------------- */
 
   const resetOrders = useCallback(() => {
     setOrders(INITIAL_ORDERS);

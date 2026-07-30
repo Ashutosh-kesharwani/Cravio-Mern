@@ -12,8 +12,6 @@ import { validateLogin, validateOTP } from "../../validators/auth.validator.js";
 
 import useOTP from "./useOTP";
 
-/* ---------------- Initial Form ---------------- */
-
 const INITIAL_FORM_DATA = {
   email: "",
   username: "",
@@ -43,8 +41,6 @@ const useLogin = () => {
     resetOTP,
   } = useOTP(() => formData.mobile, OTP_PURPOSE.LOGIN);
 
-  /* ---------------- Form Change ---------------- */
-
   const handleChange = ({ target }) => {
     const { name, value } = target;
 
@@ -53,8 +49,6 @@ const useLogin = () => {
       [name]: value,
     }));
   };
-
-  /* ---------------- OTP ---------------- */
 
   const handleOTPChange = async (otp) => {
     setFormData((prev) => ({
@@ -69,8 +63,6 @@ const useLogin = () => {
     await handleVerifyOTP(otp);
   };
 
-  /* ---------------- Login Method ---------------- */
-
   const changeLoginMethod = (method) => {
     if (method === loginMethod) return;
 
@@ -81,14 +73,10 @@ const useLogin = () => {
     resetOTP();
   };
 
-  /* ---------------- Validation ---------------- */
-
   const hasIdentifier =
     formData.email.trim() || formData.username.trim() || formData.mobile.trim();
 
   const isLoginValid = hasIdentifier && formData.password.trim();
-
-  /* ---------------- Submit ---------------- */
 
   const handleSubmit = async (event) => {
     event.preventDefault();

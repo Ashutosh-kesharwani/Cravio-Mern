@@ -16,8 +16,6 @@ const useOTP = (getMobile, purpose) => {
     resendOtp: false,
   });
 
-  /* ---------------- Timer ---------------- */
-
   useEffect(() => {
     if (!otpSent || otpTimer <= 0) return;
 
@@ -28,13 +26,9 @@ const useOTP = (getMobile, purpose) => {
     return () => clearInterval(timer);
   }, [otpSent, otpTimer]);
 
-  /* ---------------- Helpers ---------------- */
-
   const getCurrentMobile = () => {
     return typeof getMobile === "function" ? getMobile() : getMobile;
   };
-
-  /* ---------------- Send OTP ---------------- */
 
   const handleSendOTP = async () => {
     const mobile = getCurrentMobile();
@@ -69,8 +63,6 @@ const useOTP = (getMobile, purpose) => {
     }
   };
 
-  /* ---------------- Verify OTP ---------------- */
-
   const handleVerifyOTP = async (otp) => {
     const mobile = getCurrentMobile();
 
@@ -103,8 +95,6 @@ const useOTP = (getMobile, purpose) => {
     }
   };
 
-  /* ---------------- Resend OTP ---------------- */
-
   const handleResendOTP = async () => {
     const mobile = getCurrentMobile();
 
@@ -135,8 +125,6 @@ const useOTP = (getMobile, purpose) => {
       }));
     }
   };
-
-  /* ---------------- Reset ---------------- */
 
   const resetOTP = () => {
     setOtpSent(false);

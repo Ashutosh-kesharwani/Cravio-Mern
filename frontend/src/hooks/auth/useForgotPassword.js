@@ -13,8 +13,6 @@ import {
 
 import useOTP from "./useOTP";
 
-/* ---------------- Initial Form ---------------- */
-
 const INITIAL_FORM_DATA = {
   mobile: "",
   otp: "",
@@ -37,8 +35,6 @@ const useForgotPassword = () => {
     resetOTP,
   } = useOTP(() => formData.mobile, OTP_PURPOSE.FORGOT_PASSWORD);
 
-  /* ---------------- Form Change ---------------- */
-
   const handleChange = ({ target }) => {
     const { name, value } = target;
 
@@ -47,8 +43,6 @@ const useForgotPassword = () => {
       [name]: value,
     }));
   };
-
-  /* ---------------- OTP ---------------- */
 
   const handleOTPChange = async (otp) => {
     setFormData((prev) => ({
@@ -63,11 +57,7 @@ const useForgotPassword = () => {
     await handleVerifyOTP(otp);
   };
 
-  /* ---------------- Validation ---------------- */
-
   const isMobileValid = formData.mobile.trim();
-
-  /* ---------------- Continue ---------------- */
 
   const handleContinue = () => {
     if (!validateForgotPassword(formData)) return;

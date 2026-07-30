@@ -17,8 +17,6 @@ import {
 
 import useOTP from "./useOTP";
 
-/* ---------------- Initial Form ---------------- */
-
 const INITIAL_FORM_DATA = {
   firstName: "",
   lastName: "",
@@ -52,8 +50,6 @@ const useRegister = () => {
     resetOTP,
   } = useOTP(() => formData.mobile, OTP_PURPOSE.REGISTER);
 
-  /* ---------------- Form Change ---------------- */
-
   const handleChange = ({ target }) => {
     const { name, value, type, checked } = target;
 
@@ -62,8 +58,6 @@ const useRegister = () => {
       [name]: type === "checkbox" ? checked : value,
     }));
   };
-
-  /* ---------------- OTP ---------------- */
 
   const handleOTPChange = async (otp) => {
     setFormData((prev) => ({
@@ -77,8 +71,6 @@ const useRegister = () => {
 
     await handleVerifyOTP(otp);
   };
-
-  /* ---------------- Step ---------------- */
 
   const isStepOneValid =
     formData.firstName.trim() &&
@@ -113,8 +105,6 @@ const useRegister = () => {
 
     setStep((prev) => prev - 1);
   };
-
-  /* ---------------- Submit ---------------- */
 
   const handleSubmit = async (event) => {
     event.preventDefault();

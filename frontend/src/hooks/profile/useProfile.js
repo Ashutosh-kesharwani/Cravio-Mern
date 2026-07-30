@@ -15,8 +15,6 @@ import {
   validateUsername,
 } from "../../validators/profile.validator.js";
 
-/* ---------------- Initial State ---------------- */
-
 const INITIAL_PROFILE = {
   firstName: "",
   lastName: "",
@@ -25,8 +23,6 @@ const INITIAL_PROFILE = {
 
 const useProfile = () => {
   const { user, updateUser } = useAuthStore();
-
-  /* ---------------- State ---------------- */
 
   const [formData, setFormData] = useState(INITIAL_PROFILE);
 
@@ -39,8 +35,6 @@ const useProfile = () => {
   const [isUsernameSubmitting, setIsUsernameSubmitting] = useState(false);
 
   const [isEmailSubmitting, setIsEmailSubmitting] = useState(false);
-
-  /* ---------------- Populate Form ---------------- */
 
   useEffect(() => {
     if (!user) return;
@@ -55,8 +49,6 @@ const useProfile = () => {
 
     setEmail(user.email || "");
   }, [user]);
-
-  /* ---------------- Change Handlers ---------------- */
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -75,15 +67,11 @@ const useProfile = () => {
     setEmail(target.value);
   };
 
-  /* ---------------- Validation ---------------- */
-
   const isProfileValid = formData.firstName.trim();
 
   const isUsernameValid = username.trim();
 
   const isEmailValid = email.trim();
-
-  /* ---------------- Personal Info ---------------- */
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -111,8 +99,6 @@ const useProfile = () => {
     }
   };
 
-  /* ---------------- Username ---------------- */
-
   const handleUsernameSubmit = async (event) => {
     event.preventDefault();
 
@@ -138,8 +124,6 @@ const useProfile = () => {
       setIsUsernameSubmitting(false);
     }
   };
-
-  /* ---------------- Email ---------------- */
 
   const handleEmailSubmit = async (event) => {
     event.preventDefault();
@@ -168,21 +152,18 @@ const useProfile = () => {
   };
 
   return {
-    /* Personal Info */
     formData,
     isSubmitting,
     isProfileValid,
     handleChange,
     handleSubmit,
 
-    /* Username */
     username,
     isUsernameSubmitting,
     isUsernameValid,
     handleUsernameChange,
     handleUsernameSubmit,
 
-    /* Email */
     email,
     isEmailSubmitting,
     isEmailValid,
