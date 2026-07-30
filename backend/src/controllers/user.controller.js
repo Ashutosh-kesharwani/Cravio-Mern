@@ -193,13 +193,10 @@ const getCurrentUser = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, req.user, USER_MESSAGES.CURRENT_USER_FETCHED));
 });
 
-// Update Controller
-
 // Change Current Password
 const changeCurrentPassword = asyncHandler(async (req, res) => {
   const { currentPassword, newPassword, confirmPassword } = req.body;
 
-  // Validate required fields
   if (
     [currentPassword, newPassword, confirmPassword].some(
       (field) => !field?.trim()
@@ -208,27 +205,22 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
     throw new ApiError(400, GENERAL_MESSAGES.VALIDATION_ERROR);
   }
 
-  // New password should be different
   if (currentPassword === newPassword) {
     throw new ApiError(400, AUTH_MESSAGES.PASSWORD_SAME_AS_OLD);
   }
 
-  // Confirm password
   if (newPassword !== confirmPassword) {
     throw new ApiError(400, AUTH_MESSAGES.PASSWORD_MISMATCH);
   }
 
-  // Fetch authenticated user
   const user = await getUserById(req.user._id);
 
-  // Verify current password
   const isValidPassword = await user.comparePassword(currentPassword);
 
   if (!isValidPassword) {
     throw new ApiError(401, AUTH_MESSAGES.CURRENT_PASSWORD_INCORRECT);
   }
 
-  // Update password (pre-save middleware will hash it)
   user.password = newPassword;
 
   await user.save();
@@ -404,28 +396,6 @@ const deleteUserAvatar = asyncHandler(async (req, res) => {
 });
 
 // Address
-// POST /users/address
-/* 
-Add User Address  : [One to many] [A single user can have multiple address]
-
-> Retrieve address all fields from user req.body.address 
-[so in frontend we pass address field in which all these value are present]
-
-> Retreive user doc with req.user._id
-> check if user present
-> Check if in current req , isDefault is True , [i.e iss address ko abb default banana hai]
-> Then all exist address field ko false karo set
-
-> Add new address in user.addresses field [As ye array of object] , so new field easily got added
-
-> save the document
-
-> find new user with user._id , and remove sensitive field
-
-> return response
-
-
-*/
 const addUserAddress = asyncHandler(async (req, res) => {
   // Fetch user address field from req
   const { address } = req.body;
@@ -443,26 +413,6 @@ const addUserAddress = asyncHandler(async (req, res) => {
     .json(new ApiResponse(201, updatedUser, ADDRESS_MESSAGES.ADDRESS_ADDED));
 });
 
-/* 
-Update User Address
-> Retrieve address id , ie kis address ko update karna hai from params  [ const {addressId} = req.params;]
-> Retrieve address value from req.body.address
-> Find user doc with req.user._id
-> check is user found or not
-> First get the address fielld jisse update karna hai , with addressId
-> check present or not
-> update the field which is given i.e not undefined , null or "" after trim
-
-> IsDefault Set
-> Now again if there is req of making this address as default so set rest wale as false
-> update isdefault field separately
-
-> Find updated user by remove sensitive field 
-> send response
-
-
-*/
-//PATCH /users/address/:addressId
 const updateUserAddress = asyncHandler(async (req, res) => {
   const { addressId } = req.params;
 
@@ -478,21 +428,6 @@ const updateUserAddress = asyncHandler(async (req, res) => {
     .status(200)
     .json(new ApiResponse(200, updatedUser, ADDRESS_MESSAGES.ADDRESS_UPDATED));
 });
-
-/* 
-Delete User address
-
-> Here user ke addresses field me se jis address ko delete karne ki req aayi hai usse hame delete karna hai
-> Get addressId from params
-> get user from req.user._id
-> check if user present
-> find address from addressId which to delete
-> check present or not
-> then delete this document with deleteOne method 
-> save user 
-> send response , delete me we generally dont send the update user 
-
-*/
 
 const deleteUserAddress = asyncHandler(async (req, res) => {
   const { addressId } = req.params;
@@ -534,8 +469,6 @@ const updateProfile = asyncHandler(async (req, res) => {
 
   const user = await getUserById(req.user._id);
 
-  // Only Update field if it given if undefined or empty then dont
-  // means if firstName present undefined ya "" trim ke baad to falsy value to ye if chalega hi nhi
   if (firstName?.trim()) {
     user.firstName = firstName;
   }
@@ -543,9 +476,6 @@ const updateProfile = asyncHandler(async (req, res) => {
     user.lastName = lastName;
   }
 
-  // First outer check , if dob is not undefined matalb user ne kuch send kiya hai
-  // inner check as str ke form me milega , so usme "  " to nhi hai , if to error do
-  // else update kardo
   if (dob !== undefined) {
     if (typeof dob === "string" && dob.trim()) {
       user.dob = dob;

@@ -147,11 +147,6 @@ const verifyForgotPasswordOTP = asyncHandler(async (req, res) => {
     OTP_PURPOSE.FORGOT_PASSWORD
   );
 
-  // This not needed if wo error throw then yha tak code aayga hi nhi
-  // if (!verificationToken) {
-  //   throw new ApiError(500, "Failed to verify OTP , please try after sometime");
-  // }
-
   return res
     .status(200)
     .cookie("verificationToken", verificationToken, cookieOptions)
@@ -172,7 +167,7 @@ const resendForgotPasswordOTP = asyncHandler(async (req, res) => {
 });
 
 const sendChangeContactNumberOTP = asyncHandler(async (req, res) => {
-  const { mobile } = req.body; // New number needs to be verified
+  const { mobile } = req.body;
   const validMobileNumber = validateMobileNumber(mobile);
 
   const user = await getUserById(req.user._id);
@@ -215,7 +210,7 @@ const verifyChangeContactNumberOTP = asyncHandler(async (req, res) => {
 });
 
 const resendChangeContactNumberOTP = asyncHandler(async (req, res) => {
-  const { mobile } = req.body; // New number needs to be verified
+  const { mobile } = req.body;
   const validMobileNumber = validateMobileNumber(mobile);
 
   const user = await getUserById(req.user._id);

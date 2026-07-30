@@ -9,11 +9,7 @@ import {
 import ApiResponse from "../utils/ApiResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
 
-/* ================================
-   Get Wishlist
-================================ */
-
-export const getWishlistController = asyncHandler(async (req, res) => {
+const getWishlistController = asyncHandler(async (req, res) => {
   const wishlist = await getWishlist(req.user._id);
 
   return res.status(200).json(
@@ -27,11 +23,7 @@ export const getWishlistController = asyncHandler(async (req, res) => {
   );
 });
 
-/* ================================
-   Add To Wishlist
-================================ */
-
-export const addToWishlistController = asyncHandler(async (req, res) => {
+const addToWishlistController = asyncHandler(async (req, res) => {
   const { foodId } = req.params;
 
   const wishlist = await addToWishlist(req.user._id, foodId);
@@ -47,11 +39,7 @@ export const addToWishlistController = asyncHandler(async (req, res) => {
   );
 });
 
-/* ================================
-   Remove From Wishlist
-================================ */
-
-export const removeFromWishlistController = asyncHandler(async (req, res) => {
+const removeFromWishlistController = asyncHandler(async (req, res) => {
   const { foodId } = req.params;
 
   const wishlist = await removeFromWishlist(req.user._id, foodId);
@@ -66,3 +54,9 @@ export const removeFromWishlistController = asyncHandler(async (req, res) => {
     )
   );
 });
+
+export {
+  addToWishlistController,
+  getWishlistController,
+  removeFromWishlistController,
+};

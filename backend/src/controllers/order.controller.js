@@ -18,11 +18,7 @@ import {
 
 import { ORDER_MESSAGES } from "../constants/messages.constants.js";
 
-/* -------------------------------------------------------------------------- */
-/*                               Place Order                                  */
-/* -------------------------------------------------------------------------- */
-
-export const placeOrder = asyncHandler(async (req, res) => {
+const placeOrder = asyncHandler(async (req, res) => {
   const { items, deliveryAddress } = req.body;
 
   validatePlaceOrder({
@@ -47,11 +43,7 @@ export const placeOrder = asyncHandler(async (req, res) => {
     );
 });
 
-/* -------------------------------------------------------------------------- */
-/*                               Verify Order                                 */
-/* -------------------------------------------------------------------------- */
-
-export const verifyOrder = asyncHandler(async (req, res) => {
+const verifyOrder = asyncHandler(async (req, res) => {
   const { orderId } = req.query;
 
   validateVerifyOrder(orderId);
@@ -65,11 +57,7 @@ export const verifyOrder = asyncHandler(async (req, res) => {
     );
 });
 
-/* -------------------------------------------------------------------------- */
-/*                              Get My Orders                                 */
-/* -------------------------------------------------------------------------- */
-
-export const getMyOrders = asyncHandler(async (req, res) => {
+const getMyOrders = asyncHandler(async (req, res) => {
   const orders = await getMyOrdersService(req.user._id);
 
   return res
@@ -79,11 +67,7 @@ export const getMyOrders = asyncHandler(async (req, res) => {
     );
 });
 
-/* -------------------------------------------------------------------------- */
-/*                             Get All Orders                                 */
-/* -------------------------------------------------------------------------- */
-
-export const getAllOrders = asyncHandler(async (req, res) => {
+const getAllOrders = asyncHandler(async (req, res) => {
   const orders = await getAllOrdersService();
 
   return res
@@ -97,11 +81,7 @@ export const getAllOrders = asyncHandler(async (req, res) => {
     );
 });
 
-/* -------------------------------------------------------------------------- */
-/*                           Update Order Status                              */
-/* -------------------------------------------------------------------------- */
-
-export const updateOrderStatus = asyncHandler(async (req, res) => {
+const updateOrderStatus = asyncHandler(async (req, res) => {
   const { orderId } = req.params;
   const { orderStatus } = req.body;
 
@@ -124,12 +104,17 @@ export const updateOrderStatus = asyncHandler(async (req, res) => {
     );
 });
 
-/* -------------------------------------------------------------------------- */
-/*                             Stripe Webhook                                 */
-/* -------------------------------------------------------------------------- */
-
-export const stripeWebhook = asyncHandler(async (req, res) => {
+const stripeWebhook = asyncHandler(async (req, res) => {
   await stripeWebhookService(req);
 
   return res.status(200).json({ received: true });
 });
+
+export {
+  getAllOrders,
+  getMyOrders,
+  placeOrder,
+  stripeWebhook,
+  updateOrderStatus,
+  verifyOrder,
+};

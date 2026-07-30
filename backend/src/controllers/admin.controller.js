@@ -17,15 +17,6 @@ import { clearAuthCookies, setAuthCookies } from "../utils/cookie.util.js";
 // Auth Controller
 
 // Login Admin
-
-/* 
-  firstName: "Admin-1",
-    email: "admin@gmail.com",
-    username: "admin1",
-    mobile: "9305217572",
-    password: "Admin@123",
-    role: "admin",
-*/
 const loginAdmin = asyncHandler(async (req, res) => {
   const { email, username, password } = req.body;
 
@@ -73,7 +64,6 @@ const logoutAdmin = asyncHandler(async (req, res) => {
 
 // Get All Users
 const getAllUsers = asyncHandler(async (req, res) => {
-  // const users = await User.find({ role: "customer" });
   const users = await User.find({
     role: { $ne: ROLES.ADMIN },
   }).select("-password -refreshToken");
@@ -86,7 +76,6 @@ const getAllUsers = asyncHandler(async (req, res) => {
 });
 
 // Dashboard
-
 const getDashboard = asyncHandler(async (req, res) => {
   const dashboard = await getDashboardData();
 
@@ -100,4 +89,5 @@ const getDashboard = asyncHandler(async (req, res) => {
       )
     );
 });
+
 export { getAllUsers, getDashboard, loginAdmin, logoutAdmin };
