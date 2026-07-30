@@ -82,10 +82,6 @@ import menu_6 from "../assets/menu/menu_6.png";
 import menu_7 from "../assets/menu/menu_7.png";
 import menu_8 from "../assets/menu/menu_8.png";
 
-// Food Images
-
-// // Export menu with data , name
-
 export const menu_list = [
   {
     menu_name: "salad",

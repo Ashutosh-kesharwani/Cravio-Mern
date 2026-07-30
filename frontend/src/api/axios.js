@@ -5,23 +5,6 @@ import {
 } from "../constants/api.constants.js";
 import { AUTH_EXCLUDED_ROUTES } from "../constants/auth.constants.js";
 
-/*
-|--------------------------------------------------------------------------
-| Axios Response Interceptor
-|--------------------------------------------------------------------------
-|
-| Responsibilities:
-| - Automatically refresh expired access tokens.
-| - Retry the original request after a successful refresh.
-| - Logout the user if the refresh token is also invalid/expired.
-|
-| Note:
-| This interceptor only handles authentication (401).
-| Other errors (400, 403, 404, 500, Network) are handled
-| by the respective hooks/components.
-|
-*/
-
 const api = axios.create({
   baseURL: API_BASE_URL,
   withCredentials: true,

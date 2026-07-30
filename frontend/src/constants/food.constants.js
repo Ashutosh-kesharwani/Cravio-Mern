@@ -1,5 +1,3 @@
-// src/constants/food.constants.js
-
 export const FOOD_CATEGORIES = [
   "Salad",
   "Rolls",
