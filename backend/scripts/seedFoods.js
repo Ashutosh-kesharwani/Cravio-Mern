@@ -243,15 +243,15 @@ async function seedFoods() {
   try {
     await connectDB();
 
-    console.log("🚀 Seeding foods...");
+    console.log(" Seeding foods...");
 
     await Food.deleteMany({});
-    console.log("🗑 Existing foods deleted.");
+    console.log("Existing foods deleted.");
 
     for (let i = 0; i < foods.length; i++) {
       const imagePath = path.join(FOOD_IMAGES_PATH, `food_${i + 1}.png`);
 
-      console.log(`⬆ Uploading food_${i + 1}.png`);
+      console.log(` Uploading food_${i + 1}.png`);
 
       const image = await uploadImage(imagePath);
 
@@ -266,10 +266,10 @@ async function seedFoods() {
         },
       });
 
-      console.log(`✅ ${foods[i].name} inserted`);
+      console.log(`${foods[i].name} inserted`);
     }
 
-    console.log("\n🎉 All foods inserted successfully.");
+    console.log("\n All foods inserted successfully.");
 
     await mongoose.disconnect();
     process.exit(0);
