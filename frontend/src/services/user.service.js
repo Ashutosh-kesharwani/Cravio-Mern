@@ -1,9 +1,5 @@
 import api from "../api/axios.js";
 
-/* ==========================================
-   Profile
-========================================== */
-
 export const updateProfile = async (payload) => {
   const response = await api.patch("/users/profile", payload);
 
@@ -34,10 +30,6 @@ export const updateContactNumber = async (payload) => {
   return response.data;
 };
 
-/* ==========================================
-   Avatar
-========================================== */
-
 export const uploadAvatar = async (avatarFile) => {
   const formData = new FormData();
 
@@ -64,9 +56,6 @@ export const deleteAvatar = async () => {
   return response.data;
 };
 
-/* ==========================================
-   Address
-========================================== */
 export const addAddress = async (payload) => {
   const response = await api.post("/users/address", {
     address: payload,
