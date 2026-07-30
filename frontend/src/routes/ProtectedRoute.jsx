@@ -35,35 +35,3 @@ const ProtectedRoute = () => {
 };
 
 export default ProtectedRoute;
-
-/*
-|--------------------------------------------------------------------------
-| Protected Route
-|--------------------------------------------------------------------------
-|
-| Purpose:
-| Protects routes that require an authenticated user.
-|
-| Example:
-| - /cart
-| - /wishlist
-| - /orders
-| - /me
-|
-| Why is this needed?
-|
-| Although the Navbar already checks authentication before navigating,
-| users can still manually access protected URLs such as:
-|
-|     http://localhost:5173/cart
-|
-| Without this component, those pages would be accessible simply by
-| entering the URL in the browser.
-|
-| If the user is not authenticated:
-| - Redirect to the Home page.
-| - Preserve the attempted route using React Router state so that,
-|   after a successful login, the application can optionally navigate
-|   the user back to the originally requested page.
-|
-*/
