@@ -2,11 +2,7 @@ import { ORDER_MESSAGES } from "../constants/messages.constants.js";
 import { ORDER_STATUS_LIST } from "../constants/order.constants.js";
 import ApiError from "../utils/ApiError.js";
 
-/* -------------------------------------------------------------------------- */
-/*                             Place Order Validator                          */
-/* -------------------------------------------------------------------------- */
-
-export const validatePlaceOrder = ({ items, deliveryAddress }) => {
+const validatePlaceOrder = ({ items, deliveryAddress }) => {
   if (!Array.isArray(items) || items.length === 0) {
     throw new ApiError(400, ORDER_MESSAGES.CART_EMPTY);
   }
@@ -39,21 +35,13 @@ export const validatePlaceOrder = ({ items, deliveryAddress }) => {
   }
 };
 
-/* -------------------------------------------------------------------------- */
-/*                           Verify Order Validator                           */
-/* -------------------------------------------------------------------------- */
-
-export const validateVerifyOrder = (orderId) => {
+const validateVerifyOrder = (orderId) => {
   if (!orderId?.trim()) {
     throw new ApiError(400, ORDER_MESSAGES.ORDER_ID_REQUIRED);
   }
 };
 
-/* -------------------------------------------------------------------------- */
-/*                       Update Order Status Validator                        */
-/* -------------------------------------------------------------------------- */
-
-export const validateOrderStatus = (orderStatus) => {
+const validateOrderStatus = (orderStatus) => {
   console.log(orderStatus);
 
   if (!orderStatus?.trim()) {
@@ -64,3 +52,5 @@ export const validateOrderStatus = (orderStatus) => {
     throw new ApiError(400, ORDER_MESSAGES.INVALID_ORDER_STATUS);
   }
 };
+
+export { validateOrderStatus, validatePlaceOrder, validateVerifyOrder };
