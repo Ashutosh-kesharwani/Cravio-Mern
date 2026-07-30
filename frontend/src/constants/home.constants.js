@@ -19,7 +19,7 @@ export const heroFoods = [
     id: 2,
     title: "Classic Burger",
     subtitle:
-      "Juicy grilled beef patty layered with cheddar cheese, lettuce, tomatoes & signature sauce.",
+      "Juicy grilled patty layered with cheddar cheese, lettuce, tomatoes & signature sauce.",
     image: burger,
     rating: 4.8,
     delivery: "18 min",
@@ -69,5 +69,54 @@ export const heroFoods = [
     discount: "10% OFF",
     category: "Sushi",
     accentColor: "#14B8A6",
+  },
+];
+
+// Menu Images
+import menu_1 from "../assets/menu/menu_1.png";
+import menu_2 from "../assets/menu/menu_2.png";
+import menu_3 from "../assets/menu/menu_3.png";
+import menu_4 from "../assets/menu/menu_4.png";
+import menu_5 from "../assets/menu/menu_5.png";
+import menu_6 from "../assets/menu/menu_6.png";
+import menu_7 from "../assets/menu/menu_7.png";
+import menu_8 from "../assets/menu/menu_8.png";
+
+// Food Images
+
+// // Export menu with data , name
+
+export const menu_list = [
+  {
+    menu_name: "salad",
+    menu_image: menu_1,
+  },
+  {
+    menu_name: "rolls",
+    menu_image: menu_2,
+  },
+  {
+    menu_name: "desserts",
+    menu_image: menu_3,
+  },
+  {
+    menu_name: "sandwich",
+    menu_image: menu_4,
+  },
+  {
+    menu_name: "cake",
+    menu_image: menu_5,
+  },
+  {
+    menu_name: "pure veg",
+    menu_image: menu_6,
+  },
+  {
+    menu_name: "pasta",
+    menu_image: menu_7,
+  },
+  {
+    menu_name: "noodles",
+    menu_image: menu_8,
   },
 ];
