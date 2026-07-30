@@ -3,6 +3,7 @@ export const AUTH_MESSAGES = {
   REGISTER_SUCCESS: "Account created successfully.",
   USER_ALREADY_EXISTS: "An account with the provided details already exists.",
   REGISTER_FAILED: "Failed to register user. Please try again later.",
+
   // Login
   LOGIN_SUCCESS: "Logged in successfully.",
   INVALID_CREDENTIALS: "Invalid email, username, mobile number, or password.",
@@ -26,8 +27,8 @@ export const AUTH_MESSAGES = {
   INVALID_REFRESH_TOKEN: "Your session is invalid. Please log in again.",
   REFRESH_TOKEN_EXPIRED: "Your session has expired. Please log in again.",
 
+  // Access Token
   INVALID_ACCESS_TOKEN: "Your login session is invalid. Please log in again.",
-
   ACCESS_TOKEN_EXPIRED: "Your login session has expired. Please log in again.",
   TOKEN_SERVER_ERROR:
     "Something went wrong while generating authentication tokens",
@@ -86,6 +87,7 @@ export const WISHLIST_MESSAGES = {
 
   WISHLIST_FETCHED: "Wishlist fetched successfully.",
 };
+
 export const ADMIN_MESSAGES = {
   USERS_FETCHED_SUCCESSFULLY: "Users fetched successfully",
   DASHBOARD_FETCHED_SUCCESSFULLY: "Dashboard fetched successfully.",
@@ -179,32 +181,16 @@ export const CART_MESSAGES = {
 };
 
 export const ORDER_MESSAGES = {
-  /* -------------------------------------------------------------------------- */
-  /* Validation */
-  /* -------------------------------------------------------------------------- */
-
   CART_EMPTY: "Your cart is empty.",
   DELIVERY_ADDRESS_REQUIRED: "Delivery address is required.",
   ORDER_ID_REQUIRED: "Order ID is required.",
   ORDER_STATUS_REQUIRED: "Order status is required.",
   INVALID_ORDER_STATUS: "Invalid order status.",
 
-  /* -------------------------------------------------------------------------- */
-  /* Resources */
-  /* -------------------------------------------------------------------------- */
-
   ORDER_NOT_FOUND: "Order not found.",
   FOOD_NOT_FOUND: "Food item not found.",
 
-  /* -------------------------------------------------------------------------- */
-  /* Authorization */
-  /* -------------------------------------------------------------------------- */
-
   ORDER_ACCESS_DENIED: "You are not authorized to access this order.",
-
-  /* -------------------------------------------------------------------------- */
-  /* Success */
-  /* -------------------------------------------------------------------------- */
 
   ORDER_CREATED_SUCCESSFULLY: "Order placed successfully.",
   ORDER_VERIFIED_SUCCESSFULLY: "Order verified successfully.",
@@ -214,18 +200,10 @@ export const ORDER_MESSAGES = {
   CHECKOUT_SESSION_CREATED_SUCCESSFULLY:
     "Checkout session created successfully.",
 
-  /* -------------------------------------------------------------------------- */
-  /* Payment */
-  /* -------------------------------------------------------------------------- */
-
   PAYMENT_SUCCESSFUL: "Payment completed successfully.",
   PAYMENT_FAILED: "Payment failed.",
   PAYMENT_PENDING: "Payment is pending.",
   CHECKOUT_SESSION_EXPIRED: "Checkout session has expired.",
-
-  /* -------------------------------------------------------------------------- */
-  /* Webhook */
-  /* -------------------------------------------------------------------------- */
 
   WEBHOOK_ALREADY_PROCESSED: "Webhook event has already been processed.",
   WEBHOOK_SIGNATURE_VERIFICATION_FAILED:
