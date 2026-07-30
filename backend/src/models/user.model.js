@@ -166,12 +166,6 @@ const userSchema = new mongoose.Schema(
   {
     timestamps: true,
     id: false,
-    toJSON: {
-      virtuals: true,
-    },
-    toObject: {
-      virtuals: true,
-    },
   }
 );
 
@@ -215,11 +209,6 @@ userSchema.methods.generateRefreshToken = function () {
     }
   );
 };
-
-// Virtuals
-userSchema.virtual("fullName").get(function () {
-  return `${this.firstName} ${this.lastName}`;
-});
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);
 export default User;

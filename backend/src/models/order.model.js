@@ -9,10 +9,6 @@ import {
   PAYMENT_STATUS_LIST,
 } from "../constants/order.constants.js";
 
-/* -------------------------------------------------------------------------- */
-/*                              Order Item Schema                             */
-/* -------------------------------------------------------------------------- */
-
 const orderItemSchema = new mongoose.Schema(
   {
     food: {
@@ -53,10 +49,6 @@ const orderItemSchema = new mongoose.Schema(
     _id: false,
   }
 );
-
-/* -------------------------------------------------------------------------- */
-/*                            Delivery Address Schema                         */
-/* -------------------------------------------------------------------------- */
 
 const deliveryAddressSchema = new mongoose.Schema(
   {
@@ -119,10 +111,6 @@ const deliveryAddressSchema = new mongoose.Schema(
     _id: false,
   }
 );
-
-/* -------------------------------------------------------------------------- */
-/*                                Order Schema                                */
-/* -------------------------------------------------------------------------- */
 
 const orderSchema = new mongoose.Schema(
   {
@@ -189,10 +177,6 @@ const orderSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-
-/* -------------------------------------------------------------------------- */
-/*                                   Indexes                                  */
-/* -------------------------------------------------------------------------- */
 
 orderSchema.index({
   user: 1,
