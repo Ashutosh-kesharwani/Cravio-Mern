@@ -13,7 +13,7 @@ process.on("uncaughtException", (error) => {
 
 // Unhandled Promise Rejections [Asynchronous Error]
 process.on("unhandledRejection", (error) => {
-  console.log(`Unhandled Rejection :: ${error}`);
+  console.error(`Unhandled Rejection :: ${error}`);
   process.exit(1);
 });
 
@@ -28,7 +28,7 @@ connectDB()
   .then(() => {
     // Express App error
     app.on("error", (error) => {
-      console.log(`Express :: ERROR :: ${error}`);
+      console.error(`Express :: ERROR :: ${error}`);
       process.exit(1);
     });
 
@@ -39,11 +39,11 @@ connectDB()
 
     //  Server error
     server.on("error", (error) => {
-      console.log(`SERVER :: ERROR :: ${error}`);
+      console.error(`SERVER :: ERROR :: ${error}`);
       process.exit(1);
     });
   })
   .catch((error) => {
-    console.log(`DB CONNECTION ERROR :: ${error} `);
+    console.error(`DB CONNECTION ERROR :: ${error} `);
     process.exit(1);
   });

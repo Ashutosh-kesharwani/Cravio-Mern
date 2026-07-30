@@ -42,8 +42,6 @@ const validateVerifyOrder = (orderId) => {
 };
 
 const validateOrderStatus = (orderStatus) => {
-  console.log(orderStatus);
-
   if (!orderStatus?.trim()) {
     throw new ApiError(400, ORDER_MESSAGES.ORDER_ID_REQUIRED);
   }

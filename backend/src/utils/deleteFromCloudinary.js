@@ -8,7 +8,7 @@ const deleteFromCloudinary = async (publicId) => {
     const response = await cloudinary.uploader.destroy(publicId);
     return response;
   } catch (error) {
-    console.log(`deleteFromCloudinary :: Error :: ${error}`);
+    console.error(`deleteFromCloudinary :: Error :: ${error}`);
     throw new ApiError(500, FILE_MESSAGES.IMAGE_DELETE_FAILED);
   }
 };

@@ -20,7 +20,6 @@ const placeOrderService = async ({ user, items, deliveryAddress }) => {
   const orderItems = [];
 
   const stripeLineItems = [];
-  console.log(items);
 
   for (const item of items) {
     const food = await Food.findById(item.food?._id);

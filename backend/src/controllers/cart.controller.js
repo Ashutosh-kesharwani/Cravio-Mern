@@ -20,7 +20,6 @@ const getCart = asyncHandler(async (req, res) => {
 });
 
 const addToCart = asyncHandler(async (req, res) => {
-  console.log(req.body);
   const { foodId } = req.body;
 
   const cart = await addItemToCart(req.user._id, foodId);

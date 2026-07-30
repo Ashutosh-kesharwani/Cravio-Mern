@@ -17,7 +17,7 @@ const uploadOnCloudinary = async (localFilePath) => {
     return response;
   } catch (error) {
     fs.unlinkSync(localFilePath);
-    console.log(`uploadOnCloudinary :: Error :: ${error}`);
+    console.error(`uploadOnCloudinary :: Error :: ${error}`);
     throw new ApiError(500, FILE_MESSAGES.IMAGE_UPLOAD_FAILED);
   }
 };
