@@ -1,0 +1,196 @@
+/* ==========================================
+   Food List
+========================================== */
+
+.food-list {
+  width: 100%;
+}
+
+/* ==========================================
+   Table Wrapper
+========================================== */
+
+.food-table {
+  width: 100%;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: var(--radius-2xl);
+
+  overflow: hidden;
+
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================
+   Table Head
+========================================== */
+
+.food-table__head,
+.food-table__row {
+  display: grid;
+
+  grid-template-columns: 90px minmax(180px, 2fr) minmax(140px, 1.5fr) 120px 80px;
+
+  align-items: center;
+
+  gap: var(--space-lg);
+
+  padding: var(--space-lg);
+}
+
+.food-table__head {
+  background: var(--surface-secondary);
+
+  border-bottom: 1px solid var(--border-color);
+
+  font-weight: 700;
+
+  color: var(--text-primary);
+}
+
+/* ==========================================
+   Rows
+========================================== */
+
+.food-table__row {
+  border-bottom: 1px solid var(--border-color);
+
+  transition: var(--transition-normal);
+}
+
+.food-table__row:last-child {
+  border-bottom: none;
+}
+
+.food-table__row:hover {
+  background: rgba(255, 107, 53, 0.03);
+}
+
+.food-table__row img {
+  width: 64px;
+  height: 64px;
+
+  object-fit: cover;
+
+  border-radius: var(--radius-lg);
+
+  flex-shrink: 0;
+}
+
+.food-table__row p {
+  color: var(--text-primary);
+
+  word-break: break-word;
+}
+
+/* ==========================================
+   Action Button
+========================================== */
+
+.food-table__row button {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: rgba(239, 68, 68, 0.12);
+
+  color: var(--danger-color);
+
+  transition: var(--transition-normal);
+}
+
+.food-table__row button:hover:not(:disabled) {
+  background: var(--danger-color);
+
+  color: #fff;
+
+  transform: scale(1.05);
+}
+
+.food-table__row button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   Empty State
+========================================== */
+
+.food-table__empty {
+  padding: var(--space-2xl);
+
+  text-align: center;
+
+  color: var(--text-secondary);
+}
+
+/* ==========================================
+   Laptop
+========================================== */
+
+@media (max-width: 1200px) {
+  .food-table__head,
+  .food-table__row {
+    gap: var(--space-md);
+  }
+}
+
+/* ==========================================
+   Tablet
+========================================== */
+
+@media (max-width: 992px) {
+  .food-table {
+    overflow-x: auto;
+  }
+
+  .food-table__head,
+  .food-table__row {
+    min-width: 760px;
+  }
+}
+
+/* ==========================================
+   Mobile
+========================================== */
+
+@media (max-width: 768px) {
+  .food-list__header {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .food-list__heading h2 {
+    font-size: 1.5rem;
+  }
+
+  .food-table__head,
+  .food-table__row {
+    padding: var(--space-md);
+  }
+
+  .food-table__row img {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+/* ==========================================
+   Small Mobile
+========================================== */
+
+@media (max-width: 480px) {
+  .food-list__heading h2 {
+    font-size: 1.35rem;
+  }
+}

@@ -91,6 +91,7 @@ const LoginForm = () => {
             placeholder="Enter your password"
             autoComplete="current-password"
             required
+            showStrength={false}
           />
         </>
       )}
@@ -117,6 +118,7 @@ const LoginForm = () => {
             placeholder="Enter your password"
             autoComplete="current-password"
             required
+            showStrength={false}
           />
         </>
       )}
@@ -184,6 +186,7 @@ const LoginForm = () => {
                   placeholder="Enter your password"
                   autoComplete="current-password"
                   required
+                  showStrength={false}
                 />
               )}
             </>

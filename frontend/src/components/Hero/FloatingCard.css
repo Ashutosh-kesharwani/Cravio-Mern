@@ -5,21 +5,21 @@
 
   align-items: center;
 
-  gap: 14px;
+  gap: var(--space-sm);
 
   min-width: 180px;
 
-  padding: 14px 18px;
+  padding: var(--space-sm) var(--space-md);
 
   border-radius: var(--radius-lg);
 
-  background: rgba(255, 255, 255, 0.72);
+  background: var(--glass-bg);
 
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(var(--glass-blur));
 
   -webkit-backdrop-filter: blur(18px);
 
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid var(--glass-border);
 
   box-shadow: var(--shadow-lg);
 
@@ -27,7 +27,7 @@
     cardAppear 0.5s ease,
     floatingCard 4s ease-in-out infinite;
 
-  transition: all 0.35s ease;
+  transition: var(--transition-normal);
 
   z-index: 10;
 }
@@ -39,19 +39,18 @@
 }
 
 .floating-card:hover {
-  transform: translateY(-8px) scale(1.04);
-
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
+  transform: var(--card-hover) scale(1.04);
+  box-shadow: var(--shadow-hover);
 }
 
 .floating-card__icon {
-  width: 48px;
+  width: var(--floating-icon-size);
 
-  height: 48px;
+  height: var(--floating-icon-size);
 
   border-radius: 50%;
 
-  background: rgba(255, 107, 53, 0.12);
+  background: var(--primary-light);
 
   display: flex;
 
@@ -83,7 +82,7 @@
 
   color: var(--text-secondary);
 
-  margin-top: 2px;
+  margin-top: var(--space-xs);
 }
 
 @keyframes floatingCard {

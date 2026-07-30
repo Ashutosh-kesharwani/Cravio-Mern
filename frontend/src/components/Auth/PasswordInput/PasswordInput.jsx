@@ -14,6 +14,7 @@ const PasswordInput = ({
   required = false,
   disabled = false,
   autoComplete = "off",
+  showStrength = true,
   error,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -60,7 +61,7 @@ const PasswordInput = ({
       </div>
 
       {error && <p className="password-input__error">{error}</p>}
-      {value && (
+      {showStrength && value && (
         <>
           <div className="password-strength">
             <div

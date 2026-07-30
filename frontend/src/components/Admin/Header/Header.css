@@ -1,0 +1,239 @@
+/* ==========================================
+   Header
+========================================== */
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: var(--space-xl);
+
+  padding: 24px 32px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: var(--radius-2xl);
+
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================
+   Left
+========================================== */
+
+.admin-header__left {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-header__badge {
+  width: fit-content;
+
+  padding: 6px 14px;
+
+  margin-bottom: 14px;
+
+  border-radius: 999px;
+
+  background: var(--admin-badge-bg);
+
+  color: var(--primary-color);
+
+  font-size: 0.78rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+.admin-header__title {
+  font-size: 2rem;
+
+  font-weight: 800;
+
+  color: var(--text-primary);
+
+  line-height: 1.2;
+}
+
+.admin-header__subtitle {
+  margin-top: 8px;
+
+  color: var(--text-secondary);
+
+  font-size: 0.95rem;
+
+  line-height: 1.6;
+}
+
+/* ==========================================
+   Right
+========================================== */
+
+.admin-header__right {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+}
+
+/* ==========================================
+   Date
+========================================== */
+
+.admin-header__date {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px 18px;
+
+  background: var(--surface-secondary);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: var(--radius-xl);
+
+  color: var(--text-secondary);
+
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* ==========================================
+   Profile
+========================================== */
+
+.admin-header__profile {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 8px 12px;
+
+  background: var(--surface-secondary);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: var(--radius-xl);
+}
+
+.admin-header__avatar {
+  width: 54px;
+  height: 54px;
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  background: var(--primary-color);
+  color: var(--text-on-primary);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.1rem;
+
+  font-weight: 700;
+
+  flex-shrink: 0;
+}
+
+.admin-header__avatar img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.admin-header__user h4 {
+  font-size: 1rem;
+
+  font-weight: 700;
+
+  color: var(--text-primary);
+}
+
+.admin-header__user span {
+  margin-top: 2px;
+
+  display: block;
+
+  font-size: 0.85rem;
+
+  color: var(--text-secondary);
+}
+
+/* ==========================================
+   Laptop
+========================================== */
+
+@media (max-width: 1200px) {
+  .admin-header {
+    padding: 20px 24px;
+  }
+
+  .admin-header__title {
+    font-size: 1.75rem;
+  }
+
+  .admin-header__date span {
+    font-size: 0.7rem;
+  }
+}
+
+/* ==========================================
+   Tablet
+========================================== */
+
+@media (max-width: 992px) {
+  .admin-header__user {
+    display: none;
+  }
+
+  .admin-header__date {
+    display: none;
+  }
+}
+
+/* ==========================================
+   Mobile
+========================================== */
+
+@media (max-width: 768px) {
+  .admin-header {
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 20px;
+  }
+
+  .admin-header__left {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .admin-header__date {
+    display: none;
+  }
+
+  .admin-header__title {
+    font-size: 1.5rem;
+  }
+
+  .admin-header__subtitle {
+    font-size: 0.9rem;
+  }
+}

@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 
 import "./Hero.css";
 
-import HeroContent from "./HeroContent";
-import HeroSlider from "./HeroSlider";
+import HeroContent from "./HeroContent.jsx";
+import HeroSlider from "./HeroSlider.jsx";
 
-import { heroFoods } from "../../constants/heroData";
+import { heroFoods } from "../../constants/home.constants.js";
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

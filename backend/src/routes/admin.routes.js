@@ -2,6 +2,7 @@ import { Router } from "express";
 import { ROLES } from "../constants/roles.constants.js";
 import {
   getAllUsers,
+  getDashboard,
   loginAdmin,
   logoutAdmin,
 } from "../controllers/admin.controller.js";
@@ -18,4 +19,7 @@ adminRouter
   .route("/users")
   .get(verifyJWT, verifyRole(ROLES.ADMIN), getAllUsers);
 
+adminRouter
+  .route("/dashboard")
+  .get(verifyJWT, verifyRole(ROLES.ADMIN), getDashboard);
 export default adminRouter;

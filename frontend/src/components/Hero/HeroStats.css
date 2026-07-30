@@ -1,8 +1,8 @@
 .hero-stats {
   display: flex;
-  gap: 40px;
+  gap: var(--space-xl);
 
-  margin-top: 30px;
+  margin-top: var(--space-lg);
 }
 
 .hero-stats__item h3 {
@@ -14,7 +14,7 @@
 }
 
 .hero-stats__item p {
-  margin-top: 6px;
+  margin-top: var(--space-xs);
 
   color: var(--text-secondary);
 }
@@ -24,6 +24,6 @@
 
     flex-wrap: wrap;
 
-    gap: 30px;
+    gap: var(--space-lg);
   }
 }

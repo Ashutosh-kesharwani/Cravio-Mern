@@ -1,9 +1,14 @@
-import { LogOut, Package, Search, ShoppingCart, User } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Heart, LogOut, Package, ShoppingCart, User } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AUTH_MODE } from "../../constants/auth.constants.js";
 import { useAuthStore } from "../../context/authContext.js";
+import useCart from "../../hooks/cart/useCart.js";
+import useWishlist from "../../hooks/wishlist/useWishlist";
+import { navigateToSection } from "../../utils/navigation.js";
 import AuthModal from "../Auth/AuthModal/AuthModal";
+import Brand from "../Shared/Brand/Brand.jsx";
+import ThemeToggle from "../Shared/ThemeToggle/ThemeToggle.jsx";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -11,40 +16,81 @@ const Navbar = () => {
   const { user, isAuthenticated, authLoading, openAuth, logout } =
     useAuthStore();
 
+  const { fetchCart, totalItems, resetCart } = useCart();
+  const { fetchWishlist, wishlist, resetWishlist } = useWishlist();
+
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [avatarError, setAvatarError] = useState(false);
+
+  const profileRef = useRef(null);
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Handle Navigation
   const handleNavigation = (sectionId, menu) => {
     setMenu(menu);
 
-    // Already at home -> scroll to given section
-    if (location.pathname === "/") {
-      document.getElementById(sectionId).scrollIntoView({ behavior: "smooth" });
-    }
-    // Else first navigate to Home -> scroll to section
-    else {
-      navigate("/", { state: { scrollTo: sectionId } });
-    }
+    navigateToSection(sectionId, location, navigate);
   };
 
   useEffect(() => {
     setIsProfileOpen(false);
   }, [isAuthenticated]);
 
+  useEffect(() => {
+    setAvatarError(false);
+  }, [user?.avatar?.url]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchCart();
+      fetchWishlist();
+    }
+  }, [isAuthenticated, fetchWishlist, fetchCart]);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (profileRef.current && !profileRef.current.contains(e.target)) {
+        setIsProfileOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleLogout = async () => {
+    setIsProfileOpen(false);
+    resetCart();
+    resetWishlist();
+    await logout();
+  };
+  const handleCartClick = () => {
+    if (!isAuthenticated) {
+      openAuth(AUTH_MODE.LOGIN);
+
+      return;
+    }
+
+    navigate("/cart");
+  };
+
+  const handleWishlistClick = () => {
+    if (!isAuthenticated) {
+      openAuth(AUTH_MODE.LOGIN);
+      return;
+    }
+
+    navigate("/wishlist");
+  };
+
   return (
     <>
       <header className="navbar">
         <div className="navbar__container app">
-          {/* Logo */}
-
           <Link to="/" className="navbar__logo logo-font">
-            Cra<span>vio</span>
+            <Brand size="md" />
           </Link>
-
-          {/* Navigation */}
 
           <nav className="navbar__nav">
             <Link
@@ -77,22 +123,29 @@ const Navbar = () => {
             </a>
           </nav>
 
-          {/* Right Section */}
-
           <div className="navbar__actions">
-            <button className="navbar__icon-btn" aria-label="Search">
-              <Search size={22} strokeWidth={2.2} />
-            </button>
+            <ThemeToggle />
+            <button
+              className="navbar__icon-btn navbar__wishlist"
+              aria-label="Wishlist"
+              onClick={handleWishlistClick}
+            >
+              <Heart size={22} strokeWidth={2.2} />
 
-            <Link
-              to="/cart"
+              {wishlist.length > 0 && (
+                <span className="navbar__badge">{wishlist.length}</span>
+              )}
+            </button>
+            <button
               className="navbar__icon-btn navbar__cart"
               aria-label="Cart"
+              onClick={handleCartClick}
             >
               <ShoppingCart size={22} strokeWidth={2.2} />
-
-              <span className="navbar__cart-badge"></span>
-            </Link>
+              {totalItems > 0 && (
+                <span className="navbar__badge">{totalItems}</span>
+              )}
+            </button>
 
             {!authLoading &&
               (!isAuthenticated ? (
@@ -103,48 +156,75 @@ const Navbar = () => {
                   Sign In
                 </button>
               ) : (
-                <div className="navbar__profile">
+                <div className="navbar__profile" ref={profileRef}>
                   <button
+                    type="button"
                     className="navbar__profile-btn"
                     onClick={() => setIsProfileOpen((prev) => !prev)}
+                    aria-label="Profile menu"
                   >
-                    {user?.avatar?.url ? (
+                    {user?.avatar?.url && !avatarError ? (
                       <img
                         src={user.avatar.url}
                         alt={user.firstName}
                         className="navbar__avatar"
+                        onError={() => setAvatarError(true)}
                       />
                     ) : (
                       <div className="navbar__avatar-fallback">
-                        <User size={22} strokeWidth={2} />
+                        <User size={22} />
                       </div>
                     )}
                   </button>
-                  {isProfileOpen && (
-                    <div className="navbar__dropdown">
-                      <button className="navbar__dropdown-item">
-                        <Package size={18} />
 
-                        <span>Orders</span>
-                      </button>
+                  <div
+                    className={`navbar__dropdown ${
+                      isProfileOpen ? "navbar__dropdown--open" : ""
+                    }`}
+                  >
+                    <Link
+                      to="/me"
+                      className="navbar__dropdown-item"
+                      onClick={() => setIsProfileOpen(false)}
+                    >
+                      <User size={18} />
+                      <span>My Profile</span>
+                    </Link>
 
-                      <button
-                        className="navbar__dropdown-item"
-                        onClick={logout}
-                      >
-                        <LogOut size={18} />
+                    <Link
+                      to="/my-orders"
+                      className="navbar__dropdown-item"
+                      onClick={() => setIsProfileOpen(false)}
+                    >
+                      <Package size={18} />
+                      <span>My Orders</span>
+                    </Link>
+                    <hr />
 
-                        <span>Logout</span>
-                      </button>
-                    </div>
-                  )}
+                    <Link
+                      to="/wishlist"
+                      className="navbar__dropdown-item"
+                      onClick={() => setIsProfileOpen(false)}
+                    >
+                      <Heart size={18} />
+                      <span>My Wishlist</span>
+                    </Link>
+                    <hr />
+                    <button
+                      type="button"
+                      className="navbar__dropdown-item navbar__dropdown-item--danger"
+                      onClick={handleLogout}
+                    >
+                      <LogOut size={18} />
+                      <span>Logout</span>
+                    </button>
+                  </div>
                 </div>
               ))}
           </div>
         </div>
       </header>
 
-      {/* Place Auth Modal */}
       <AuthModal />
     </>
   );

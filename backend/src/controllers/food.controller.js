@@ -37,7 +37,7 @@ const createFood = asyncHandler(async (req, res) => {
 
   return res
     .status(201)
-    .json(new ApiResponse(201, { food }, FOOD_MESSAGES.FOOD_ADDED));
+    .json(new ApiResponse(201, food, FOOD_MESSAGES.FOOD_ADDED));
 });
 
 const getAllFoods = asyncHandler(async (req, res) => {
@@ -46,7 +46,7 @@ const getAllFoods = asyncHandler(async (req, res) => {
   return res
     .status(200)
     .json(
-      new ApiResponse(200, { foods }, FOOD_MESSAGES.FOODS_FETCHED_SUCCESSFULLY)
+      new ApiResponse(200, foods, FOOD_MESSAGES.FOODS_FETCHED_SUCCESSFULLY)
     );
 });
 

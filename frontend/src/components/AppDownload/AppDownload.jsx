@@ -5,8 +5,6 @@ const AppDownload = () => {
   return (
     <section className="app-download section app" id="app-download">
       <div className="app-download__container">
-        <span className="section-badge">Mobile App</span>
-
         <h2 className="app-download__title">
           Download the <span>Cravio App</span>
         </h2>

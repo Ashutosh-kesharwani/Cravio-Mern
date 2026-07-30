@@ -1,12 +1,10 @@
-import { menu_list } from "../../assets/assets.js";
+import { menu_list } from "../../constants/home.constants.js";
 import "./ExploreMenu.css";
 
 const ExploreMenu = ({ category, setCategory }) => {
   return (
     <section className="explore-menu section app" id="explore-menu">
       <div className="explore-menu__header">
-        <span className="section-badge">Explore</span>
-
         <h2 className="section-title">Explore Our Menu</h2>
         <p className="section-description">
           Discover freshly prepared dishes crafted with premium ingredients.

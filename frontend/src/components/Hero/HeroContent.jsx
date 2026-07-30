@@ -2,13 +2,14 @@ import "./HeroContent.css";
 
 import { ArrowRight, Play, Star } from "lucide-react";
 
+import { useNavigate } from "react-router-dom";
+import { navigateToSection } from "../../utils/navigation.js";
 import HeroStats from "./HeroStats";
 
 const HeroContent = ({ currentFood }) => {
+  const navigate = useNavigate();
   return (
     <div className="hero-content">
-      {/* Badge */}
-
       <div className="hero-content__badge">
         <span className="hero-content__badge-dot"></span>
 
@@ -36,7 +37,10 @@ const HeroContent = ({ currentFood }) => {
       {/* Buttons */}
 
       <div className="hero-content__actions">
-        <button className="btn btn--primary">
+        <button
+          className="btn btn--primary"
+          onClick={() => navigateToSection("explore-menu", location, navigate)}
+        >
           Order Now
           <ArrowRight size={18} />
         </button>

@@ -4,7 +4,11 @@ import {
 } from "../constants/messages.constants.js";
 import { ROLES } from "../constants/roles.constants.js";
 import User from "../models/user.model.js";
-import { getExistingAdmin, getSafeAdmin } from "../services/admin.service.js";
+import {
+  getDashboardData,
+  getExistingAdmin,
+  getSafeAdmin,
+} from "../services/admin.service.js";
 import { generateAccessAndRefreshToken } from "../services/auth.service.js";
 import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResponse.js";
@@ -81,4 +85,19 @@ const getAllUsers = asyncHandler(async (req, res) => {
     );
 });
 
-export { getAllUsers, loginAdmin, logoutAdmin };
+// Dashboard
+
+const getDashboard = asyncHandler(async (req, res) => {
+  const dashboard = await getDashboardData();
+
+  return res
+    .status(200)
+    .json(
+      new ApiResponse(
+        200,
+        dashboard,
+        ADMIN_MESSAGES.DASHBOARD_FETCHED_SUCCESSFULLY
+      )
+    );
+});
+export { getAllUsers, getDashboard, loginAdmin, logoutAdmin };

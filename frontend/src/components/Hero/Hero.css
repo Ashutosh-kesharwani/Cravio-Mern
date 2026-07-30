@@ -1,18 +1,10 @@
-/* ===========================================
-   HERO SECTION
-=========================================== */
-
 .hero {
   position: relative;
 
   overflow: hidden;
 
-  padding: 6rem 0;
+  padding: var(--space-xl) 0;
 }
-
-/* ===========================================
-   CONTAINER
-=========================================== */
 
 .hero__container {
   display: grid;
@@ -21,25 +13,17 @@
 
   align-items: center;
 
-  gap: 5rem;
+  gap: var(--hero-gap);
 
   min-height: calc(100vh - 90px);
 }
 
-/* ===========================================
-   RESPONSIVE
-=========================================== */
-
 @media (max-width: 1100px) {
   .hero__container {
-    gap: 3rem;
+    gap: var(--space-xl);
   }
 }
 @media (max-width: 992px) {
-  .hero {
-    padding: 4rem 0;
-  }
-
   .hero__container {
     grid-template-columns: 1fr;
 
@@ -51,10 +35,10 @@
 
 @media (max-width: 576px) {
   .hero {
-    padding: 3rem 0;
+    padding: calc(var(--space-xl) - var(--space-sm)) 0;
   }
 
   .hero__container {
-    gap: 3rem;
+    gap: var(--space-xl);
   }
 }

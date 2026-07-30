@@ -19,7 +19,11 @@ foodRouter
     imageUpload({ maxSize: 10 }).single("image"),
     createFood
   )
-  .get(verifyJWT, getAllFoods);
+  .get(getAllFoods);
+
+/* 
+Note : Jo route public honge means authentctaed ki jrurat nhu like home page usme jwt mat lgao else , wo data shi se load nhi hoga jaise verifyJWT hai isko mat lgao getAllFoods me as ye home page me hain to ye display hoga bhale user loggedIn ho ya nhi
+*/
 
 foodRouter
   .route("/:foodId")

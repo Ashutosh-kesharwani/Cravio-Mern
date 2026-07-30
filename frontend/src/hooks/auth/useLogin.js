@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 
 import { LOGIN_METHOD } from "../../constants/auth.constants.js";
@@ -129,7 +129,7 @@ const useLogin = () => {
       const response = await loginUser(payload);
 
       toast.success(response.message);
-      login(response.data.user);
+      login(response.data);
 
       setFormData(INITIAL_FORM_DATA);
 
@@ -145,9 +145,6 @@ const useLogin = () => {
     }
   };
 
-  useEffect(() => {
-    console.log({ user });
-  }, [user]);
   return {
     loginMethod,
     formData,

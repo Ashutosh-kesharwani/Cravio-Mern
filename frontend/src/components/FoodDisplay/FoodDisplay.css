@@ -7,10 +7,43 @@
 
   margin-bottom: 4rem;
 }
-
 .food-display__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 
   gap: 2rem;
+
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .food-card__image-wrapper {
+    height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .food-display__grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .food-card__image-wrapper {
+    height: 190px;
+  }
+}
+
+@media (max-width: 480px) {
+  .food-display__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .food-card {
+    max-width: 100%;
+  }
+
+  .food-card__image-wrapper {
+    height: 180px;
+  }
 }

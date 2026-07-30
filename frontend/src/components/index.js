@@ -4,4 +4,5 @@ import FoodDisplay from "./FoodDisplay/FoodDisplay.jsx";
 import Footer from "./Footer/Footer";
 import Hero from "./Hero/Hero.jsx";
 import Navbar from "./Navbar/Navbar";
+
 export { AppDownload, ExploreMenu, FoodDisplay, Footer, Hero, Navbar };

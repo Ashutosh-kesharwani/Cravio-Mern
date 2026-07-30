@@ -23,6 +23,9 @@ app.use(
   })
 );
 
+//  Payment middleware [webhook]
+app.use("/api/v1/orders/webhook", express.raw({ type: "application/json" }));
+
 //2. Json Configuration
 // req -> body -> data must be always send in json
 app.use(
@@ -51,12 +54,18 @@ app.use(cookieParser());
 import adminRouter from "./routes/admin.routes.js";
 import cartRouter from "./routes/cart.routes.js";
 import foodRouter from "./routes/food.routes.js";
+import orderRouter from "./routes/order.routes.js";
 import otpRouter from "./routes/otp.routes.js";
 import userRouter from "./routes/user.routes.js";
-
+import wishlistRouter from "./routes/wishlist.routes.js";
 // Route Setup
 app.use("/api/v1/users", userRouter);
+
+// Otp
 app.use("/api/v1/otp", otpRouter);
+
+// WishList
+app.use("/api/v1/wishlist", wishlistRouter);
 
 // Admin
 app.use("/api/v1/admin", adminRouter);
@@ -66,6 +75,9 @@ app.use("/api/v1/foods", foodRouter);
 
 // Cart
 app.use("/api/v1/carts", cartRouter);
+
+// Orders
+app.use("/api/v1/orders", orderRouter);
 
 // Global-Error Middleware
 app.use(errorHandler);

@@ -1,32 +1,38 @@
 .food-card {
+  width: 100%;
+  max-width: 360px;
+
+  display: flex;
+  flex-direction: column;
+
   background: var(--surface);
 
-  border-radius: 28px;
-
+  border-radius: 24px;
   overflow: hidden;
 
   box-shadow: var(--shadow-md);
 
-  transition: 0.45s ease;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .food-card:hover {
-  transform: translateY(-12px);
-
+  transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
 }
-
 .food-card__image-wrapper {
   position: relative;
 
+  width: 100%;
+  height: 240px;
+
   overflow: hidden;
+
+  background: var(--surface-secondary);
 }
 
 .food-card__body p {
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-
   overflow: hidden;
 
   color: var(--text-secondary);
@@ -40,12 +46,13 @@
 
 .food-card__image {
   width: 100%;
+  height: 100%;
 
-  aspect-ratio: 1.35;
+  display: block;
 
   object-fit: cover;
 
-  transition: 0.6s ease;
+  transition: transform 0.5s ease;
 }
 
 .food-card:hover .food-card__image {
@@ -67,7 +74,7 @@
 
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--glass-bg-light);
 
   backdrop-filter: blur(18px);
 
@@ -91,17 +98,22 @@
 
   border-radius: 999px;
 
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--glass-bg-strong);
 
   backdrop-filter: blur(20px);
 
-  color: #ff9800;
+  color: var(--warning-color);
 
   font-weight: 600;
 }
 
 .food-card__body {
-  padding: 1.5rem;
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 1.4rem;
 }
 
 .food-card__top {
@@ -118,12 +130,16 @@
   font-size: 1.3rem;
 }
 
+.food-card-description {
+  font-size: 0.8rem;
+  white-space: normal;
+}
 .food-card__top span {
   padding: 0.35rem 0.8rem;
 
   border-radius: 999px;
 
-  background: #fff7f3;
+  background: var(--primary-surface);
 
   color: var(--primary-color);
 
@@ -160,6 +176,7 @@
   width: 100%;
 
   border: none;
+  margin-top: auto;
 
   border-radius: 16px;
 
@@ -167,7 +184,7 @@
 
   background: var(--primary-color);
 
-  color: #fff;
+  color: var(--text-on-primary);
 
   display: flex;
 
@@ -203,9 +220,9 @@
 
   border-radius: 16px;
 
-  background: #fff8f4;
+  background: var(--primary-surface-light);
 
-  border: 1px solid rgba(255, 107, 53, 0.15);
+  border: 1px solid var(--primary-border);
 }
 
 .food-card__quantity-btn {
@@ -217,7 +234,7 @@
 
   border-radius: 12px;
 
-  background: #fff;
+  background: var(--surface);
 
   display: flex;
 
@@ -229,7 +246,7 @@
 
   color: var(--text-primary);
 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  background: var(--surface);
 
   transition: 0.25s ease;
 }
@@ -237,13 +254,13 @@
 .food-card__quantity-btn:hover {
   transform: translateY(-2px);
 
-  background: #f7f7f7;
+  background: var(--surface-secondary);
 }
 
 .food-card__quantity-btn--plus {
   background: var(--primary-color);
 
-  color: #fff;
+  color: var(--text-on-primary);
 }
 
 .food-card__quantity-btn--plus:hover {
@@ -266,17 +283,23 @@
 }
 
 .food-card__wishlist {
-  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  transition: 0.35s;
+  color: var(--text-primary);
+
+  transition: all 0.3s ease;
 }
 
-.food-card__wishlist:hover {
-  background: rgb(255, 41, 41);
-  color: white;
-  transform: scale(1.08);
+.food-card__wishlist--active {
+  background: var(--wishlist-active);
+  color: #fff;
 }
 
+.food-card__wishlist--active:hover {
+  --wishlist-active-hover: #ff2d55;
+}
 /* ==========================================
    Large Tablet
 ========================================== */

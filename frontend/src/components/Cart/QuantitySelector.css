@@ -1,0 +1,59 @@
+/* ==========================================
+   Quantity Selector
+========================================== */
+
+.quantity-selector {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.45rem 0.8rem;
+
+  background: var(--surface-secondary);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: var(--radius-round);
+}
+.quantity-selector__btn {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: var(--primary-color);
+
+  color: var(--text-on-primary);
+
+  transition: var(--transition-normal);
+}
+
+.quantity-selector__btn:hover:not(:disabled) {
+  background: var(--primary-hover);
+
+  transform: scale(1.05);
+}
+
+.quantity-selector__btn:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+.quantity-selector__value {
+  flex: 1;
+
+  text-align: center;
+
+  font-size: 1rem;
+
+  font-weight: 700;
+
+  color: var(--text-primary);
+}

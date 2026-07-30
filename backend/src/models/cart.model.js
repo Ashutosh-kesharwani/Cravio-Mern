@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const cartSchema = new mongoose.Schema(
   {
     userId: {
-      type: mongoose.Schema.Type.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
       unique: true,
@@ -11,7 +11,7 @@ const cartSchema = new mongoose.Schema(
     items: [
       {
         food: {
-          type: mongoose.Schema.Type.ObjectId,
+          type: mongoose.Schema.Types.ObjectId,
           ref: "Food",
           required: true,
         },

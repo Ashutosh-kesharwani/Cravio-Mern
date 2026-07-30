@@ -32,3 +32,18 @@ export const LOGIN_METHOD = {
   USERNAME: "username",
   MOBILE: "mobile",
 };
+
+// Routes that should NEVER trigger refresh token flow
+export const AUTH_EXCLUDED_ROUTES = [
+  // User Auth
+  "/users/login",
+  "/users/register",
+  "/users/refresh-token",
+  "/users/forgot-password",
+  "/users/reset-password",
+  "/users/send-otp",
+  "/users/verify-otp",
+  // Admin Auth
+  "/admin/login",
+  "/admin/logout",
+];

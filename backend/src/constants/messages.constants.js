@@ -75,8 +75,20 @@ export const USER_MESSAGES = {
   DOB_REQUIRED: "Date of birth is required.",
 };
 
+export const WISHLIST_MESSAGES = {
+  USER_NOT_FOUND: "User not found.",
+  FOOD_NOT_FOUND: "Food not found.",
+
+  ITEM_ALREADY_EXISTS: "Food is already in your wishlist.",
+  ITEM_ADDED: "Food added to wishlist successfully.",
+
+  ITEM_REMOVED: "Food removed from wishlist successfully.",
+
+  WISHLIST_FETCHED: "Wishlist fetched successfully.",
+};
 export const ADMIN_MESSAGES = {
   USERS_FETCHED_SUCCESSFULLY: "Users fetched successfully",
+  DASHBOARD_FETCHED_SUCCESSFULLY: "Dashboard fetched successfully.",
 };
 
 export const FOOD_MESSAGES = {
@@ -164,6 +176,60 @@ export const CART_MESSAGES = {
   ITEM_NOT_IN_CART: "Item does not exist in cart.",
 
   OUT_OF_STOCK: "Requested quantity is not available.",
+};
+
+export const ORDER_MESSAGES = {
+  /* -------------------------------------------------------------------------- */
+  /* Validation */
+  /* -------------------------------------------------------------------------- */
+
+  CART_EMPTY: "Your cart is empty.",
+  DELIVERY_ADDRESS_REQUIRED: "Delivery address is required.",
+  ORDER_ID_REQUIRED: "Order ID is required.",
+  ORDER_STATUS_REQUIRED: "Order status is required.",
+  INVALID_ORDER_STATUS: "Invalid order status.",
+
+  /* -------------------------------------------------------------------------- */
+  /* Resources */
+  /* -------------------------------------------------------------------------- */
+
+  ORDER_NOT_FOUND: "Order not found.",
+  FOOD_NOT_FOUND: "Food item not found.",
+
+  /* -------------------------------------------------------------------------- */
+  /* Authorization */
+  /* -------------------------------------------------------------------------- */
+
+  ORDER_ACCESS_DENIED: "You are not authorized to access this order.",
+
+  /* -------------------------------------------------------------------------- */
+  /* Success */
+  /* -------------------------------------------------------------------------- */
+
+  ORDER_CREATED_SUCCESSFULLY: "Order placed successfully.",
+  ORDER_VERIFIED_SUCCESSFULLY: "Order verified successfully.",
+  ORDERS_FETCHED_SUCCESSFULLY: "Orders fetched successfully.",
+  ALL_ORDERS_FETCHED_SUCCESSFULLY: "All orders fetched successfully.",
+  ORDER_STATUS_UPDATED_SUCCESSFULLY: "Order status updated successfully.",
+  CHECKOUT_SESSION_CREATED_SUCCESSFULLY:
+    "Checkout session created successfully.",
+
+  /* -------------------------------------------------------------------------- */
+  /* Payment */
+  /* -------------------------------------------------------------------------- */
+
+  PAYMENT_SUCCESSFUL: "Payment completed successfully.",
+  PAYMENT_FAILED: "Payment failed.",
+  PAYMENT_PENDING: "Payment is pending.",
+  CHECKOUT_SESSION_EXPIRED: "Checkout session has expired.",
+
+  /* -------------------------------------------------------------------------- */
+  /* Webhook */
+  /* -------------------------------------------------------------------------- */
+
+  WEBHOOK_ALREADY_PROCESSED: "Webhook event has already been processed.",
+  WEBHOOK_SIGNATURE_VERIFICATION_FAILED:
+    "Webhook signature verification failed.",
 };
 
 export const GENERAL_MESSAGES = {

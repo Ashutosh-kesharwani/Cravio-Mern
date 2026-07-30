@@ -1,6 +1,5 @@
 /* ==========================================================
    CRAVIO DESIGN SYSTEM
-   Global Styles
 ========================================================== */
 
 /* ==========================================================
@@ -14,7 +13,9 @@
 ========================================================== */
 
 :root {
-  /* ---------- Brand Colors ---------- */
+  /* =======================================================
+     BRAND COLORS
+  ======================================================= */
 
   --primary-color: #ff6b35;
   --primary-hover: #f45a24;
@@ -23,7 +24,12 @@
   --warning-color: #f59e0b;
   --danger-color: #ef4444;
 
-  /* ---------- Background ---------- */
+  --wishlist-active: #ff4d6d;
+  --wishlist-active-hover: #ff2d55;
+
+  /* =======================================================
+     BACKGROUND & SURFACES
+  ======================================================= */
 
   --background: #ffffff;
 
@@ -31,7 +37,15 @@
 
   --surface-secondary: #f8f9fb;
 
-  /* ---------- Text ---------- */
+  --primary-surface: #fff7f3;
+
+  --primary-surface-light: #fff8f4;
+
+  --background-light: rgba(255, 107, 53, 0.1);
+
+  /* =======================================================
+     TEXT
+  ======================================================= */
 
   --text-primary: #1f2937;
 
@@ -39,25 +53,35 @@
 
   --text-special: #f45a24;
 
-  /* ---------- Border ---------- */
+  --text-on-primary: #ffffff;
+
+  /* =======================================================
+     BORDERS
+  ======================================================= */
 
   --border-color: #ececec;
 
-  /* ---------- Typography ---------- */
+  --primary-border: rgba(255, 107, 53, 0.15);
 
-  --font-primary: "Plus Jakarta Sans", sans-serif;
+  --primary-border-light: rgba(255, 107, 53, 0.12);
 
-  --font-logo: "Space Grotesk", sans-serif;
+  /* =======================================================
+     GLASS
+  ======================================================= */
 
-  /* ---------- Radius ---------- */
+  --glass-bg: rgba(255, 255, 255, 0.72);
 
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --radius-xl: 24px;
-  --radius-round: 999px;
+  --glass-bg-strong: rgba(255, 255, 255, 0.9);
 
-  /* ---------- Shadows ---------- */
+  --glass-border: rgba(255, 255, 255, 0.35);
+
+  --glass-blur: 18px;
+
+  /* =======================================================
+     SHADOWS
+  ======================================================= */
+
+  --shadow-xs: 0 4px 12px rgba(0, 0, 0, 0.06);
 
   --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
 
@@ -65,22 +89,153 @@
 
   --shadow-lg: 0 18px 45px rgba(0, 0, 0, 0.12);
 
-  /* ---------- Spacing ---------- */
+  --shadow-hover: 0 25px 50px rgba(0, 0, 0, 0.18);
+
+  --primary-shadow: 0 15px 35px rgba(255, 107, 53, 0.18);
+
+  --primary-shadow-light: 0 30px 60px rgba(255, 107, 53, 0.08);
+
+  --primary-hover-shadow: 0 20px 40px rgba(255, 107, 53, 0.15);
+
+  --store-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+  /* =======================================================
+     LIGHT BACKGROUNDS
+  ======================================================= */
+
+  --primary-light: rgba(255, 107, 53, 0.12);
+
+  --success-light: rgba(34, 197, 94, 0.15);
+
+  --warning-light: rgba(245, 158, 11, 0.15);
+
+  --danger-light: rgba(239, 68, 68, 0.15);
+
+  /* =======================================================
+     TYPOGRAPHY
+  ======================================================= */
+
+  --font-primary: "Plus Jakarta Sans", sans-serif;
+
+  --font-logo: "Space Grotesk", sans-serif;
+
+  /* =======================================================
+     BORDER RADIUS
+  ======================================================= */
+
+  --radius-sm: 8px;
+
+  --radius-md: 12px;
+
+  --radius-lg: 18px;
+
+  --radius-xl: 24px;
+
+  --radius-round: 999px;
+
+  /* =======================================================
+     SPACING
+  ======================================================= */
 
   --space-xs: 6px;
+
   --space-sm: 12px;
+
   --space-md: 18px;
+
   --space-lg: 28px;
+
   --space-xl: 40px;
+
   --space-2xl: 64px;
 
-  /* ---------- Layout ---------- */
+  /* =======================================================
+     LAYOUT
+  ======================================================= */
 
   --container-width: min(100%, 1440px);
 
   --navbar-height: 82px;
 
-  /* ---------- Animation ---------- */
+  --dashboard-gap: 24px;
+
+  --card-padding: 24px;
+
+  --chart-height: 340px;
+
+  --stat-icon-size: 60px;
+
+  --hero-gap: 5rem;
+
+  --hero-content-gap: 24px;
+
+  --card-hover: translateY(-6px);
+
+  /* =======================================================
+     STATUS COLORS
+  ======================================================= */
+
+  --status-pending: #f59e0b;
+
+  --status-confirmed: #0b62ed;
+
+  --status-processing: #8b5cf6;
+
+  --status-out-for-delivery: #0ea5e9;
+
+  --status-delivered: #22c55e;
+
+  --status-cancelled: #ef4444;
+
+  /* =======================================================
+     NAVBAR
+  ======================================================= */
+
+  --navbar-background: rgba(255, 255, 255, 0.85);
+
+  --navbar-badge-border: #ffffff;
+
+  --dropdown-surface: var(--surface);
+
+  --dropdown-danger: #dc2626;
+
+  --dropdown-danger-hover: rgba(220, 38, 38, 0.08);
+
+  /* =======================================================
+     FOOTER
+  ======================================================= */
+
+  --footer-background: linear-gradient(180deg, #ffffff, #fff8f4);
+
+  --footer-border: rgba(255, 107, 53, 0.08);
+
+  --footer-divider: rgba(0, 0, 0, 0.06);
+
+  --footer-social-bg: #ffffff;
+
+  --footer-social-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+
+  /* =======================================================
+     DOWNLOAD SECTION
+  ======================================================= */
+
+  --download-background: linear-gradient(135deg, #fff8f4, #ffffff);
+
+  --blob-primary: radial-gradient(
+    circle,
+    rgba(255, 107, 53, 0.12),
+    transparent 70%
+  );
+
+  --blob-warning: radial-gradient(
+    circle,
+    rgba(255, 165, 0, 0.08),
+    transparent 70%
+  );
+
+  /* =======================================================
+     ANIMATION
+  ======================================================= */
 
   --transition-fast: 0.2s ease;
 
@@ -94,30 +249,149 @@
 ========================================================== */
 
 [data-theme="dark"] {
+  /* =======================================================
+     BRAND COLORS
+  ======================================================= */
+
   --primary-color: #ff7a45;
-  --primary-hover: #ff8d5e;
+  --primary-hover: #ff9469;
 
   --success-color: #4ade80;
   --warning-color: #facc15;
   --danger-color: #f87171;
 
-  --background: #101215;
+  --wishlist-active: #ff6b87;
+  --wishlist-active-hover: #ff4f73;
 
-  --surface: #181b20;
+  /* =======================================================
+     BACKGROUND & SURFACES
+  ======================================================= */
 
-  --surface-secondary: #23272f;
+  --background: #121417;
+
+  --surface: #1b1f24;
+
+  --surface-secondary: #242932;
+
+  --primary-surface: rgba(255, 122, 69, 0.12);
+
+  --primary-surface-light: rgba(255, 122, 69, 0.08);
+
+  --background-light: rgba(255, 122, 69, 0.08);
+
+  /* =======================================================
+     TEXT
+  ======================================================= */
 
   --text-primary: #f8fafc;
 
   --text-secondary: #aeb6c2;
 
-  --border-color: #2d323a;
+  --text-special: #ff9469;
 
-  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.25);
+  --text-on-primary: #ffffff;
 
-  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.35);
+  /* =======================================================
+     BORDERS
+  ======================================================= */
 
-  --shadow-lg: 0 20px 45px rgba(0, 0, 0, 0.45);
+  --border-color: #323842;
+
+  --primary-border: rgba(255, 122, 69, 0.2);
+
+  --primary-border-light: rgba(255, 122, 69, 0.18);
+
+  /* =======================================================
+     GLASS
+  ======================================================= */
+
+  --glass-bg: rgba(27, 31, 36, 0.72);
+
+  --glass-bg-strong: rgba(27, 31, 36, 0.9);
+
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  --glass-blur: 18px;
+
+  /* =======================================================
+     SHADOWS
+  ======================================================= */
+
+  --shadow-xs: 0 4px 12px rgba(0, 0, 0, 0.28);
+
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.25);
+
+  --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.35);
+
+  --shadow-lg: 0 24px 50px rgba(0, 0, 0, 0.45);
+
+  --shadow-hover: 0 28px 60px rgba(0, 0, 0, 0.5);
+
+  --primary-shadow: 0 15px 35px rgba(255, 122, 69, 0.28);
+
+  --primary-shadow-light: 0 30px 60px rgba(0, 0, 0, 0.45);
+
+  --primary-hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.55);
+
+  --store-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+
+  /* =======================================================
+     LIGHT BACKGROUNDS
+  ======================================================= */
+
+  --primary-light: rgba(255, 122, 69, 0.12);
+
+  --success-light: rgba(74, 222, 128, 0.15);
+
+  --warning-light: rgba(250, 204, 21, 0.15);
+
+  --danger-light: rgba(248, 113, 113, 0.15);
+
+  /* =======================================================
+     NAVBAR
+  ======================================================= */
+
+  --navbar-background: rgba(18, 20, 23, 0.88);
+
+  --navbar-badge-border: #121417;
+
+  --dropdown-surface: var(--surface);
+
+  --dropdown-danger: #f87171;
+
+  --dropdown-danger-hover: rgba(248, 113, 113, 0.12);
+
+  /* =======================================================
+     FOOTER
+  ======================================================= */
+
+  --footer-background: linear-gradient(180deg, #1b1f24, #242932);
+
+  --footer-border: rgba(255, 122, 69, 0.12);
+
+  --footer-divider: rgba(255, 255, 255, 0.08);
+
+  --footer-social-bg: var(--surface);
+
+  --footer-social-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+
+  /* =======================================================
+     DOWNLOAD SECTION
+  ======================================================= */
+
+  --download-background: linear-gradient(135deg, #1b1f24, #242932);
+
+  --blob-primary: radial-gradient(
+    circle,
+    rgba(255, 122, 69, 0.15),
+    transparent 70%
+  );
+
+  --blob-warning: radial-gradient(
+    circle,
+    rgba(250, 204, 21, 0.08),
+    transparent 70%
+  );
 }
 
 /* ==========================================================
@@ -139,11 +413,11 @@ html {
 body {
   min-height: 100vh;
 
-  background: var(--background);
+  font-family: var(--font-primary);
 
   color: var(--text-primary);
 
-  font-family: var(--font-primary);
+  background: var(--background);
 
   overflow-x: hidden;
 
@@ -151,40 +425,68 @@ body {
 
   text-rendering: optimizeLegibility;
 
-  background: linear-gradient(
-    180deg,
-    #fffaf8 0%,
-
-    #fffdfb 30%,
-
-    #ffffff 60%,
-
-    #fff9f7 100%
-  );
   transition:
     background var(--transition-normal),
     color var(--transition-normal);
 }
 
+[data-theme="light"] body {
+  background: linear-gradient(
+    180deg,
+    #fffaf8 0%,
+    #fffdfb 30%,
+    #ffffff 60%,
+    #fff9f7 100%
+  );
+}
+
+[data-theme="dark"] body {
+  background: linear-gradient(
+    180deg,
+    #121417 0%,
+    #171b20 30%,
+    #1b1f24 60%,
+    #242932 100%
+  );
+}
+
+/* ==========================================================
+   MEDIA
+========================================================== */
+
 img,
-picture {
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
+
+/* ==========================================================
+   FORM ELEMENTS
+========================================================== */
 
 button,
 input,
 textarea,
 select {
-  border: none;
-  outline: none;
-  background: transparent;
   font: inherit;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
 }
 
 button {
   cursor: pointer;
 }
+
+/* ==========================================================
+   LISTS & LINKS
+========================================================== */
 
 ul,
 ol {
@@ -192,8 +494,9 @@ ol {
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+
+  text-decoration: none;
 }
 
 /* ==========================================================
@@ -202,11 +505,22 @@ a {
 
 .app {
   width: var(--container-width);
-  margin: auto;
+
+  margin-inline: auto;
 }
 
 /* ==========================================================
-   TYPOGRAPHY
+   PAGE
+========================================================== */
+
+.page {
+  padding-top: 1rem;
+
+  padding-bottom: 4rem;
+}
+
+/* ==========================================================
+   TYPOGRAPHY UTILITIES
 ========================================================== */
 
 .logo-font {
@@ -222,7 +536,7 @@ a {
 }
 
 /* ==========================================================
-   REUSABLE UTILITIES
+   SURFACE UTILITIES
 ========================================================== */
 
 .surface {
@@ -231,6 +545,14 @@ a {
 
 .surface-secondary {
   background: var(--surface-secondary);
+}
+
+/* ==========================================================
+   SHADOW UTILITIES
+========================================================== */
+
+.shadow-xs {
+  box-shadow: var(--shadow-xs);
 }
 
 .shadow-sm {
@@ -244,6 +566,10 @@ a {
 .shadow-lg {
   box-shadow: var(--shadow-lg);
 }
+
+/* ==========================================================
+   RADIUS UTILITIES
+========================================================== */
 
 .rounded-sm {
   border-radius: var(--radius-sm);
@@ -261,6 +587,10 @@ a {
   border-radius: var(--radius-xl);
 }
 
+.rounded-round {
+  border-radius: var(--radius-round);
+}
+
 /* ==========================================================
    SCROLLBAR
 ========================================================== */
@@ -275,7 +605,8 @@ a {
 
 ::-webkit-scrollbar-thumb {
   background: var(--primary-color);
-  border-radius: 999px;
+
+  border-radius: var(--radius-round);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -288,7 +619,8 @@ a {
 
 ::selection {
   background: var(--primary-color);
-  color: white;
+
+  color: var(--text-on-primary);
 }
 
 /* ==========================================================
@@ -298,8 +630,10 @@ a {
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
-textarea:focus-visible {
+textarea:focus-visible,
+select:focus-visible {
   outline: 2px solid var(--primary-color);
+
   outline-offset: 3px;
 }
 
@@ -310,11 +644,13 @@ textarea:focus-visible {
 @keyframes fadeIn {
   from {
     opacity: 0;
+
     transform: translateY(18px);
   }
 
   to {
     opacity: 1;
+
     transform: translateY(0);
   }
 }

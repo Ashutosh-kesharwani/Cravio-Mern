@@ -12,22 +12,6 @@
   text-align: center;
 }
 
-.section-badge {
-  display: inline-flex;
-
-  padding: 0.5rem 1rem;
-
-  border-radius: 999px;
-
-  background: rgba(255, 107, 53, 0.08);
-
-  color: var(--primary-color);
-
-  font-weight: 600;
-
-  margin-bottom: 1rem;
-}
-
 .section-title {
   font-size: clamp(2rem, 4vw, 3rem);
 
@@ -127,11 +111,11 @@
 /* Active */
 
 .explore-menu__item--active .explore-menu__image-wrapper {
-  background: rgba(255, 107, 53, 0.12);
+  background: var(--primary-light);
 
   border: 2px solid var(--primary-color);
 
-  box-shadow: 0 15px 35px rgba(255, 107, 53, 0.18);
+  box-shadow: var(--primary-shadow);
 }
 
 .explore-menu__item--active .explore-menu__image {

@@ -1,0 +1,149 @@
+/* ==========================================
+   Brand
+========================================== */
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  user-select: none;
+}
+
+/* ==========================================
+   Icon
+========================================== */
+
+.brand__icon {
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 18px;
+
+  background: linear-gradient(135deg, var(--primary-color), #ff8d63);
+
+  color: #fff;
+
+  box-shadow: var(--shadow-md);
+
+  flex-shrink: 0;
+}
+
+.brand__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* ==========================================
+   Content
+========================================== */
+
+.brand__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand__title {
+  font-size: 2rem;
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: -0.04em;
+
+  color: var(--text-primary);
+}
+
+.brand__title span {
+  color: var(--primary-color);
+}
+
+.brand__tagline {
+  margin-top: 4px;
+
+  font-size: 0.72rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.18em;
+
+  color: var(--text-secondary);
+
+  font-weight: 600;
+}
+
+/* ==========================================
+   Laptop
+========================================== */
+
+@media (max-width: 1200px) {
+  .brand__title {
+    font-size: 1.75rem;
+  }
+
+  .brand__tagline {
+    font-size: 0.65rem;
+  }
+}
+
+/* ==========================================
+   Tablet
+========================================== */
+
+@media (max-width: 992px) {
+  .brand {
+    justify-content: center;
+  }
+
+  .brand__content {
+    display: none;
+  }
+
+  .brand__icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .brand__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ==========================================
+   Mobile
+========================================== */
+
+@media (max-width: 768px) {
+  .brand {
+    justify-content: flex-start;
+  }
+
+  .brand__content {
+    display: flex;
+  }
+
+  .brand__icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .brand__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .brand__title {
+    font-size: 1.65rem;
+  }
+
+  .brand__tagline {
+    display: none;
+  }
+}

@@ -1,21 +1,22 @@
 import "./Footer.css";
 
 import { Mail, MapPin, Phone, UtensilsCrossed } from "lucide-react";
-
 import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-
 import { FaXTwitter } from "react-icons/fa6";
-
+import { useLocation, useNavigate } from "react-router-dom";
+import { navigateToSection } from "../../utils/navigation.js";
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   return (
     <footer className="footer" id="footer">
       <div className="footer__container app">
-        {/* Left */}
+        {/* Brand */}
 
         <div className="footer__brand">
           <div className="footer__logo">
             <UtensilsCrossed size={26} />
-
             <span>Cravio</span>
           </div>
 
@@ -57,19 +58,39 @@ const Footer = () => {
           <div>
             <h4>Company</h4>
 
-            <a href="#">Home</a>
-            <a href="#">Menu</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+            <button
+              onClick={() => navigateToSection("home", location, navigate)}
+            >
+              Home
+            </button>
+
+            <button
+              onClick={() =>
+                navigateToSection("explore-menu", location, navigate)
+              }
+            >
+              Menu
+            </button>
+
+            <button
+              onClick={() =>
+                navigateToSection("app-download", location, navigate)
+              }
+            >
+              Mobile App
+            </button>
           </div>
 
           <div>
             <h4>Support</h4>
 
-            <a href="#">Help Center</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms</a>
-            <a href="#">FAQs</a>
+            <button>Help Center</button>
+
+            <button>Privacy Policy</button>
+
+            <button>Terms & Conditions</button>
+
+            <button>FAQs</button>
           </div>
 
           <div>
@@ -94,7 +115,7 @@ const Footer = () => {
       </div>
 
       <div className="footer__bottom">
-        &#169; {new Date().getFullYear()} Cravio. Crafted with ❤️ by Ashutosh.
+        © {new Date().getFullYear()} Cravio. Crafted with ❤️ by Ashutosh.
       </div>
     </footer>
   );

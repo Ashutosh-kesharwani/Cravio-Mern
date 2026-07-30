@@ -19,28 +19,34 @@
 
   height: 45px;
 
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border-color);
   border-radius: 14px;
 
-  background: #fff;
+  background: var(--surface);
+
+  color: var(--text-secondary);
+
+  font-size: 0.92rem;
+  font-weight: 600;
 
   cursor: pointer;
 
-  font-weight: 600;
-  font-size: 0.92rem;
-
-  color: #4b5563;
-
-  transition: 0.25s ease;
+  transition: all var(--transition-normal);
 }
 
 .login-form__tabs button:hover {
   border-color: var(--primary-color);
+
+  color: var(--text-primary);
+
+  background: var(--primary-light);
 }
 
 .login-form__tabs button.active {
   background: var(--primary-color);
-  color: white;
+
+  color: var(--text-on-primary);
+
   border-color: var(--primary-color);
 }
 
@@ -63,17 +69,17 @@
   width: 100%;
   height: 1px;
 
-  background: #c3c3c4;
+  background: var(--border-color);
 }
 
 .login-form__divider span {
   position: relative;
 
-  background: white;
-
   padding: 0 0.85rem;
 
-  color: #838487;
+  background: var(--surface);
+
+  color: var(--text-secondary);
 
   font-size: 0.85rem;
 }
@@ -88,11 +94,10 @@
 
   font-size: 0.92rem;
 
-  color: #6b7280;
+  color: var(--text-secondary);
 }
 
 .login-form__footer button {
-  border: none;
   background: transparent;
 
   color: var(--primary-color);
@@ -100,9 +105,13 @@
   font-weight: 700;
 
   cursor: pointer;
+
+  transition: color var(--transition-normal);
 }
 
 .login-form__footer button:hover {
+  color: var(--primary-hover);
+
   text-decoration: underline;
 }
 

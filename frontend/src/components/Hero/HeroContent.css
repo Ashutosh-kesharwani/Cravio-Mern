@@ -1,12 +1,8 @@
-/* ===========================================
-   HERO CONTENT
-=========================================== */
-
 .hero-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 24px;
+  gap: var(--dashboard-gap);
 
   max-width: 560px;
 }
@@ -18,13 +14,13 @@
 
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-xs);
 
-  padding: 8px 18px;
+  padding: var(--space-xs) var(--space-md);
 
-  border-radius: 999px;
+  border-radius: var(--radius-round);
 
-  background: rgba(255, 107, 53, 0.1);
+  background: var(--background-light);
 
   color: var(--primary-color);
 

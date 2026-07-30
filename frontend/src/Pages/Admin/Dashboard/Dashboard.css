@@ -1,0 +1,741 @@
+/* ==========================================
+   Dashboard
+========================================== */
+
+.dashboard {
+  display: flex;
+
+  flex-direction: column;
+  width: 100%;
+  gap: var(--space-xl);
+}
+
+/* ==========================================
+   Header
+========================================== */
+
+.dashboard__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-xl);
+
+  margin-bottom: var(--space-2xl);
+}
+
+.dashboard__heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.dashboard__title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.dashboard__subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.dashboard__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* ==========================================
+   Search
+========================================== */
+
+.dashboard__search {
+  width: 340px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+
+  padding-inline: var(--space-md);
+
+  background: var(--surface);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: var(--radius-round);
+
+  box-shadow: var(--shadow-sm);
+
+  transition: var(--transition-normal);
+}
+
+.dashboard__search:focus-within {
+  border-color: var(--primary-color);
+
+  box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.12);
+}
+
+.dashboard__search svg {
+  color: var(--text-secondary);
+}
+
+.dashboard__search input {
+  flex: 1;
+  color: var(--text-primary);
+}
+
+.dashboard__search input::placeholder {
+  color: var(--text-secondary);
+}
+
+/* ==========================================
+   Notification
+========================================== */
+
+.dashboard__notification {
+  width: 52px;
+  height: 52px;
+
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 50%;
+
+  box-shadow: var(--shadow-sm);
+
+  transition: var(--transition-normal);
+}
+
+.dashboard__notification:hover {
+  transform: translateY(-3px);
+
+  box-shadow: var(--shadow-md);
+}
+
+.dashboard__notification svg {
+  color: var(--text-primary);
+}
+
+.dashboard__notification-dot {
+  width: 10px;
+  height: 10px;
+
+  position: absolute;
+
+  top: 12px;
+  right: 14px;
+
+  border-radius: 50%;
+
+  background: var(--danger-color);
+}
+
+/* ==========================================
+   Profile
+========================================== */
+
+.dashboard__profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.dashboard__profile img {
+  width: 52px;
+  height: 52px;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.dashboard__profile h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.dashboard__profile p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================
+   Stats
+========================================== */
+
+.dashboard__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+
+  margin-bottom: var(--space-2xl);
+}
+
+.dashboard__stat-card {
+  background: var(--surface);
+
+  padding: var(--space-xl);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: var(--radius-2xl);
+
+  box-shadow: var(--shadow-sm);
+
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+
+  transition: var(--transition-normal);
+}
+
+.dashboard__stat-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow: var(--shadow-lg);
+}
+
+.dashboard__stat-icon {
+  width: 64px;
+  height: 64px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: var(--radius-lg);
+
+  flex-shrink: 0;
+}
+
+.dashboard__stat-icon svg {
+  color: #fff;
+}
+
+.dashboard__stat-icon--orders {
+  background: var(--primary-color);
+}
+
+.dashboard__stat-icon--revenue {
+  background: var(--success-color);
+}
+
+.dashboard__stat-icon--customers {
+  background: var(--status-confirmed);
+}
+
+.dashboard__stat-icon--products {
+  background: var(--warning-color);
+}
+
+.dashboard__stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dashboard__stat-title {
+  color: var(--text-secondary);
+
+  font-size: 0.9rem;
+}
+
+.dashboard__stat-value {
+  color: var(--text-primary);
+
+  font-size: 1.8rem;
+
+  font-weight: 800;
+}
+
+.dashboard__stat-growth {
+  color: var(--success-color);
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+}
+
+/* ==========================================
+   Revenue Chart
+========================================== */
+
+.dashboard__chart-card {
+  background: var(--surface);
+
+  padding: var(--space-xl);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: var(--radius-2xl);
+
+  box-shadow: var(--shadow-sm);
+}
+
+.dashboard__chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: var(--space-xl);
+}
+
+.dashboard__chart-header h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+
+  color: var(--text-primary);
+}
+
+.dashboard__chart-header p {
+  margin-top: 6px;
+
+  color: var(--text-secondary);
+}
+
+.dashboard__chart-header h3 {
+  color: var(--primary-color);
+
+  font-size: 2rem;
+
+  font-weight: 800;
+}
+
+.dashboard__chart {
+  width: 100%;
+  height: 340px;
+}
+
+/* ==========================================
+   Recent Orders
+========================================== */
+
+.dashboard__orders {
+  background: var(--surface);
+
+  padding: var(--space-xl);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: var(--radius-2xl);
+
+  box-shadow: var(--shadow-sm);
+
+  margin-bottom: var(--space-2xl);
+}
+
+.dashboard__orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: var(--space-lg);
+}
+
+.dashboard__orders-header h2 {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+}
+
+.dashboard__orders-header button {
+  color: var(--primary-color);
+
+  font-weight: 600;
+}
+
+.dashboard__table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+.dashboard__table th {
+  text-align: left;
+
+  padding: var(--space-md) 0;
+
+  color: var(--text-secondary);
+
+  border-bottom: 1px solid var(--border-color);
+
+  font-weight: 600;
+}
+
+.dashboard__table td {
+  padding: 18px 0;
+
+  border-bottom: 1px solid var(--border-color);
+
+  color: var(--text-primary);
+}
+
+.dashboard__table tbody tr {
+  transition: var(--transition-normal);
+}
+
+.dashboard__table tbody tr:hover {
+  background: var(--surface-secondary);
+}
+
+.dashboard__status {
+  padding: 8px 16px;
+
+  border-radius: var(--radius-round);
+
+  font-size: 0.82rem;
+
+  font-weight: 700;
+}
+
+.dashboard__status--pending {
+  color: var(--status-pending);
+}
+
+.dashboard__status--processing {
+  color: var(--status-processing);
+}
+
+.dashboard__status--delivered {
+  color: var(--status-delivered);
+}
+
+.dashboard__status--cancelled {
+  color: var(--status-cancelled);
+}
+.dashboard__status--confirmed {
+  color: var(--status-confirmed);
+}
+.dashboard__status--out-for-delivery {
+  color: var(--status-out-for-delivery);
+}
+
+.dashboard__view-btn {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: var(--surface-secondary);
+
+  transition: var(--transition-normal);
+}
+
+.dashboard__view-btn:hover {
+  background: var(--primary-color);
+
+  color: #fff;
+}
+
+/* ==========================================
+   Dashboard Analytics
+========================================== */
+
+.dashboard__analytics {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-lg);
+}
+
+.dashboard__analytics-card {
+  background: var(--surface);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: var(--radius-2xl);
+
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-xl);
+}
+
+.dashboard__analytics-header {
+  margin-bottom: var(--space-lg);
+}
+
+.dashboard__analytics-header h2 {
+  font-size: 1.35rem;
+
+  color: var(--text-primary);
+}
+
+/* ==========================================
+   Popular Foods
+========================================== */
+
+.dashboard__foods {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.dashboard__food {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.dashboard__food-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.dashboard__food-icon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: var(--radius-lg);
+
+  background: var(--surface-secondary);
+
+  border: 1px solid var(--border-color);
+  color: var(--primary-color);
+}
+
+.dashboard__food h4 {
+  color: var(--text-primary);
+
+  margin-bottom: 4px;
+}
+
+.dashboard__food p {
+  color: var(--text-secondary);
+
+  font-size: 0.85rem;
+}
+
+.dashboard__progress {
+  width: 160px;
+
+  height: 8px;
+
+  border-radius: var(--radius-round);
+
+  background: var(--surface-secondary);
+
+  overflow: hidden;
+}
+
+.dashboard__progress-fill {
+  height: 100%;
+
+  background: var(--primary-color);
+
+  border-radius: inherit;
+  width: var(--progress);
+}
+
+/* ==========================================
+   Order Status
+========================================== */
+
+.dashboard__status-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.dashboard__status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: var(--space-sm) 0;
+}
+
+.dashboard__status-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.dashboard__status-dot {
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+}
+
+.dashboard__status-dot--delivered {
+  background: var(--status-delivered);
+}
+
+.dashboard__status-dot--processing {
+  background: var(--status-processing);
+}
+
+.dashboard__status-dot--pending {
+  background: var(--status-pending);
+}
+
+.dashboard__status-dot--cancelled {
+  background: var(--status-cancelled);
+}
+.dashboard__status-dot--confirmed {
+  background: var(--status-confirmed);
+}
+.dashboard__status-dot--out-for-delivery {
+  background: var(--status-out-for-delivery);
+}
+
+/* ==========================================
+   Large Laptop
+========================================== */
+
+@media (max-width: 1200px) {
+  .dashboard__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard__analytics {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard__search {
+    width: 260px;
+  }
+}
+
+/* ==========================================
+   Tablet
+========================================== */
+
+@media (max-width: 992px) {
+  .dashboard__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard__actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .dashboard__search {
+    flex: 1;
+    width: 100%;
+  }
+
+  .dashboard__chart-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .dashboard__table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* ==========================================
+   Mobile
+========================================== */
+
+@media (max-width: 768px) {
+  .dashboard__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard__actions {
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .dashboard__search {
+    order: 3;
+    width: 100%;
+  }
+
+  .dashboard__profile div {
+    display: none;
+  }
+
+  .dashboard__chart-card,
+  .dashboard__orders,
+  .dashboard__analytics-card {
+    padding: var(--space-lg);
+  }
+
+  .dashboard__food {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard__progress {
+    width: 100%;
+  }
+
+  .dashboard__chart {
+    height: 280px;
+  }
+}
+
+/* ==========================================
+   Small Mobile
+========================================== */
+
+@media (max-width: 576px) {
+  .dashboard__title {
+    font-size: 1.6rem;
+  }
+
+  .dashboard__subtitle {
+    font-size: 0.85rem;
+  }
+
+  .dashboard__stat-card {
+    padding: var(--space-md);
+  }
+
+  .dashboard__stat-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .dashboard__stat-value {
+    font-size: 1.5rem;
+  }
+
+  .dashboard__chart-header h2,
+  .dashboard__orders-header h2,
+  .dashboard__analytics-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .dashboard__chart-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .dashboard__notification,
+  .dashboard__profile img {
+    width: 46px;
+    height: 46px;
+  }
+
+  .dashboard__table th,
+  .dashboard__table td {
+    padding: 14px 0;
+  }
+}

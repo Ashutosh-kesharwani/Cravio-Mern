@@ -7,11 +7,11 @@
 .auth-input__label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--text-primary);
 }
 
 .auth-input__label span {
-  color: #ef4444;
+  color: var(--danger-color);
   margin-left: 4px;
 }
 
@@ -25,27 +25,26 @@
 
   padding: 0 1rem;
 
-  background: #fff;
+  background: var(--surface);
 
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border-color);
   border-radius: 16px;
 
-  transition: all 0.25s ease;
+  transition: all var(--transition-normal);
 }
 
 .auth-input__field:focus-within {
   border-color: var(--primary-color);
-
-  box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.12);
+  box-shadow: 0 0 0 4px var(--primary-light);
 }
 
 .auth-input__field--error {
-  border-color: #ef4444;
+  border-color: var(--danger-color);
 }
 
 .auth-input__icon {
   flex-shrink: 0;
-  color: #9ca3af;
+  color: var(--text-secondary);
 }
 
 .auth-input__field input {
@@ -57,11 +56,12 @@
   background: transparent;
 
   font-size: 0.95rem;
-  color: #1f2937;
+
+  color: var(--text-primary);
 }
 
 .auth-input__field input::placeholder {
-  color: #9ca3af;
+  color: var(--text-secondary);
 }
 
 .auth-input__field input:disabled {
@@ -70,6 +70,6 @@
 }
 
 .auth-input__error {
-  color: #ef4444;
+  color: var(--danger-color);
   font-size: 0.82rem;
 }
