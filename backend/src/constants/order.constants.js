@@ -18,7 +18,7 @@ export const ORDER_STATUS = {
   CANCELLED: "cancelled",
 };
 
-export const DELIVERY_CHARGE = 10;
+export const DELIVERY_CHARGE = 40;
 
 export const ORDER_STATUS_LIST = Object.values(ORDER_STATUS);
 
