@@ -3,7 +3,7 @@ import ApiError from "../utils/ApiError.js";
 import deleteFromCloudinary from "../utils/deleteFromCloudinary.js";
 import uploadOnCloudinary from "../utils/uploadOnCloudinary.js";
 
-export const uploadMedia = async (mediaLocalPath) => {
+const uploadMedia = async (mediaLocalPath) => {
   const media = await uploadOnCloudinary(mediaLocalPath);
 
   if (!media?.url || !media?.public_id) {
@@ -12,7 +12,7 @@ export const uploadMedia = async (mediaLocalPath) => {
   return media;
 };
 
-export const replaceMedia = async (oldPublicId, mediaLocalPath) => {
+const replaceMedia = async (oldPublicId, mediaLocalPath) => {
   if (oldPublicId) {
     await deleteFromCloudinary(oldPublicId);
   }
@@ -20,8 +20,10 @@ export const replaceMedia = async (oldPublicId, mediaLocalPath) => {
   return await uploadMedia(mediaLocalPath);
 };
 
-export const removeMedia = async (publicId) => {
+const removeMedia = async (publicId) => {
   if (publicId) {
     await deleteFromCloudinary(publicId);
   }
 };
+
+export { removeMedia, replaceMedia, uploadMedia };

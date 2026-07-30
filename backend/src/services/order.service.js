@@ -14,7 +14,7 @@ import {
 
 import { ORDER_MESSAGES } from "../constants/messages.constants.js";
 
-export const placeOrderService = async ({ user, items, deliveryAddress }) => {
+const placeOrderService = async ({ user, items, deliveryAddress }) => {
   let totalAmount = 0;
 
   const orderItems = [];
@@ -45,7 +45,7 @@ export const placeOrderService = async ({ user, items, deliveryAddress }) => {
         product_data: {
           name: food.name,
         },
-        unit_amount: food.price * 100,
+        unit_amount: food.price,
       },
       quantity: item.quantity,
     });
@@ -57,7 +57,7 @@ export const placeOrderService = async ({ user, items, deliveryAddress }) => {
       product_data: {
         name: "Delivery Charge",
       },
-      unit_amount: DELIVERY_CHARGE * 100,
+      unit_amount: DELIVERY_CHARGE,
     },
     quantity: 1,
   });
@@ -94,7 +94,7 @@ export const placeOrderService = async ({ user, items, deliveryAddress }) => {
   };
 };
 
-export const verifyOrderService = async (orderId) => {
+const verifyOrderService = async (orderId) => {
   const order = await Order.findById(orderId);
 
   if (!order) {
@@ -107,7 +107,7 @@ export const verifyOrderService = async (orderId) => {
   };
 };
 
-export const getMyOrdersService = async (userId) => {
+const getMyOrdersService = async (userId) => {
   const orders = await Order.find({ user: userId })
     .populate({
       path: "items.food",
@@ -120,7 +120,7 @@ export const getMyOrdersService = async (userId) => {
 };
 
 // Admin
-export const getAllOrdersService = async () => {
+const getAllOrdersService = async () => {
   const orders = await Order.find({})
     .populate("user", "fullName username email contactNumber")
     .populate({
@@ -133,7 +133,7 @@ export const getAllOrdersService = async () => {
   return orders;
 };
 
-export const updateOrderStatusService = async ({ orderId, orderStatus }) => {
+const updateOrderStatusService = async ({ orderId, orderStatus }) => {
   const order = await Order.findById(orderId);
 
   if (!order) {
@@ -152,7 +152,7 @@ export const updateOrderStatusService = async ({ orderId, orderStatus }) => {
   return order;
 };
 
-export const stripeWebhookService = async (req) => {
+const stripeWebhookService = async (req) => {
   const signature = req.headers["stripe-signature"];
 
   let event;
@@ -219,4 +219,13 @@ export const stripeWebhookService = async (req) => {
   }
 
   return;
+};
+
+export {
+  getAllOrdersService,
+  getMyOrdersService,
+  placeOrderService,
+  stripeWebhookService,
+  updateOrderStatusService,
+  verifyOrderService,
 };

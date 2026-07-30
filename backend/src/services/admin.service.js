@@ -7,7 +7,7 @@ import User from "../models/user.model.js";
 
 import ApiError from "../utils/ApiError.js";
 
-export const getExistingAdmin = async ({ email, username }) => {
+const getExistingAdmin = async ({ email, username }) => {
   const admin = await User.findOne({
     $or: [{ email }, { username }],
   });
@@ -23,11 +23,11 @@ export const getExistingAdmin = async ({ email, username }) => {
   return admin;
 };
 
-export const getSafeAdmin = async (adminId) => {
+const getSafeAdmin = async (adminId) => {
   return await User.findById(adminId).select("-password -refreshToken");
 };
 
-export const getDashboardStats = async () => {
+const getDashboardStats = async () => {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -161,11 +161,7 @@ export const getDashboardStats = async () => {
   };
 };
 
-/* -------------------------------------------------------------------------- */
-/*                              Recent Orders                                 */
-/* -------------------------------------------------------------------------- */
-
-export const getRecentOrders = async () => {
+const getRecentOrders = async () => {
   return await Order.find({
     paymentStatus: {
       $ne: PAYMENT_STATUS.FAILED,
@@ -184,11 +180,7 @@ export const getRecentOrders = async () => {
     );
 };
 
-/* -------------------------------------------------------------------------- */
-/*                            Top Selling Foods                               */
-/* -------------------------------------------------------------------------- */
-
-export const getTopSellingFoods = async () => {
+const getTopSellingFoods = async () => {
   return await Order.aggregate([
     {
       $match: {
@@ -240,11 +232,7 @@ export const getTopSellingFoods = async () => {
   ]);
 };
 
-/* -------------------------------------------------------------------------- */
-/*                              Revenue Chart                                 */
-/* -------------------------------------------------------------------------- */
-
-export const getRevenueChart = async () => {
+const getRevenueChart = async () => {
   const sevenDaysAgo = new Date();
 
   sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 6);
@@ -302,11 +290,7 @@ export const getRevenueChart = async () => {
   ]);
 };
 
-/* -------------------------------------------------------------------------- */
-/*                               Orders Chart                                 */
-/* -------------------------------------------------------------------------- */
-
-export const getOrdersChart = async () => {
+const getOrdersChart = async () => {
   const sevenDaysAgo = new Date();
 
   sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 6);
@@ -367,11 +351,7 @@ export const getOrdersChart = async () => {
   ]);
 };
 
-/* -------------------------------------------------------------------------- */
-/*                             Dashboard Response                             */
-/* -------------------------------------------------------------------------- */
-
-export const getDashboardData = async () => {
+const getDashboardData = async () => {
   const [
     dashboardStats,
     recentOrders,
@@ -401,4 +381,15 @@ export const getDashboardData = async () => {
 
     ordersChart,
   };
+};
+
+export {
+  getDashboardData,
+  getDashboardStats,
+  getExistingAdmin,
+  getOrdersChart,
+  getRecentOrders,
+  getRevenueChart,
+  getSafeAdmin,
+  getTopSellingFoods,
 };

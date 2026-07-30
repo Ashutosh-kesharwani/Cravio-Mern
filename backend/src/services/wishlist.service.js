@@ -5,11 +5,7 @@ import { WISHLIST_MESSAGES } from "../constants/messages.constants.js";
 
 import ApiError from "../utils/ApiError.js";
 
-/* ================================
-   Get Wishlist
-================================ */
-
-export const getWishlist = async (userId) => {
+const getWishlist = async (userId) => {
   const user = await User.findById(userId).populate("wishlist");
 
   if (!user) {
@@ -19,11 +15,7 @@ export const getWishlist = async (userId) => {
   return user.wishlist;
 };
 
-/* ================================
-   Add To Wishlist
-================================ */
-
-export const addToWishlist = async (userId, foodId) => {
+const addToWishlist = async (userId, foodId) => {
   const food = await Food.findById(foodId);
 
   if (!food) {
@@ -53,11 +45,7 @@ export const addToWishlist = async (userId, foodId) => {
   return user.wishlist;
 };
 
-/* ================================
-   Remove From Wishlist
-================================ */
-
-export const removeFromWishlist = async (userId, foodId) => {
+const removeFromWishlist = async (userId, foodId) => {
   const user = await User.findById(userId);
 
   if (!user) {
@@ -72,3 +60,5 @@ export const removeFromWishlist = async (userId, foodId) => {
 
   return user.wishlist;
 };
+
+export { addToWishlist, getWishlist, removeFromWishlist };

@@ -5,7 +5,7 @@ import {
 import User from "../models/user.model.js";
 import ApiError from "../utils/ApiError.js";
 
-export const getUserById = async (userId) => {
+const getUserById = async (userId) => {
   const user = await User.findById(userId);
 
   if (!user) {
@@ -15,11 +15,11 @@ export const getUserById = async (userId) => {
   return user;
 };
 
-export const getSafeUser = async (userId) => {
+const getSafeUser = async (userId) => {
   return await User.findById(userId).select("-password -refreshToken");
 };
 
-export const ensureUserDoesNotExist = async ({ email, username, mobile }) => {
+const ensureUserDoesNotExist = async ({ email, username, mobile }) => {
   const existingUser = await User.findOne({
     $or: [{ email }, { username }, { mobile }],
   }).select("email username mobile");
@@ -39,7 +39,7 @@ export const ensureUserDoesNotExist = async ({ email, username, mobile }) => {
   }
 };
 
-export const getExistingUser = async ({ email, username, mobile }) => {
+const getExistingUser = async ({ email, username, mobile }) => {
   const user = await User.findOne({
     $or: [{ email }, { username }, { mobile }],
   });
@@ -51,7 +51,7 @@ export const getExistingUser = async ({ email, username, mobile }) => {
   return user;
 };
 
-export const getVerifiedUserByMobile = async (mobile) => {
+const getVerifiedUserByMobile = async (mobile) => {
   const user = await User.findOne({ mobile });
 
   if (!user) {
@@ -63,4 +63,12 @@ export const getVerifiedUserByMobile = async (mobile) => {
   }
 
   return user;
+};
+
+export {
+  ensureUserDoesNotExist,
+  getExistingUser,
+  getSafeUser,
+  getUserById,
+  getVerifiedUserByMobile,
 };

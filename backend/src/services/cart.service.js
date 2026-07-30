@@ -5,9 +5,6 @@ import ApiError from "../utils/ApiError.js";
 
 import { CART_MESSAGES } from "../constants/messages.constants.js";
 
-/**
- * Populate cart with complete food details.
- */
 const populateCart = async (cart) => {
   await cart.populate({
     path: "items.food",
@@ -16,10 +13,6 @@ const populateCart = async (cart) => {
   return cart;
 };
 
-/**
- * Returns the user's cart.
- * Creates an empty cart if one doesn't exist.
- */
 const getCartByUserId = async (userId) => {
   let cart = await Cart.findOne({ userId });
 
@@ -33,10 +26,6 @@ const getCartByUserId = async (userId) => {
   return populateCart(cart);
 };
 
-/**
- * Add a food item to cart.
- * If already present, increase quantity.
- */
 const addItemToCart = async (userId, foodId) => {
   const food = await Food.findById(foodId);
 
@@ -71,9 +60,6 @@ const addItemToCart = async (userId, foodId) => {
   return populateCart(cart);
 };
 
-/**
- * Update quantity of a cart item.
- */
 const updateCartItemQuantity = async (userId, foodId, quantity) => {
   if (quantity < 1) {
     throw new ApiError(400, CART_MESSAGES.INVALID_QUANTITY);
@@ -100,9 +86,6 @@ const updateCartItemQuantity = async (userId, foodId, quantity) => {
   return populateCart(cart);
 };
 
-/**
- * Remove a food item completely from cart.
- */
 const removeCartItem = async (userId, foodId) => {
   const cart = await Cart.findOne({ userId });
 
@@ -127,9 +110,6 @@ const removeCartItem = async (userId, foodId) => {
   return populateCart(cart);
 };
 
-/**
- * Remove all items from cart.
- */
 const clearCart = async (userId) => {
   const cart = await Cart.findOne({ userId });
 
