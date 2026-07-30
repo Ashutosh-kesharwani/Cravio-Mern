@@ -1,8 +1,6 @@
 import toast from "react-hot-toast";
 import validator from "validator";
 
-/* ---------------- First Name ---------------- */
-
 export const validateFirstName = (firstName) => {
   if (!firstName?.trim()) {
     toast.error("First name is required.");
@@ -17,8 +15,6 @@ export const validateFirstName = (firstName) => {
   return true;
 };
 
-/* ---------------- Last Name ---------------- */
-
 export const validateLastName = (lastName) => {
   if (!lastName?.trim()) return true;
 
@@ -29,8 +25,6 @@ export const validateLastName = (lastName) => {
 
   return true;
 };
-
-/* ---------------- Username ---------------- */
 
 export const validateUsername = (username) => {
   if (!username?.trim()) {
@@ -53,8 +47,6 @@ export const validateUsername = (username) => {
   return true;
 };
 
-/* ---------------- Email ---------------- */
-
 export const validateEmail = (email) => {
   if (!email?.trim()) {
     toast.error("Email is required.");
@@ -68,8 +60,6 @@ export const validateEmail = (email) => {
 
   return true;
 };
-
-/* ---------------- DOB ---------------- */
 
 export const validateDOB = (dob) => {
   if (!dob) return true;
@@ -85,8 +75,6 @@ export const validateDOB = (dob) => {
   return true;
 };
 
-/* ---------------- Complete Profile ---------------- */
-
 export const validateProfile = (formData) => {
   const { firstName, lastName, dob } = formData;
 
@@ -98,8 +86,6 @@ export const validateProfile = (formData) => {
 
   return true;
 };
-
-/* ---------------- Password ---------------- */
 
 export const validatePassword = (password) => {
   if (!password.trim()) {
@@ -125,8 +111,6 @@ export const validatePassword = (password) => {
 
   return true;
 };
-
-/* ---------------- Change Password ---------------- */
 
 export const validateChangePassword = ({
   currentPassword,

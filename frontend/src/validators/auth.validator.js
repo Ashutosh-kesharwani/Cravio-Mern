@@ -1,7 +1,5 @@
 import toast from "react-hot-toast";
 
-/* ---------------- Email ---------------- */
-
 export const validateEmail = (email) => {
   if (!email?.trim()) {
     toast.error("Email is required.");
@@ -17,8 +15,6 @@ export const validateEmail = (email) => {
 
   return true;
 };
-
-/* ---------------- Username ---------------- */
 
 export const validateUsername = (username) => {
   if (!username?.trim()) {
@@ -46,8 +42,6 @@ export const validateUsername = (username) => {
   return true;
 };
 
-/* ---------------- Mobile ---------------- */
-
 export const validateMobile = (mobile) => {
   if (!mobile?.trim()) {
     toast.error("Mobile number is required.");
@@ -64,8 +58,6 @@ export const validateMobile = (mobile) => {
   return true;
 };
 
-/* ---------------- OTP ---------------- */
-
 export const validateOTP = (otp) => {
   if (!otp?.trim()) {
     toast.error("OTP is required.");
@@ -80,8 +72,6 @@ export const validateOTP = (otp) => {
   return true;
 };
 
-/* ---------------- Password ---------------- */
-
 export const validatePassword = (password) => {
   if (!password?.trim()) {
     toast.error("Password is required.");
@@ -95,8 +85,6 @@ export const validatePassword = (password) => {
 
   return true;
 };
-
-/* ---------------- Register ---------------- */
 
 export const validateRegister = (formData) => {
   const {
@@ -140,8 +128,6 @@ export const validateRegister = (formData) => {
   return true;
 };
 
-/* ---------------- Login ---------------- */
-
 export const validateLogin = ({ email, username, mobile, password }) => {
   if (!email?.trim() && !username?.trim() && !mobile?.trim()) {
     toast.error("Please enter email, username or mobile.");
@@ -159,13 +145,9 @@ export const validateLogin = ({ email, username, mobile, password }) => {
   return true;
 };
 
-/* ---------------- Forgot Password ---------------- */
-
 export const validateForgotPassword = ({ mobile }) => {
   return validateMobile(mobile);
 };
-
-/* ---------------- Reset Password ---------------- */
 
 export const validateResetPassword = ({ password, confirmPassword }) => {
   if (!validatePassword(password)) return false;
