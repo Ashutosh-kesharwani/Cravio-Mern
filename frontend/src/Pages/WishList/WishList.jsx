@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import "./Wishlist.css";
+import "./WishList.css";
 
 import useWishlist from "../../hooks/wishlist/useWishlist";
 

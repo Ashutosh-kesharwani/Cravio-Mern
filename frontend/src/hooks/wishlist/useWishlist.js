@@ -2,7 +2,7 @@ import { useCallback, useContext } from "react";
 
 import toast from "react-hot-toast";
 
-import WishlistContext from "../../context/WishlistContext";
+import WishlistContext from "../../context/wishlistContext.js";
 
 import {
   addToWishlist,

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import WishlistContext from "./WishlistContext";
+import WishlistContext from "./wishlistContext.js";
 
 const INITIAL_WISHLIST = [];
 export const WishlistContextProvider = ({ children }) => {
