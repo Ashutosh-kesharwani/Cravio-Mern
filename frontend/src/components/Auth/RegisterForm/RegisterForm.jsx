@@ -2,7 +2,8 @@ import "./RegisterForm.css";
 
 import { Mail, Smartphone, User } from "lucide-react";
 
-import { AuthInput, OTPInput, PasswordInput } from "../index.js";
+// import { AuthInput, OTPInput, PasswordInput } from "../index.js"; // Temporarily disabled OTP input until SMS service is integrated.
+import { AuthInput, PasswordInput } from "../index.js";
 
 import useRegister from "../../../hooks/auth/useRegister.js";
 
@@ -11,11 +12,11 @@ const RegisterForm = () => {
     step,
     formData,
 
-    otpSent,
-    otpVerified,
-    otpTimer,
+    // otpSent,
+    // otpVerified,
+    // otpTimer,
 
-    loading,
+    // loading,
     isSubmitting,
 
     isStepOneValid,
@@ -23,13 +24,13 @@ const RegisterForm = () => {
     isRegisterValid,
 
     handleChange,
-    handleOTPChange,
+    // handleOTPChange,
 
     handleNext,
     handlePrev,
 
-    handleSendOTP,
-    handleResendOTP,
+    // handleSendOTP,
+    // handleResendOTP,
 
     handleSubmit,
   } = useRegister();
@@ -48,7 +49,9 @@ const RegisterForm = () => {
         <div className={`register-form__step ${step >= 2 ? "active" : ""}`}>
           <div className="register-form__circle">{step > 2 ? "✓" : "2"}</div>
 
-          <span>Verify</span>
+          {/* <span>Verify</span> */}
+          {/* Temporarily changed from "Verify" to "Mobile" while OTP verification is disabled. */}
+          <span>Mobile</span>
         </div>
 
         <div className={`register-form__line ${step >= 3 ? "active" : ""}`} />
@@ -128,8 +131,18 @@ const RegisterForm = () => {
             placeholder="Enter your mobile number"
             icon={Smartphone}
           />
+          <p className="register-form__info">
+            Phone verification is currently unavailable. You can continue
+            without OTP.
+          </p>
 
-          {!otpSent ? (
+          {/* -------------------------------------------------------------------------- */
+          /* Temporary Production Change                                                  */
+          /* OTP verification is temporarily disabled until an SMS provider (MSG91 /      */
+          /* Twilio) is integrated.                                                       */
+          /* Uncomment the below OTP block once the OTP service is available.             */
+          /* -------------------------------------------------------------------------- */}
+          {/* {!otpSent ? (
             <button
               type="button"
               className="auth-btn"
@@ -169,7 +182,7 @@ const RegisterForm = () => {
                 </button>
               )}
             </>
-          )}
+          )} */}
 
           <div className="register-form__actions">
             <button
