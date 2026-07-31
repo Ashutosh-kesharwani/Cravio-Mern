@@ -1,0 +1,143 @@
+.app-download {
+  padding-block: 7rem;
+}
+
+.app-download__container {
+  position: relative;
+
+  overflow: hidden;
+
+  max-width: 1100px;
+
+  margin: auto;
+
+  padding: 5rem 2rem;
+
+  border-radius: 36px;
+
+  text-align: center;
+
+  background: var(--download-background);
+  border: 1px solid var(--primary-border-light);
+
+  box-shadow: var(--primary-shadow-light);
+}
+
+.app-download__container::before {
+  content: "";
+
+  position: absolute;
+
+  top: -140px;
+
+  right: -120px;
+
+  width: 320px;
+
+  height: 320px;
+
+  border-radius: 50%;
+  background: var(--blob-primary);
+  filter: blur(25px);
+}
+
+.app-download__container::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -140px;
+
+  left: -120px;
+
+  width: 260px;
+
+  height: 260px;
+
+  border-radius: 50%;
+
+  background: var(--blob-warning);
+  filter: blur(20px);
+}
+
+.app-download__title {
+  margin-top: 1rem;
+
+  font-size: clamp(2rem, 4vw, 3.3rem);
+
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+.app-download__title span {
+  color: var(--primary-color);
+}
+
+.app-download__description {
+  max-width: 620px;
+
+  margin: 1.5rem auto 3rem;
+
+  color: var(--text-secondary);
+
+  line-height: 1.9;
+  font-weight: 400;
+}
+
+.app-download__platforms {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 1.5rem;
+
+  flex-wrap: wrap;
+}
+
+.app-download__store {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0.4rem;
+
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--store-shadow);
+
+  transition: 0.35s;
+}
+
+.app-download__store img {
+  height: 60px;
+
+  display: block;
+}
+
+.app-download__store:hover {
+  transform: translateY(-6px) scale(1.03);
+
+  box-shadow: var(--primary-hover-shadow);
+}
+
+@media (max-width: 768px) {
+  .app-download {
+    padding-block: 5rem;
+  }
+
+  .app-download__container {
+    padding: 4rem 1.5rem;
+
+    border-radius: 28px;
+  }
+
+  .app-download__platforms {
+    gap: 1rem;
+  }
+
+  .app-download__store img {
+    height: 52px;
+  }
+}

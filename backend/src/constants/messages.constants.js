@@ -1,0 +1,231 @@
+export const AUTH_MESSAGES = {
+  // Registration
+  REGISTER_SUCCESS: "Account created successfully.",
+  USER_ALREADY_EXISTS: "An account with the provided details already exists.",
+  REGISTER_FAILED: "Failed to register user. Please try again later.",
+
+  // Login
+  LOGIN_SUCCESS: "Logged in successfully.",
+  INVALID_CREDENTIALS: "Invalid email, username, mobile number, or password.",
+  ADMIN_INVALID_CREDENTIALS: "Invalid email, username or password.",
+
+  // Logout
+  LOGOUT_SUCCESS: "Logged out successfully.",
+
+  // Password
+  PASSWORD_REQUIRED: "Password is required.",
+  PASSWORD_CHANGED: "Password changed successfully.",
+  PASSWORD_RESET: "Password reset successfully.",
+  PASSWORD_CONFIRM_REQUIRED: "Please confirm your password.",
+  PASSWORD_MISMATCH: "New Password and confirm password must be same.",
+  PASSWORD_SAME_AS_OLD:
+    "New password cannot be the same as your current password.",
+  CURRENT_PASSWORD_INCORRECT: "Current password is incorrect.",
+
+  // Refresh Token
+  TOKEN_REFRESHED: "Session refreshed successfully.",
+  INVALID_REFRESH_TOKEN: "Your session is invalid. Please log in again.",
+  REFRESH_TOKEN_EXPIRED: "Your session has expired. Please log in again.",
+
+  // Access Token
+  INVALID_ACCESS_TOKEN: "Your login session is invalid. Please log in again.",
+  ACCESS_TOKEN_EXPIRED: "Your login session has expired. Please log in again.",
+  TOKEN_SERVER_ERROR:
+    "Something went wrong while generating authentication tokens",
+
+  // Verification
+  VERIFICATION_TOKEN_MISSING:
+    "Verification required. Please verify your mobile number first.",
+  VERIFICATION_FAILED: "Mobile number verification failed.",
+  INVALID_VERIFICATION_TOKEN: "Verification session is invalid or has expired.",
+
+  // Authentication
+  UNAUTHORIZED: "You are not authorized to perform this action.",
+  FORBIDDEN: "You do not have permission to access this resource.",
+};
+
+export const USER_MESSAGES = {
+  USER_NOT_FOUND: "User not found.",
+
+  PROFILE_UPDATED: "Profile updated successfully.",
+
+  EMAIL_UPDATED: "Email address updated successfully.",
+  EMAIL_ALREADY_EXISTS:
+    "This email address is already associated with another account.",
+  EMAIL_REQUIRED: "Email address is required.",
+
+  USERNAME_UPDATED: "Username updated successfully.",
+  USERNAME_ALREADY_EXISTS: "This username is already taken.",
+  USERNAME_REQUIRED: "Username is required.",
+
+  MOBILE_UPDATED: "Mobile number updated successfully.",
+  MOBILE_ALREADY_EXISTS: "This mobile number is already registered.",
+  MOBILE_REQUIRED: "Mobile number is required.",
+  MOBILE_SAME_AS_OLD:
+    "New mobile number cannot be the same as your current mobile number.",
+  INVALID_MOBILE_NUMBER: "Please enter valid Indian Mobile Number",
+
+  MOBILE_VERIFICATION_FAILED:
+    "Mobile number verification failed , User not registered with this mobile number",
+  USER_NOT_REGISTERED_WITH_MOBILE:
+    "No account is registered with this mobile number.",
+
+  MOBILE_NOT_VERIFIED: "This mobile number has not been verified yet.",
+
+  CURRENT_USER_FETCHED: "User profile fetched successfully.",
+  DOB_REQUIRED: "Date of birth is required.",
+};
+
+export const WISHLIST_MESSAGES = {
+  USER_NOT_FOUND: "User not found.",
+  FOOD_NOT_FOUND: "Food not found.",
+
+  ITEM_ALREADY_EXISTS: "Food is already in your wishlist.",
+  ITEM_ADDED: "Food added to wishlist successfully.",
+
+  ITEM_REMOVED: "Food removed from wishlist successfully.",
+
+  WISHLIST_FETCHED: "Wishlist fetched successfully.",
+};
+
+export const ADMIN_MESSAGES = {
+  USERS_FETCHED_SUCCESSFULLY: "Users fetched successfully",
+  DASHBOARD_FETCHED_SUCCESSFULLY: "Dashboard fetched successfully.",
+};
+
+export const FOOD_MESSAGES = {
+  FOOD_ADDED: "Food added successfully",
+  FOOD_NOT_FOUND: "Food not found",
+  FOOD_DELETED: "Food deleted successfully",
+  FOODS_FETCHED_SUCCESSFULLY: "Foods fetched successfully",
+};
+
+export const ADDRESS_MESSAGES = {
+  ADDRESS_ADDED: "Address added successfully.",
+  ADDRESS_UPDATED: "Address updated successfully.",
+  ADDRESS_DELETED: "Address removed successfully.",
+
+  ADDRESS_NOT_FOUND: "Address not found.",
+};
+
+export const OTP_MESSAGES = {
+  OTP_SENT: "OTP has been sent successfully.",
+  OTP_RESENT: "OTP has been resent successfully.",
+
+  OTP_VERIFIED: "OTP verified successfully.",
+  OTP_NOT_FOUND:
+    "No OTP found for this mobile number. Please request a new OTP.",
+
+  INVALID_OTP: "The OTP you entered is incorrect.",
+
+  OTP_EXPIRED: "OTP has expired. Please request a new one.",
+
+  OTP_MAX_ATTEMPTS:
+    "Maximum OTP verification attempts exceeded. Please request a new OTP.",
+
+  OTP_REQUIRED: "OTP is required.",
+
+  OTP_GENERATE_SERVER_ERROR: "Failed to generate OTP , Please try again later",
+  OTP_SENT_SERVER_ERROR: "Failed to send OTP , Please try again later",
+  OTP_VERIFY_SERVER_ERROR: "Unable to verify OTP. Please try again later.", // For OTP delete service we use this
+  OTP_RESENT_SERVER_ERROR: "Failed to resend OTP. Please try again later.",
+};
+
+export const FILE_MESSAGES = {
+  FILE_REQUIRED: "Please upload a file.",
+
+  IMAGE_REQUIRED: "Please upload an image.",
+  IMAGE_UPLOADED: " Image uploaded successfully.",
+  IMAGE_UPDATED: "Image updated successfully.",
+  IMAGE_DELETED: " Image deleted successfully.",
+
+  IMAGE_REPLACE_FAILED: "Failed to change IMAGE. Please try again.",
+
+  INVALID_IMAGE_TYPE: "Only image files are allowed.",
+
+  FILE_UPLOAD_FAILED: "File upload failed. Please try again.",
+
+  IMAGE_UPLOAD_FAILED: "Image upload failed. Please try again.",
+
+  IMAGE_DELETE_FAILED: "Image delete failed. Please try again.",
+
+  IMAGE_SIZE_EXCEEDED: "Image size must not exceed the allowed limit.",
+
+  TOO_MANY_FILES: "Too many files uploaded.",
+
+  UNEXPECTED_FILE_FIELD: "Unexpected file field.",
+};
+
+export const CART_MESSAGES = {
+  CART_FETCHED: "Cart fetched successfully.",
+
+  ITEM_ADDED: "Item added to cart.",
+
+  ITEM_UPDATED: "Cart updated successfully.",
+
+  ITEM_REMOVED: "Item removed from cart.",
+
+  CART_CLEARED: "Cart cleared successfully.",
+
+  CART_EMPTY: "Your cart is empty.",
+
+  FOOD_NOT_FOUND: "Food item not found.",
+
+  CART_NOT_FOUND: "Cart not found.",
+
+  INVALID_QUANTITY: "Quantity must be at least 1.",
+
+  ITEM_NOT_IN_CART: "Item does not exist in cart.",
+
+  OUT_OF_STOCK: "Requested quantity is not available.",
+};
+
+export const ORDER_MESSAGES = {
+  CART_EMPTY: "Your cart is empty.",
+  DELIVERY_ADDRESS_REQUIRED: "Delivery address is required.",
+  ORDER_ID_REQUIRED: "Order ID is required.",
+  ORDER_STATUS_REQUIRED: "Order status is required.",
+  INVALID_ORDER_STATUS: "Invalid order status.",
+
+  ORDER_NOT_FOUND: "Order not found.",
+  FOOD_NOT_FOUND: "Food item not found.",
+
+  ORDER_ACCESS_DENIED: "You are not authorized to access this order.",
+
+  ORDER_CREATED_SUCCESSFULLY: "Order placed successfully.",
+  ORDER_VERIFIED_SUCCESSFULLY: "Order verified successfully.",
+  ORDERS_FETCHED_SUCCESSFULLY: "Orders fetched successfully.",
+  ALL_ORDERS_FETCHED_SUCCESSFULLY: "All orders fetched successfully.",
+  ORDER_STATUS_UPDATED_SUCCESSFULLY: "Order status updated successfully.",
+  CHECKOUT_SESSION_CREATED_SUCCESSFULLY:
+    "Checkout session created successfully.",
+
+  PAYMENT_SUCCESSFUL: "Payment completed successfully.",
+  PAYMENT_FAILED: "Payment failed.",
+  PAYMENT_PENDING: "Payment is pending.",
+  CHECKOUT_SESSION_EXPIRED: "Checkout session has expired.",
+
+  WEBHOOK_ALREADY_PROCESSED: "Webhook event has already been processed.",
+  WEBHOOK_SIGNATURE_VERIFICATION_FAILED:
+    "Webhook signature verification failed.",
+};
+
+export const GENERAL_MESSAGES = {
+  SUCCESS: "Request completed successfully.",
+
+  CREATED: "Resource created successfully.",
+
+  UPDATED: "Resource updated successfully.",
+
+  DELETED: "Resource deleted successfully.",
+
+  BAD_REQUEST: "The request could not be processed.",
+
+  VALIDATION_ERROR: "Please fill in all required fields.",
+
+  INTERNAL_SERVER_ERROR: "Something went wrong. Please try again later.",
+
+  RESOURCE_NOT_FOUND: "Requested resource was not found.",
+
+  DUPLICATE_RESOURCE: "Resource already exists.",
+};

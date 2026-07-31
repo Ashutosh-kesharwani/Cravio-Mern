@@ -1,0 +1,201 @@
+.auth-modal__backdrop {
+  position: fixed;
+  inset: 0;
+
+  display: grid;
+  place-items: center;
+
+  padding: 1rem;
+
+  background: rgba(15, 23, 42, 0.45);
+
+  backdrop-filter: blur(8px);
+
+  z-index: 9999;
+}
+
+.auth-modal {
+  position: relative;
+
+  width: min(100%, 520px);
+
+  padding: 2rem;
+
+  background: var(--surface);
+
+  border-radius: var(--radius-xl);
+
+  border: 1px solid var(--border-color);
+
+  box-shadow: var(--shadow-lg);
+
+  animation: modalPop 0.3s ease;
+}
+
+.auth-modal__close {
+  position: absolute;
+
+  top: 22px;
+  right: 40px;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+
+  background: var(--surface-secondary);
+
+  color: var(--text-primary);
+
+  font-size: 1rem;
+
+  cursor: pointer;
+
+  transition: all var(--transition-normal);
+}
+
+.auth-modal__close:hover {
+  background: var(--primary-color);
+
+  color: var(--text-on-primary);
+
+  transform: rotate(90deg) scale(1.05);
+}
+
+.auth-modal__body {
+  margin-top: 1.5rem;
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .auth-modal {
+    width: 100%;
+    max-width: 520px;
+
+    padding: 1.5rem;
+
+    border-radius: 20px;
+  }
+
+  .auth-modal__close {
+    top: 10px;
+    right: 10px;
+  }
+}
+
+/* ================= Generic Auth Button ================= */
+
+.auth-btn {
+  width: 100%;
+  height: 48px;
+
+  border-radius: 14px;
+
+  background: var(--primary-color);
+
+  color: var(--text-on-primary);
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all var(--transition-normal);
+}
+
+.auth-btn:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.auth-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-btn--outline {
+  background: var(--surface);
+
+  color: var(--text-primary);
+
+  border: 1px solid var(--border-color);
+}
+
+.auth-btn--outline:hover {
+  border-color: var(--primary-color);
+
+  background: var(--primary-light);
+}
+
+/* ================= Generic Text Link ================= */
+
+.auth-link {
+  align-self: flex-end;
+
+  background: transparent;
+
+  color: var(--primary-color);
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all var(--transition-normal);
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+/* ================= Generic Resend Link ================= */
+
+.auth-resend {
+  align-self: center;
+
+  background: transparent;
+
+  color: var(--primary-color);
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all var(--transition-normal);
+}
+
+.auth-resend:disabled {
+  color: var(--text-secondary);
+
+  cursor: not-allowed;
+}
+
+/* ================= Generic Success Banner ================= */
+
+.auth-verified {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 32px;
+
+  border-radius: 12px;
+
+  background: var(--success-light);
+
+  color: var(--success-color);
+
+  font-size: 0.8rem;
+  font-weight: 600;
+}

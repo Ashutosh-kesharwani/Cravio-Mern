@@ -1,0 +1,121 @@
+.place-order {
+  width: 90%;
+  max-width: 1200px;
+  margin: 60px auto;
+}
+
+.place-order-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+.delivery-info,
+.order-summary {
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+}
+
+.section-title {
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.delivery-info input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  outline: none;
+  font-size: 15px;
+  transition: var(--transition-normal);
+}
+
+.delivery-info input::placeholder {
+  color: var(--text-secondary);
+}
+
+.delivery-info input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 18px 0;
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.summary-row.total {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.order-summary hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+}
+
+.payment-btn {
+  width: 100%;
+  margin-top: 25px;
+  padding: 14px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--primary-color);
+  color: var(--text-on-primary);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.payment-btn:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.payment-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 992px) {
+  .place-order-container {
+    grid-template-columns: 1fr;
+  }
+
+  .order-summary {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .input-row {
+    grid-template-columns: 1fr;
+  }
+
+  .delivery-info,
+  .order-summary {
+    padding: 20px;
+  }
+
+  .section-title {
+    font-size: 22px;
+  }
+}

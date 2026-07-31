@@ -1,0 +1,513 @@
+.food-card {
+  width: 100%;
+  max-width: 360px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--surface);
+
+  border-radius: 24px;
+  overflow: hidden;
+
+  box-shadow: var(--shadow-md);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.food-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+.food-card__image-wrapper {
+  position: relative;
+
+  width: 100%;
+  height: 240px;
+
+  overflow: hidden;
+
+  background: var(--surface-secondary);
+}
+
+.food-card__body p {
+  overflow: hidden;
+
+  color: var(--text-secondary);
+
+  font-size: 0.92rem;
+
+  line-height: 1.6;
+
+  margin-bottom: 1rem;
+}
+
+.food-card__image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform 0.5s ease;
+}
+
+.food-card:hover .food-card__image {
+  transform: scale(1.08);
+}
+
+.food-card__wishlist {
+  position: absolute;
+
+  top: 18px;
+
+  right: 18px;
+
+  width: 42px;
+
+  height: 42px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: var(--glass-bg-light);
+
+  backdrop-filter: blur(18px);
+
+  cursor: pointer;
+}
+
+.food-card__rating {
+  position: absolute;
+
+  left: 18px;
+
+  bottom: 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.4rem;
+
+  padding: 0.45rem 0.9rem;
+
+  border-radius: 999px;
+
+  background: var(--glass-bg-strong);
+
+  backdrop-filter: blur(20px);
+
+  color: var(--warning-color);
+
+  font-weight: 600;
+}
+
+.food-card__body {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 1.4rem;
+}
+
+.food-card__top {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 1rem;
+}
+
+.food-card__top h3 {
+  font-size: 1.3rem;
+}
+
+.food-card-description {
+  font-size: 0.8rem;
+  white-space: normal;
+}
+.food-card__top span {
+  padding: 0.35rem 0.8rem;
+
+  border-radius: 999px;
+
+  background: var(--primary-surface);
+
+  color: var(--primary-color);
+
+  font-size: 0.95rem;
+
+  font-weight: 700;
+}
+
+.food-card__meta {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 1.6rem;
+
+  color: var(--text-special);
+
+  font-weight: 500;
+
+  font-size: 0.95rem;
+}
+
+.food-card__meta span {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.35rem;
+}
+
+.food-card__button {
+  width: 100%;
+
+  border: none;
+  margin-top: auto;
+
+  border-radius: 16px;
+
+  padding: 1rem;
+
+  background: var(--primary-color);
+
+  color: var(--text-on-primary);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 0.5rem;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+/* ==========================================
+   Quantity Selector
+========================================== */
+
+.food-card__quantity {
+  width: 100%;
+
+  height: 54px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0.45rem;
+
+  border-radius: 16px;
+
+  background: var(--primary-surface-light);
+
+  border: 1px solid var(--primary-border);
+}
+
+.food-card__quantity-btn {
+  width: 42px;
+
+  height: 42px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: var(--surface);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  cursor: pointer;
+
+  color: var(--text-primary);
+
+  background: var(--surface);
+
+  transition: 0.25s ease;
+}
+
+.food-card__quantity-btn:hover {
+  transform: translateY(-2px);
+
+  background: var(--surface-secondary);
+}
+
+.food-card__quantity-btn--plus {
+  background: var(--primary-color);
+
+  color: var(--text-on-primary);
+}
+
+.food-card__quantity-btn--plus:hover {
+  background: var(--primary-hover);
+}
+
+.food-card__quantity-value {
+  min-width: 40px;
+  text-align: center;
+
+  font-size: 1.1rem;
+
+  font-weight: 900;
+
+  color: var(--text-special);
+}
+
+.food-card__button:hover {
+  transform: translateY(-8px) scale(1.01);
+}
+
+.food-card__wishlist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--text-primary);
+
+  transition: all 0.3s ease;
+}
+
+.food-card__wishlist--active {
+  background: var(--wishlist-active);
+  color: #fff;
+}
+
+.food-card__wishlist--active:hover {
+  --wishlist-active-hover: #ff2d55;
+}
+/* ==========================================
+   Large Tablet
+========================================== */
+
+@media (max-width: 1200px) {
+  .food-card__body {
+    padding: 1.25rem;
+  }
+
+  .food-card__top h3 {
+    font-size: 1.15rem;
+  }
+
+  .food-card__meta {
+    font-size: 0.9rem;
+  }
+}
+
+/* ==========================================
+   Tablet
+========================================== */
+
+@media (max-width: 992px) {
+  .food-card {
+    border-radius: 24px;
+  }
+
+  .food-card__image {
+    aspect-ratio: 1.45;
+  }
+
+  .food-card__body {
+    padding: 1.15rem;
+  }
+
+  .food-card__top {
+    margin-bottom: 0.8rem;
+  }
+
+  .food-card__top h3 {
+    font-size: 1.05rem;
+  }
+
+  .food-card__top span {
+    padding: 0.3rem 0.75rem;
+
+    font-size: 0.9rem;
+  }
+
+  .food-card__body p {
+    font-size: 0.88rem;
+
+    margin-bottom: 0.9rem;
+  }
+
+  .food-card__meta {
+    margin-bottom: 1.1rem;
+
+    font-size: 0.85rem;
+  }
+
+  .food-card__button {
+    padding: 0.85rem;
+
+    border-radius: 14px;
+
+    font-size: 0.95rem;
+  }
+}
+
+/* ==========================================
+   Mobile
+========================================== */
+
+@media (max-width: 768px) {
+  .food-card {
+    border-radius: 20px;
+  }
+
+  .food-card__image {
+    aspect-ratio: 1.5;
+  }
+
+  .food-card__wishlist {
+    width: 36px;
+
+    height: 36px;
+
+    top: 14px;
+
+    right: 14px;
+  }
+
+  .food-card__rating {
+    left: 14px;
+
+    bottom: 14px;
+
+    padding: 0.35rem 0.7rem;
+
+    font-size: 0.8rem;
+  }
+
+  .food-card__body {
+    padding: 1rem;
+  }
+
+  .food-card__top {
+    margin-bottom: 0.7rem;
+  }
+
+  .food-card__top h3 {
+    font-size: 1rem;
+  }
+
+  .food-card__top span {
+    font-size: 0.85rem;
+
+    padding: 0.3rem 0.7rem;
+  }
+
+  .food-card__body p {
+    font-size: 0.82rem;
+
+    line-height: 1.5;
+
+    margin-bottom: 0.8rem;
+  }
+
+  .food-card__meta {
+    font-size: 0.8rem;
+
+    margin-bottom: 1rem;
+  }
+
+  .food-card__button {
+    padding: 0.8rem;
+
+    font-size: 0.9rem;
+
+    border-radius: 12px;
+  }
+}
+
+/* ==========================================
+   Small Mobile
+========================================== */
+
+@media (max-width: 576px) {
+  .food-card {
+    border-radius: 18px;
+  }
+
+  .food-card__image {
+    aspect-ratio: 1.55;
+  }
+
+  .food-card__wishlist {
+    width: 32px;
+
+    height: 32px;
+  }
+
+  .food-card__wishlist svg {
+    width: 16px;
+
+    height: 16px;
+  }
+
+  .food-card__rating {
+    font-size: 0.75rem;
+
+    padding: 0.3rem 0.6rem;
+  }
+
+  .food-card__rating svg {
+    width: 12px;
+
+    height: 12px;
+  }
+
+  .food-card__body {
+    padding: 0.9rem;
+  }
+
+  .food-card__top h3 {
+    font-size: 0.95rem;
+  }
+
+  .food-card__top span {
+    font-size: 0.82rem;
+  }
+
+  .food-card__body p {
+    font-size: 0.78rem;
+  }
+
+  .food-card__meta {
+    font-size: 0.75rem;
+
+    flex-wrap: wrap;
+
+    gap: 0.5rem;
+  }
+
+  .food-card__button {
+    padding: 0.75rem;
+
+    font-size: 0.85rem;
+  }
+}

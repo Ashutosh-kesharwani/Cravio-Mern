@@ -1,0 +1,49 @@
+import { app } from "./app.js";
+import connectDB from "./db/server.js";
+// PORT
+const PORT = process.env.PORT || 5100;
+
+// Process Level Error Handling [Global]
+
+// Synchronous Errors
+process.on("uncaughtException", (error) => {
+  console.error("Uncaught Exception :: ", error);
+  process.exit(1);
+});
+
+// Unhandled Promise Rejections [Asynchronous Error]
+process.on("unhandledRejection", (error) => {
+  console.error(`Unhandled Rejection :: ${error}`);
+  process.exit(1);
+});
+
+// Graceful Shutdown
+process.on("SIGINT", () => {
+  console.log("\nServer Shutting Down Gracefully");
+  process.exit(0);
+});
+
+// DB Connection & Server Start
+connectDB()
+  .then(() => {
+    // Express App error
+    app.on("error", (error) => {
+      console.error(`Express :: ERROR :: ${error}`);
+      process.exit(1);
+    });
+
+    // Start Server
+    const server = app.listen(PORT, () => {
+      console.log(`Server listening at  :: http://localhost:${PORT}/api/v1`);
+    });
+
+    //  Server error
+    server.on("error", (error) => {
+      console.error(`SERVER :: ERROR :: ${error}`);
+      process.exit(1);
+    });
+  })
+  .catch((error) => {
+    console.error(`DB CONNECTION ERROR :: ${error} `);
+    process.exit(1);
+  });

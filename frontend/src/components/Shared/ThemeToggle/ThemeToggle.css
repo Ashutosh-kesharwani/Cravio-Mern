@@ -1,0 +1,113 @@
+/* ==========================================================
+   DESKTOP TOGGLE
+========================================================== */
+
+.theme-toggle {
+  width: 62px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 3px;
+
+  border-radius: 999px;
+
+  background: var(--surface-secondary);
+
+  border: 1px solid var(--border-color);
+
+  box-shadow: var(--shadow-xs);
+
+  cursor: pointer;
+
+  transition: all var(--transition-normal);
+}
+
+.theme-toggle:hover {
+  border-color: var(--primary-color);
+
+  box-shadow: var(--primary-shadow);
+}
+
+.theme-toggle__slider {
+  width: 26px;
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--primary-color);
+
+  color: var(--text-on-primary);
+
+  transform: translateX(0);
+
+  transition: all var(--transition-normal);
+}
+
+.theme-toggle__slider--dark {
+  transform: translateX(28px);
+}
+
+/* ==========================================================
+   MOBILE BUTTON
+========================================================== */
+
+.theme-toggle-mobile {
+  display: none;
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 992px) {
+  /* Hide Desktop Toggle */
+
+  .theme-toggle {
+    display: none;
+  }
+
+  /* Show Mobile Toggle */
+
+  .theme-toggle-mobile {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--surface-secondary);
+
+    border: 1px solid var(--border-color);
+
+    color: var(--primary-color);
+
+    box-shadow: var(--shadow-xs);
+
+    cursor: pointer;
+
+    transition: all var(--transition-normal);
+  }
+
+  .theme-toggle-mobile:hover {
+    background: var(--primary-surface);
+
+    border-color: var(--primary-color);
+
+    transform: translateY(-2px);
+  }
+
+  .theme-toggle-mobile:active {
+    transform: scale(0.94);
+  }
+}
