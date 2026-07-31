@@ -26,15 +26,6 @@ A modern, scalable, and production-ready food ordering platform built using the 
 
 </p>
 
-<br>
-
-<img src="https://img.shields.io/github/stars/Ashutosh-Kesharwani/Cravio-Mern?style=flat-square" />
-<img src="https://img.shields.io/github/forks/Ashutosh-Kesharwani/Cravio-Mern?style=flat-square" />
-<img src="https://img.shields.io/github/license/Ashutosh-Kesharwani/Cravio-Mern?style=flat-square" />
-<img src="https://img.shields.io/github/last-commit/Ashutosh-Kesharwani/Cravio-Mern?style=flat-square" />
-
-<br><br>
-
 <img src="https://skillicons.dev/icons?i=react,nodejs,express,mongodb,vite,js,css,git,github" />
 
 <br>
