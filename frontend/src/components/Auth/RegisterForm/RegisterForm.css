@@ -91,6 +91,14 @@
   background: var(--primary-color);
 }
 
+/* OTP disabled message  */
+.register-form__info {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-align: center;
+}
 /* ================= Actions ================= */
 
 .register-form__actions {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 import { AUTH_MODE } from "../../constants/auth.constants.js";
-import { OTP_PURPOSE } from "../../constants/otp.constants.js";
+// import { OTP_PURPOSE } from "../../constants/otp.constants.js"; // Temporarily disabled OTP flow.
 
 import { useAuthStore } from "../../context/authContext.js";
 
@@ -10,12 +10,12 @@ import { register } from "../../services/auth.service.js";
 
 import {
   validateEmail,
-  validateOTP,
+  // validateOTP, // Temporarily disabled OTP flow.
   validateRegister,
   validateUsername,
 } from "../../validators/auth.validator.js";
 
-import useOTP from "./useOTP";
+// import useOTP from "./useOTP"; // Temporarily disabled OTP flow.
 
 const INITIAL_FORM_DATA = {
   firstName: "",
@@ -33,22 +33,24 @@ const useRegister = () => {
   const { setAuthMode } = useAuthStore();
 
   const [step, setStep] = useState(1);
-
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
-  const {
-    otpSent,
-    otpVerified,
-    otpTimer,
-    loading,
+  // Temporarily bypass OTP verification until SMS service is integrated.
+  const otpSent = true;
+  const otpVerified = true;
+  const otpTimer = 0;
 
-    handleSendOTP,
-    handleVerifyOTP,
-    handleResendOTP,
-    resetOTP,
-  } = useOTP(() => formData.mobile, OTP_PURPOSE.REGISTER);
+  const loading = {
+    sendOtp: false,
+    verifyOtp: false,
+    resendOtp: false,
+  };
+
+  const handleSendOTP = () => {};
+  const handleResendOTP = () => {};
+  const resetOTP = () => {};
 
   const handleChange = ({ target }) => {
     const { name, value, type, checked } = target;
@@ -59,25 +61,16 @@ const useRegister = () => {
     }));
   };
 
-  const handleOTPChange = async (otp) => {
-    setFormData((prev) => ({
-      ...prev,
-      otp,
-    }));
-
-    if (otp.length !== 6) return;
-
-    if (!validateOTP(otp)) return;
-
-    await handleVerifyOTP(otp);
-  };
+  // Temporarily disabled OTP verification.
+  const handleOTPChange = () => {};
 
   const isStepOneValid =
     formData.firstName.trim() &&
     formData.username.trim() &&
     formData.email.trim();
 
-  const isStepTwoValid = formData.mobile.trim() && otpVerified;
+  // Temporarily bypass OTP verification.
+  const isStepTwoValid = formData.mobile.trim();
 
   const isRegisterValid =
     formData.password.trim() &&
@@ -91,12 +84,14 @@ const useRegister = () => {
       if (!validateEmail(formData.email)) return;
     }
 
-    if (step === 2) {
-      if (!otpVerified) {
-        toast.error("Please verify your mobile number.");
-        return;
-      }
-    }
+    // Temporarily disabled OTP verification.
+    // if (step === 2) {
+    //   if (!otpVerified) {
+    //     toast.error("Please verify your mobile number.");
+    //     return;
+    //   }
+    // }
+
     setStep((prev) => prev + 1);
   };
 
@@ -111,17 +106,18 @@ const useRegister = () => {
 
     if (isSubmitting) return;
 
-    if (!otpVerified) {
-      toast.error("Please verify your mobile number.");
-      return;
-    }
+    // Temporarily disabled OTP verification.
+    // if (!otpVerified) {
+    //   toast.error("Please verify your mobile number.");
+    //   return;
+    // }
 
     if (!validateRegister(formData)) return;
 
     setIsSubmitting(true);
 
     try {
-      // Send user all field except otp , confirmPassword , acceptedTerms
+      // Send user all fields except otp, confirmPassword, acceptedTerms
       const {
         otp: _otp,
         confirmPassword: _confirmPassword,

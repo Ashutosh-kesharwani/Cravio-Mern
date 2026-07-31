@@ -41,8 +41,9 @@ import {
 
 // Register User
 const registerUser = asyncHandler(async (req, res) => {
-  const { mobile } = await verifyOtpFlow(req, OTP_PURPOSE.REGISTER);
-  const { firstName, lastName, username, email, password } = req.body;
+  // const { mobile } = await verifyOtpFlow(req, OTP_PURPOSE.REGISTER); // Temporarily disabled OTP verification until SMS service is integrated for production.
+  const { firstName, lastName, username, email, password, mobile } = req.body; // Temporarily accept mobile directly from request body.
+
   if ([firstName, username, email, password].some((field) => !field?.trim())) {
     throw new ApiError(400, GENERAL_MESSAGES.VALIDATION_ERROR);
   }
@@ -60,7 +61,7 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     password,
     mobile,
-    isMobileVerified: true,
+    isMobileVerified: true, // Temporarily mark mobile as verified until OTP service is integrated.
   });
 
   const createdUser = await getSafeUser(user._id);
@@ -73,7 +74,7 @@ const registerUser = asyncHandler(async (req, res) => {
     );
   }
 
-  clearVerificationCookie(res);
+  // clearVerificationCookie(res); // Temporarily disabled since OTP verification flow is bypassed.
 
   return res
     .status(201)
