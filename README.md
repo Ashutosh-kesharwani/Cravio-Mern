@@ -16,26 +16,22 @@ A modern, scalable, and production-ready food ordering platform built using the 
 
 <p>
 
-<a href="YOUR_LIVE_FRONTEND_URL">
+<a href="https://cravio-mern.vercel.app">
 <img src="https://img.shields.io/badge/🚀_Live_Demo-Visit_Website-22C55E?style=for-the-badge" />
 </a>
 
-<a href="YOUR_GITHUB_REPO">
+<a href="https://github.com/Ashutosh-kesharwani/Cravio-Mern">
 <img src="https://img.shields.io/badge/📂_Source_Code-GitHub-181717?style=for-the-badge&logo=github" />
-</a>
-
-<a href="YOUR_BACKEND_URL">
-<img src="https://img.shields.io/badge/API-Production-0EA5E9?style=for-the-badge" />
 </a>
 
 </p>
 
 <br>
 
-<img src="https://img.shields.io/github/stars/YOUR_USERNAME/Cravio-Mern?style=flat-square" />
-<img src="https://img.shields.io/github/forks/YOUR_USERNAME/Cravio-Mern?style=flat-square" />
-<img src="https://img.shields.io/github/license/YOUR_USERNAME/Cravio-Mern?style=flat-square" />
-<img src="https://img.shields.io/github/last-commit/YOUR_USERNAME/Cravio-Mern?style=flat-square" />
+<img src="https://img.shields.io/github/stars/Ashutosh-Kesharwani/Cravio-Mern?style=flat-square" />
+<img src="https://img.shields.io/github/forks/Ashutosh-Kesharwani/Cravio-Mern?style=flat-square" />
+<img src="https://img.shields.io/github/license/Ashutosh-Kesharwani/Cravio-Mern?style=flat-square" />
+<img src="https://img.shields.io/github/last-commit/Ashutosh-Kesharwani/Cravio-Mern?style=flat-square" />
 
 <br><br>
 
@@ -160,7 +156,7 @@ The application demonstrates how enterprise-grade MERN applications are built by
 ## 🏠 Landing Experience
 
 <p align="center">
-<img src="docs/screenshots/home-dark.png" alt="Cravio Home Dark" width="95%">
+<img src="docs/screenshots/Cravio-HomePage-Dark-Mode.png" alt="Cravio Home Dark" width="95%">
 </p>
 
 <p align="center">
@@ -173,7 +169,7 @@ Beautiful hero section, featured foods, categories, responsive design, and smoot
 ## 🌞 Light Theme
 
 <p align="center">
-<img src="docs/screenshots/home-light.png" alt="Home Light Theme" width="95%">
+<img src="docs/screenshots/Cravio-HomePage-Light.png" alt="Home Light Theme" width="95%">
 </p>
 
 <p align="center">
@@ -190,7 +186,7 @@ A polished UI designed to provide a delightful browsing experience across all de
 
 <td align="center" width="50%">
 
-<img src="docs/screenshots/login.png"/>
+<img src="docs/screenshots/Cravio-Login.png"/>
 
 ### Secure Login
 
@@ -226,7 +222,7 @@ Protected Routes
 # 🍔 Food Discovery
 
 <p align="center">
-<img src="docs/screenshots/food-list.png" width="95%">
+<img src="docs/screenshots/Cravio-FoodList.png" width="95%">
 </p>
 
 <p align="center">
@@ -245,7 +241,7 @@ Browse hundreds of delicious meals categorized for a smooth and intuitive orderi
 
 <td width="50%" align="center">
 
-<img src="docs/screenshots/cart.png">
+<img src="docs/screenshots/Cravio-Cart.png">
 
 ### 🛒 Shopping Cart
 
@@ -261,7 +257,7 @@ Real-Time Updates
 
 <td width="50%" align="center">
 
-<img src="docs/screenshots/orders.png">
+<img src="docs/screenshots/Cravio-Orders.png">
 
 ### 📦 Orders
 
@@ -285,7 +281,7 @@ Payment History
 
 <p align="center">
 
-<img src="docs/screenshots/profile.png" width="85%">
+<img src="docs/screenshots/Cravio-Profile.png" width="85%">
 
 </p>
 
@@ -307,141 +303,31 @@ The administration panel provides complete control over platform operations.
 
 <p align="center">
 
-<img src="docs/screenshots/admin-dashboard.png" width="95%">
+<img src="docs/screenshots/Cravio-Admin-DashBoard-1.png" width="95%">
 
 </p>
 
 ---
 
-## 🍔 Food Management
+## 🍔 DashBoard Revenue Chart
 
 <p align="center">
 
-<img src="docs/screenshots/admin-foods.png" width="95%">
+<img src="docs/screenshots/Cravio-Admin-DashBoard-2.png" width="95%">
 
 </p>
 
 ---
 
-## 📦 Order Management
+## 📦 Dashboard Food Analytics
 
 <p align="center">
 
-<img src="docs/screenshots/admin-orders.png" width="95%">
+<img src="docs/screenshots/Cravio-Admin-DashBoard-3.png" width="95%">
 
 </p>
 
 ---
-
-# 💼 Complete Platform Overview
-
-<table>
-
-<tr>
-
-<td align="center">
-
-🏠 Home
-
-</td>
-
-<td align="center">
-
-🍔 Foods
-
-</td>
-
-<td align="center">
-
-🛒 Cart
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>
-
-<img src="docs/screenshots/home-dark.png">
-
-</td>
-
-<td>
-
-<img src="docs/screenshots/food-list.png">
-
-</td>
-
-<td>
-
-<img src="docs/screenshots/cart.png">
-
-</td>
-
-</tr>
-
-<tr>
-
-<td align="center">
-
-👤 Profile
-
-</td>
-
-<td align="center">
-
-📦 Orders
-
-</td>
-
-<td align="center">
-
-👨‍💻 Admin
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>
-
-<img src="docs/screenshots/profile.png">
-
-</td>
-
-<td>
-
-<img src="docs/screenshots/orders.png">
-
-</td>
-
-<td>
-
-<img src="docs/screenshots/admin-dashboard.png">
-
-</td>
-
-</tr>
-
-</table>
-
----
-
-<div align="center">
-
-## 🌟 Designed for Performance, Scalability & User Experience
-
-**Every screen in Cravio has been designed to provide an intuitive, responsive, and production-ready experience for both customers and administrators.**
-
-</div>
-
----
-
-<!-- ====================================================== -->
-<!--                    FEATURES SECTION                    -->
-<!-- ====================================================== -->
 
 # ✨ Features
 
@@ -2077,10 +1963,6 @@ Experience Cravio in action using the links below.
 <img src="https://img.shields.io/badge/🚀_Live_Demo-Visit_Website-22C55E?style=for-the-badge">
 </a>
 
-<a href="https://cravio-backend-m41m.onrender.com">
-<img src="https://img.shields.io/badge/⚙️_Backend_API-Production_API-0EA5E9?style=for-the-badge">
-</a>
-
 <a href="https://github.com/Ashutosh-kesharwani/Cravio-Mern">
 <img src="https://img.shields.io/badge/📂_GitHub-Repository-181717?style=for-the-badge&logo=github">
 </a>
@@ -2213,7 +2095,7 @@ Contributions are welcome!
 1. Fork the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Cravio-Mern.git
+git clone https://github.com/Ashutosh-Kesharwani/Cravio-Mern.git
 ```
 
 2.
@@ -2270,15 +2152,15 @@ Building scalable web applications with modern technologies and clean architectu
 <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github">
 </a>
 
-<a href="YOUR_LINKEDIN_URL">
+<a href="https://www.linkedin.com/in/ashutosh1406/">
 <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin">
 </a>
 
-<a href="https://ashutoshshowcase.netlify.app">
+<a href="https://ashutosh-kesharwani.github.io/Ashutosh-Devspace/">
 <img src="https://img.shields.io/badge/Portfolio-FF6B6B?style=for-the-badge">
 </a>
 
-<a href="mailto:YOUR_EMAIL">
+<a href="mailto:ashutoshkesharwani20021406@gmail.com">
 <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail">
 </a>
 
