@@ -125,7 +125,7 @@ const userSchema = new mongoose.Schema(
 
     mobile: {
       type: String,
-      required: [true, "Mobile Number is required"],
+      // required: [true, "Mobile Number is required"], // Temporailry disable OTP Auth system
       unique: true,
       trim: true,
       validate: {
@@ -137,7 +137,7 @@ const userSchema = new mongoose.Schema(
 
     isMobileVerified: {
       type: Boolean,
-      default: false,
+      default: true, // Temporailry disable OTP Auth system
     },
     role: {
       type: String,
