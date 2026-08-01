@@ -12,7 +12,7 @@ import {
 import { INITIAL_CART } from "../../context/CartContextProvider.jsx";
 import { useCartStore } from "../../context/cartContext.js";
 
-const DELIVERY_FEE = 40;
+import { DELIVERY_FEE } from "../../constants/order.constants.js";
 
 const useCart = () => {
   const { cart, setCart, loading, setLoading } = useCartStore();

@@ -149,19 +149,19 @@ const PlaceOrder = () => {
 
           <div className="summary-row">
             <span>Subtotal</span>
-            <span>${subtotal}</span>
+            <span>₹{subtotal}</span>
           </div>
 
           <div className="summary-row">
             <span>Delivery Fee</span>
-            <span>${deliveryFee}</span>
+            <span>₹{deliveryFee}</span>
           </div>
 
           <hr />
 
           <div className="summary-row total">
             <span>Total</span>
-            <span>${grandTotal}</span>
+            <span>₹{grandTotal}</span>
           </div>
 
           <button

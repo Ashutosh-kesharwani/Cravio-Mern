@@ -48,3 +48,5 @@ export const ORDER_STATUS_OPTIONS = [
 
 export const getOrderStatus = (status) =>
   ORDER_STATUS_OPTIONS.find((item) => item.value === status);
+
+export const DELIVERY_FEE = 40;
