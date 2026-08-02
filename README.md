@@ -15,7 +15,6 @@ A modern, scalable, and production-ready food ordering platform built using the 
 <br>
 
 <p>
-
 <a href="https://cravio-mern.vercel.app">
 <img src="https://img.shields.io/badge/🚀_Live_Demo-Visit_Website-22C55E?style=for-the-badge" />
 </a>
