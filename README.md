@@ -3,7 +3,6 @@
 <!-- ====================================================== -->
 
 <div align="center">
-
 # 🍽️ Cravio
 
 ### **AI-Powered Full Stack Food Ordering Platform**
