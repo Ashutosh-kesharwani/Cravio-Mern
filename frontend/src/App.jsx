@@ -1,5 +1,6 @@
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Outlet, useLocation } from "react-router-dom";
-
 import { Footer, Navbar } from "./components/index.js";
 import { AuthContextProvider } from "./context/AuthContextProvider.jsx";
 import { CartContextProvider } from "./context/CartContextProvider.jsx";
@@ -13,27 +14,31 @@ const App = () => {
   const isAdminRoute = location.pathname.startsWith("/admin");
 
   return (
-    <ThemeProviderContext>
-      <AuthContextProvider>
-        <FoodContextProvider>
-          <CartContextProvider>
-            <WishlistContextProvider>
-              <OrderContextProvider>
-                {isAdminRoute ? (
-                  <Outlet />
-                ) : (
-                  <div className="app-container">
-                    <Navbar />
+    <>
+      <Analytics />
+      <SpeedInsights />
+      <ThemeProviderContext>
+        <AuthContextProvider>
+          <FoodContextProvider>
+            <CartContextProvider>
+              <WishlistContextProvider>
+                <OrderContextProvider>
+                  {isAdminRoute ? (
                     <Outlet />
-                    <Footer />
-                  </div>
-                )}
-              </OrderContextProvider>
-            </WishlistContextProvider>
-          </CartContextProvider>
-        </FoodContextProvider>
-      </AuthContextProvider>
-    </ThemeProviderContext>
+                  ) : (
+                    <div className="app-container">
+                      <Navbar />
+                      <Outlet />
+                      <Footer />
+                    </div>
+                  )}
+                </OrderContextProvider>
+              </WishlistContextProvider>
+            </CartContextProvider>
+          </FoodContextProvider>
+        </AuthContextProvider>
+      </ThemeProviderContext>
+    </>
   );
 };
 
